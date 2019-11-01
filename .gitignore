@@ -155,4 +155,5 @@ Desktop.ini
 # Own
 ######################
 /src/main/resources/application.properties
-/src/main/resources/config/
+/src/main/resources/config/application-dev.yml
+/src/main/resources/config/application-prod.yml
