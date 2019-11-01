@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "pl.edu.wat.wel",
+      "nativeLanguage": "pl"
+    },
+    "jhipsterVersion": "6.4.1",
+    "applicationType": "monolith",
+    "baseName": "SRS",
+    "packageName": "pl.edu.wat.wel",
+    "packageFolder": "pl/edu/wat/wel",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NDUxMzhlZDBiNzJmMmU2MGNkMmVmMjZmOGFmNmNjODQ5MTMzOTg5OWE1ZDlmYjJmNmU0OGI2Y2FlZGE5ODU5ODg0NGE2Nzk3NDA5MDM1MGFkM2RiNmEyNGM2NGMwNzVmNTU1NjI4YzM2ZjE3YzdkOGNmMGZhM2E4MGY5MGQ4Njk=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pl",
+    "languages": ["pl", "en"],
+    "blueprints": []
+  }
+}
