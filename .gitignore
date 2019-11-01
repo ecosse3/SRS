@@ -145,3 +145,14 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+
+######################
+# Local History
+######################
+.history
+
+######################
+# Own
+######################
+/src/main/resources/application.properties
+/src/main/resources/config/
