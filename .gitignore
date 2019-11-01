@@ -156,3 +156,4 @@ Desktop.ini
 ######################
 /src/main/resources/application.properties
 /src/main/resources/config/
+pom.xml
