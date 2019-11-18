@@ -45,6 +45,28 @@ public class CacheConfiguration {
             createCache(cm, pl.edu.wat.wel.domain.User.class.getName());
             createCache(cm, pl.edu.wat.wel.domain.Authority.class.getName());
             createCache(cm, pl.edu.wat.wel.domain.User.class.getName() + ".authorities");
+            createCache(cm, pl.edu.wat.wel.domain.Department.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.Department.class.getName() + ".majors");
+            createCache(cm, pl.edu.wat.wel.domain.Major.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.Major.class.getName() + ".schoolGroups");
+            createCache(cm, pl.edu.wat.wel.domain.SchoolGroup.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.Building.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName() + ".reservations");
+            createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName() + ".classModels");
+            createCache(cm, pl.edu.wat.wel.domain.Reservation.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.Reservation.class.getName() + ".participants");
+            createCache(cm, pl.edu.wat.wel.domain.ClassHours.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.ClassHours.class.getName() + ".originalStartTimes");
+            createCache(cm, pl.edu.wat.wel.domain.ClassHours.class.getName() + ".newStartTimes");
+            createCache(cm, pl.edu.wat.wel.domain.ClassDuration.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.ClassDuration.class.getName() + ".reservations");
+            createCache(cm, pl.edu.wat.wel.domain.ClassModel.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.ClassModel.class.getName() + ".classRooms");
+            createCache(cm, pl.edu.wat.wel.domain.Building.class.getName() + ".classRoomBS");
+            createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName() + ".reservationCS");
+            createCache(cm, pl.edu.wat.wel.domain.Building.class.getName() + ".reservationBS");
+            createCache(cm, pl.edu.wat.wel.domain.SchoolGroup.class.getName() + ".reservationS");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,26 @@
+{
+  "srsApp": {
+    "classRoom": {
+      "home": {
+        "title": "Class Room",
+        "createLabel": "Dodaj Class Room",
+        "createOrEditLabel": "Dodaj lub edytuj: Class Room",
+        "notFound": "No Class Rooms found"
+      },
+      "created": "Utworzono nowy obiekt typu Class Room z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Class Room z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Class Room z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Class Room {{ id }}?"
+      },
+      "detail": {
+        "title": "Class Room"
+      },
+      "number": "Number",
+      "maximumSize": "Maximum Size",
+      "reservationC": "Reservation C",
+      "classModel": "Class Model",
+      "building": "Building"
+    }
+  }
+}

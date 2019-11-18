@@ -1,0 +1,43 @@
+{
+    "name": "ClassHours",
+    "fields": [
+        {
+            "fieldName": "startTime",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "originalStartTime",
+            "relationshipName": "originalStartTime"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "newStartTime",
+            "relationshipName": "newStartTime"
+        }
+    ],
+    "changelogDate": "20191118222407",
+    "entityTableName": "class_hours",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

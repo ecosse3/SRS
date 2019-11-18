@@ -1,0 +1,96 @@
+{
+    "name": "Reservation",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "noteToTeacher",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "originalClassDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "newClassDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "participants",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "schoolGroup",
+            "otherEntityRelationshipName": "reservationS",
+            "relationshipValidateRules": "required",
+            "relationshipName": "schoolGroup",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "building",
+            "otherEntityRelationshipName": "reservationB",
+            "relationshipValidateRules": "required",
+            "relationshipName": "building",
+            "otherEntityField": "number"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classRoom",
+            "otherEntityRelationshipName": "reservationC",
+            "relationshipName": "classRoom",
+            "otherEntityField": "number"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classHours",
+            "otherEntityRelationshipName": "originalStartTime",
+            "relationshipValidateRules": "required",
+            "relationshipName": "originalStartTime",
+            "otherEntityField": "startTime"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classHours",
+            "otherEntityRelationshipName": "newStartTime",
+            "relationshipName": "newStartTime",
+            "otherEntityField": "startTime"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classDuration",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipValidateRules": "required",
+            "relationshipName": "classDuration",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20191118222406",
+    "entityTableName": "reservation",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

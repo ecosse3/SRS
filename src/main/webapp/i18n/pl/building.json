@@ -1,0 +1,24 @@
+{
+  "srsApp": {
+    "building": {
+      "home": {
+        "title": "Building",
+        "createLabel": "Dodaj Building",
+        "createOrEditLabel": "Dodaj lub edytuj: Building",
+        "notFound": "No Buildings found"
+      },
+      "created": "Utworzono nowy obiekt typu Building z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Building z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Building z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Building {{ id }}?"
+      },
+      "detail": {
+        "title": "Building"
+      },
+      "number": "Number",
+      "classRoomB": "Class Room B",
+      "reservationB": "Reservation B"
+    }
+  }
+}

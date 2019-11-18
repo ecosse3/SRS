@@ -17,7 +17,7 @@
     "databaseType": "sql",
     "devDatabaseType": "mysql",
     "prodDatabaseType": "mysql",
-    "searchEngine": "elasticsearch",
+    "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
@@ -36,7 +36,10 @@
     "otherModules": [],
     "enableTranslation": true,
     "nativeLanguage": "pl",
-    "languages": ["pl", "en"],
+    "languages": [
+      "pl",
+      "en"
+    ],
     "blueprints": []
   }
 }

@@ -1,0 +1,23 @@
+{
+  "srsApp": {
+    "classModel": {
+      "home": {
+        "title": "Class Model",
+        "createLabel": "Dodaj Class Model",
+        "createOrEditLabel": "Dodaj lub edytuj: Class Model",
+        "notFound": "No Class Models found"
+      },
+      "created": "Utworzono nowy obiekt typu Class Model z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Class Model z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Class Model z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Class Model {{ id }}?"
+      },
+      "detail": {
+        "title": "Class Model"
+      },
+      "name": "Name",
+      "classRoom": "Class Room"
+    }
+  }
+}

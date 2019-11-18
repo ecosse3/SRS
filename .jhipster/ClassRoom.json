@@ -1,0 +1,56 @@
+{
+    "name": "ClassRoom",
+    "fields": [
+        {
+            "fieldName": "number",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "maximumSize",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 2,
+            "fieldValidateRulesMax": 150
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "classRoom",
+            "relationshipName": "reservationC"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "classModel",
+            "otherEntityRelationshipName": "classRoom",
+            "relationshipName": "classModel",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "building",
+            "otherEntityRelationshipName": "classRoomB",
+            "relationshipValidateRules": "required",
+            "relationshipName": "building",
+            "otherEntityField": "number"
+        }
+    ],
+    "changelogDate": "20191118222405",
+    "entityTableName": "class_room",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

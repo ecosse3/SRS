@@ -1,0 +1,25 @@
+{
+  "srsApp": {
+    "classHours": {
+      "home": {
+        "title": "Class Hours",
+        "createLabel": "Dodaj Class Hours",
+        "createOrEditLabel": "Dodaj lub edytuj: Class Hours",
+        "notFound": "No Class Hours found"
+      },
+      "created": "Utworzono nowy obiekt typu Class Hours z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Class Hours z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Class Hours z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Class Hours {{ id }}?"
+      },
+      "detail": {
+        "title": "Class Hours"
+      },
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "originalStartTime": "Original Start Time",
+      "newStartTime": "New Start Time"
+    }
+  }
+}

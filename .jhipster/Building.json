@@ -1,0 +1,36 @@
+{
+    "name": "Building",
+    "fields": [
+        {
+            "fieldName": "number",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "classRoom",
+            "otherEntityRelationshipName": "building",
+            "relationshipName": "classRoomB"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "building",
+            "relationshipName": "reservationB"
+        }
+    ],
+    "changelogDate": "20191118222404",
+    "entityTableName": "building",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

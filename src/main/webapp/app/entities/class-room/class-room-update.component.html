@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-class-room-heading" jhiTranslate="srsApp.classRoom.home.createOrEditLabel">Create or edit a Class Room</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.classRoom.number" for="field_number">Number</label>
+                    <input type="text" class="form-control" name="number" id="field_number"
+                           formControlName="number"/>
+                    <div *ngIf="editForm.get('number').invalid && (editForm.get('number').dirty || editForm.get('number').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('number').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.classRoom.maximumSize" for="field_maximumSize">Maximum Size</label>
+                    <input type="number" class="form-control" name="maximumSize" id="field_maximumSize"
+                           formControlName="maximumSize"/>
+                    <div *ngIf="editForm.get('maximumSize').invalid && (editForm.get('maximumSize').dirty || editForm.get('maximumSize').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('maximumSize').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 2 }">
+                            This field should be at least 2.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('maximumSize').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 150 }">
+                            This field cannot be more than 150.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('maximumSize')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="srsApp.classRoom.classModel" for="field_classModels">Class Model</label>
+                    <select class="form-control" id="field_classModels" multiple name="classModels" formControlName="classModels">
+                        <option [ngValue]="getSelected(editForm.get('classModels').value, classModelOption)" *ngFor="let classModelOption of classmodels; trackBy: trackClassModelById">{{classModelOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.classRoom.building" for="field_building">Building</label>
+                    <select class="form-control" id="field_building" name="building" formControlName="building">
+                        <option *ngIf="!editForm.get('building').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="buildingOption.id === editForm.get('building').value?.id ? editForm.get('building').value : buildingOption" *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">{{buildingOption.number}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('building').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

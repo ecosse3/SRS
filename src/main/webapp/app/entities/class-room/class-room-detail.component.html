@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="classRoom">
+            <h2><span jhiTranslate="srsApp.classRoom.detail.title">Class Room</span> {{classRoom.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="srsApp.classRoom.number">Number</span></dt>
+                <dd>
+                    <span>{{classRoom.number}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.classRoom.maximumSize">Maximum Size</span></dt>
+                <dd>
+                    <span>{{classRoom.maximumSize}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.classRoom.classModel">Class Model</span></dt>
+                <dd>
+                    <span *ngFor="let classModel of classRoom.classModels; let last = last">
+                        <a [routerLink]="['/class-model', classModel?.id, 'view' ]">{{classModel.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.classRoom.building">Building</span></dt>
+                <dd>
+                    <div *ngIf="classRoom.building">
+                        <a [routerLink]="['/building', classRoom.building?.id, 'view']">{{classRoom.building?.number}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/class-room', classRoom.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

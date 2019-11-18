@@ -1,0 +1,23 @@
+{
+  "srsApp": {
+    "department": {
+      "home": {
+        "title": "Department",
+        "createLabel": "Dodaj Department",
+        "createOrEditLabel": "Dodaj lub edytuj: Department",
+        "notFound": "No Departments found"
+      },
+      "created": "Utworzono nowy obiekt typu Department z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Department z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Department z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Department {{ id }}?"
+      },
+      "detail": {
+        "title": "Department"
+      },
+      "name": "Name",
+      "major": "Major"
+    }
+  }
+}

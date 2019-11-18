@@ -1,0 +1,108 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="srsApp.reservation.home.title">Reservations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reservation" [routerLink]="['/reservation/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="srsApp.reservation.home.createLabel">
+            Create a new Reservation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="reservations?.length === 0">
+        <span jhiTranslate="srsApp.reservation.home.notFound">No reservations found</span>
+    </div>
+    <div class="table-responsive" *ngIf="reservations?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="srsApp.reservation.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="noteToTeacher"><span jhiTranslate="srsApp.reservation.noteToTeacher">Note To Teacher</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="originalClassDate"><span jhiTranslate="srsApp.reservation.originalClassDate">Original Class Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="newClassDate"><span jhiTranslate="srsApp.reservation.newClassDate">New Class Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="schoolGroup.name"><span jhiTranslate="srsApp.reservation.schoolGroup">School Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="building.number"><span jhiTranslate="srsApp.reservation.building">Building</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="classRoom.number"><span jhiTranslate="srsApp.reservation.classRoom">Class Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="originalStartTime.startTime"><span jhiTranslate="srsApp.reservation.originalStartTime">Original Start Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="newStartTime.startTime"><span jhiTranslate="srsApp.reservation.newStartTime">New Start Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="classDuration.name"><span jhiTranslate="srsApp.reservation.classDuration">Class Duration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reservation of reservations ;trackBy: trackId">
+                <td><a [routerLink]="['/reservation', reservation.id, 'view' ]">{{reservation.id}}</a></td>
+                <td>{{reservation.name}}</td>
+                <td>{{reservation.noteToTeacher}}</td>
+                <td>{{reservation.originalClassDate | date:'mediumDate'}}</td>
+                <td>{{reservation.newClassDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="reservation.schoolGroup">
+                        <a [routerLink]="['/school-group', reservation.schoolGroup?.id, 'view' ]" >{{reservation.schoolGroup?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reservation.building">
+                        <a [routerLink]="['/building', reservation.building?.id, 'view' ]" >{{reservation.building?.number}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reservation.classRoom">
+                        <a [routerLink]="['/class-room', reservation.classRoom?.id, 'view' ]" >{{reservation.classRoom?.number}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reservation.originalStartTime">
+                        <a [routerLink]="['/class-hours', reservation.originalStartTime?.id, 'view' ]" >{{reservation.originalStartTime?.startTime}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reservation.newStartTime">
+                        <a [routerLink]="['/class-hours', reservation.newStartTime?.id, 'view' ]" >{{reservation.newStartTime?.startTime}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reservation.classDuration">
+                        <a [routerLink]="['/class-duration', reservation.classDuration?.id, 'view' ]" >{{reservation.classDuration?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/reservation', reservation.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/reservation', reservation.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/reservation', { outlets: { popup: reservation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="reservations?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

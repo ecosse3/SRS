@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="schoolGroup">
+            <h2><span jhiTranslate="srsApp.schoolGroup.detail.title">School Group</span> {{schoolGroup.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="srsApp.schoolGroup.name">Name</span></dt>
+                <dd>
+                    <span>{{schoolGroup.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.schoolGroup.starost">Starost</span></dt>
+                <dd>
+                    {{schoolGroup.starost?.login}}
+                </dd>
+                <dt><span jhiTranslate="srsApp.schoolGroup.major">Major</span></dt>
+                <dd>
+                    <div *ngIf="schoolGroup.major">
+                        <a [routerLink]="['/major', schoolGroup.major?.id, 'view']">{{schoolGroup.major?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/school-group', schoolGroup.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

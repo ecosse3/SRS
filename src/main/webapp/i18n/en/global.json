@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "department": "Department",
+        "major": "Major",
+        "schoolGroup": "School Group",
+        "building": "Building",
+        "classRoom": "Class Room",
+        "reservation": "Reservation",
+        "classHours": "Class Hours",
+        "classDuration": "Class Duration",
+        "classModel": "Class Model",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

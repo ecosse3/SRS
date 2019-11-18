@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="classHours">
+            <h2><span jhiTranslate="srsApp.classHours.detail.title">Class Hours</span> {{classHours.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="srsApp.classHours.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{classHours.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.classHours.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{classHours.endTime}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/class-hours', classHours.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

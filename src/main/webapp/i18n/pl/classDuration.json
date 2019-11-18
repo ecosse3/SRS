@@ -1,0 +1,23 @@
+{
+  "srsApp": {
+    "classDuration": {
+      "home": {
+        "title": "Class Duration",
+        "createLabel": "Dodaj Class Duration",
+        "createOrEditLabel": "Dodaj lub edytuj: Class Duration",
+        "notFound": "No Class Durations found"
+      },
+      "created": "Utworzono nowy obiekt typu Class Duration z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Class Duration z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Class Duration z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Class Duration {{ id }}?"
+      },
+      "detail": {
+        "title": "Class Duration"
+      },
+      "name": "Name",
+      "reservation": "Reservation"
+    }
+  }
+}

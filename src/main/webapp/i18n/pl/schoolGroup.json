@@ -1,0 +1,25 @@
+{
+  "srsApp": {
+    "schoolGroup": {
+      "home": {
+        "title": "School Group",
+        "createLabel": "Dodaj School Group",
+        "createOrEditLabel": "Dodaj lub edytuj: School Group",
+        "notFound": "No School Groups found"
+      },
+      "created": "Utworzono nowy obiekt typu School Group z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu School Group z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu School Group z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć School Group {{ id }}?"
+      },
+      "detail": {
+        "title": "School Group"
+      },
+      "name": "Name",
+      "starost": "Starost",
+      "reservationS": "Reservation S",
+      "major": "Major"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "name": "SchoolGroup",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "schoolGroup",
+            "relationshipName": "starost",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "schoolGroup",
+            "relationshipName": "reservationS"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "major",
+            "otherEntityRelationshipName": "schoolGroup",
+            "relationshipValidateRules": "required",
+            "relationshipName": "major",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20191118222403",
+    "entityTableName": "school_group",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

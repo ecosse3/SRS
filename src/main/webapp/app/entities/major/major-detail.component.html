@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="major">
+            <h2><span jhiTranslate="srsApp.major.detail.title">Major</span> {{major.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="srsApp.major.name">Name</span></dt>
+                <dd>
+                    <span>{{major.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.major.department">Department</span></dt>
+                <dd>
+                    <div *ngIf="major.department">
+                        <a [routerLink]="['/department', major.department?.id, 'view']">{{major.department?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/major', major.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

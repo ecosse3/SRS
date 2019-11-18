@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="srsApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="srsApp.reservation.name">Name</span></dt>
+                <dd>
+                    <span>{{reservation.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.noteToTeacher">Note To Teacher</span></dt>
+                <dd>
+                    <span>{{reservation.noteToTeacher}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.originalClassDate">Original Class Date</span></dt>
+                <dd>
+                    <span>{{reservation.originalClassDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.newClassDate">New Class Date</span></dt>
+                <dd>
+                    <span>{{reservation.newClassDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.participants">Participants</span></dt>
+                <dd>
+                    <span *ngFor="let participants of reservation.participants; let last = last">
+                        {{participants.login}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.schoolGroup">School Group</span></dt>
+                <dd>
+                    <div *ngIf="reservation.schoolGroup">
+                        <a [routerLink]="['/school-group', reservation.schoolGroup?.id, 'view']">{{reservation.schoolGroup?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.building">Building</span></dt>
+                <dd>
+                    <div *ngIf="reservation.building">
+                        <a [routerLink]="['/building', reservation.building?.id, 'view']">{{reservation.building?.number}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.classRoom">Class Room</span></dt>
+                <dd>
+                    <div *ngIf="reservation.classRoom">
+                        <a [routerLink]="['/class-room', reservation.classRoom?.id, 'view']">{{reservation.classRoom?.number}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.originalStartTime">Original Start Time</span></dt>
+                <dd>
+                    <div *ngIf="reservation.originalStartTime">
+                        <a [routerLink]="['/class-hours', reservation.originalStartTime?.id, 'view']">{{reservation.originalStartTime?.startTime}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.newStartTime">New Start Time</span></dt>
+                <dd>
+                    <div *ngIf="reservation.newStartTime">
+                        <a [routerLink]="['/class-hours', reservation.newStartTime?.id, 'view']">{{reservation.newStartTime?.startTime}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.classDuration">Class Duration</span></dt>
+                <dd>
+                    <div *ngIf="reservation.classDuration">
+                        <a [routerLink]="['/class-duration', reservation.classDuration?.id, 'view']">{{reservation.classDuration?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reservation', reservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

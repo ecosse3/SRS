@@ -1,0 +1,32 @@
+{
+  "srsApp": {
+    "reservation": {
+      "home": {
+        "title": "Reservation",
+        "createLabel": "Dodaj Reservation",
+        "createOrEditLabel": "Dodaj lub edytuj: Reservation",
+        "notFound": "No Reservations found"
+      },
+      "created": "Utworzono nowy obiekt typu Reservation z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Reservation z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Reservation z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Reservation {{ id }}?"
+      },
+      "detail": {
+        "title": "Reservation"
+      },
+      "name": "Name",
+      "noteToTeacher": "Note To Teacher",
+      "originalClassDate": "Original Class Date",
+      "newClassDate": "New Class Date",
+      "participants": "Participants",
+      "schoolGroup": "School Group",
+      "building": "Building",
+      "classRoom": "Class Room",
+      "originalStartTime": "Original Start Time",
+      "newStartTime": "New Start Time",
+      "classDuration": "Class Duration"
+    }
+  }
+}
