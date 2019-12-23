@@ -33,7 +33,7 @@ export const classRoomRoute: Routes = [
     path: '',
     component: ClassRoomComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.classRoom.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const classRoomRoute: Routes = [
       classRoom: ClassRoomResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.classRoom.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const classRoomRoute: Routes = [
       classRoom: ClassRoomResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.classRoom.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const classRoomRoute: Routes = [
       classRoom: ClassRoomResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.classRoom.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const classRoomPopupRoute: Routes = [
       classRoom: ClassRoomResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.classRoom.home.title'
     },
     canActivate: [UserRouteAccessService],

@@ -37,7 +37,7 @@ export const schoolGroupRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'srsApp.schoolGroup.home.title'
     },
@@ -50,7 +50,7 @@ export const schoolGroupRoute: Routes = [
       schoolGroup: SchoolGroupResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.schoolGroup.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const schoolGroupRoute: Routes = [
       schoolGroup: SchoolGroupResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.schoolGroup.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const schoolGroupRoute: Routes = [
       schoolGroup: SchoolGroupResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.schoolGroup.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const schoolGroupPopupRoute: Routes = [
       schoolGroup: SchoolGroupResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.schoolGroup.home.title'
     },
     canActivate: [UserRouteAccessService],
