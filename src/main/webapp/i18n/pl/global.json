@@ -59,9 +59,8 @@
     "messages": {
       "info": {
         "authenticated": {
-          "prefix": "Jeśli chcesz się ",
-          "link": "zalogować",
-          "suffix": ", możesz spróbować któregoś z domyślnych kont:<br/>- Administrator (login=\"admin\" i hasło=\"admin\") <br/>- Użytkownik (login=\"user\" i hasło=\"user\")."
+          "prefix": "Jeśli chcesz użyć wszystkich funkcjonalności strony prosimy się ",
+          "link": "zalogować"
         },
         "register": {
           "noaccount": "Nie masz jeszcze konta?",

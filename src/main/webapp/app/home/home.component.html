@@ -13,12 +13,17 @@
                 </span>
             </div>
 
+            <div *ngSwitchCase="true">
+                <p jhiTranslate="home.reservation_info">
+                    To book classroom for future classes, select "New Reservation" from the navigation menu.
+                </p>
+            </div>
+
             <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to use all features
+                    please</span>
                 <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign
-                    in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default
-                    accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-                    password="user").</span>
+                    in</a>.
             </div>
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
@@ -26,9 +31,5 @@
                     jhiTranslate="global.messages.info.register.link">Register a new account</a>
             </div>
         </div>
-
-        <p jhiTranslate="home.reservation_info">
-            To book classroom for future classes, select "New Reservation" from the navigation menu.
-        </p>
     </div>
 </div>
