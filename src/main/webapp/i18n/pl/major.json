@@ -2,23 +2,23 @@
   "srsApp": {
     "major": {
       "home": {
-        "title": "Major",
-        "createLabel": "Dodaj Major",
-        "createOrEditLabel": "Dodaj lub edytuj: Major",
-        "notFound": "No Majors found"
+        "title": "Kierunek",
+        "createLabel": "Dodaj Kierunek",
+        "createOrEditLabel": "Dodaj lub edytuj: Kierunek",
+        "notFound": "Nie znaleziono kierunków"
       },
-      "created": "Utworzono nowy obiekt typu Major z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Major z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Major z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Kierunek z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Kierunek z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Kierunek z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Major {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Kierunek {{ id }}?"
       },
       "detail": {
-        "title": "Major"
+        "title": "Kierunek"
       },
-      "name": "Name",
-      "schoolGroup": "School Group",
-      "department": "Department"
+      "name": "Nazwa",
+      "schoolGroup": "Grupa studencka",
+      "department": "Wydział"
     }
   }
 }

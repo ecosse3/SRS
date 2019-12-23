@@ -2,24 +2,24 @@
   "srsApp": {
     "schoolGroup": {
       "home": {
-        "title": "School Group",
-        "createLabel": "Dodaj School Group",
-        "createOrEditLabel": "Dodaj lub edytuj: School Group",
-        "notFound": "No School Groups found"
+        "title": "Grupy studenckie",
+        "createLabel": "Dodaj grupę studencką",
+        "createOrEditLabel": "Dodaj lub edytuj: Grupa studencka",
+        "notFound": "Nie znaleziono grup studenckich"
       },
       "created": "Utworzono nowy obiekt typu School Group z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu School Group z identyfikatorem {{ param }}",
       "deleted": "Usunięto obiekt typu School Group z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć School Group {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć grupę studencką {{ id }}?"
       },
       "detail": {
-        "title": "School Group"
+        "title": "Grupa studencka"
       },
-      "name": "Name",
-      "starost": "Starost",
-      "reservationS": "Reservation S",
-      "major": "Major"
+      "name": "Nazwa grupy",
+      "starost": "Starosta",
+      "reservationS": "Rezerwacja S",
+      "major": "Kierunek"
     }
   }
 }

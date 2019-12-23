@@ -1,19 +1,10 @@
 {
   "home": {
-    "title": "Witamy, Java Hipsterze!",
+    "title": "Witamy w Systemie Rezerwacji Sal",
     "subtitle": "To jest twoja strona domowa",
     "logged": {
-      "message": "Jesteś zalogowany jako użytkownik \"{{username}}\"."
+      "message": "Jesteś zalogowany jako \"{{username}}\"."
     },
-    "question": "Jeśli masz jakiekolwiek pytania na temat JHipster:",
-    "link": {
-      "homepage": "Strona domowa JHipster",
-      "stackoverflow": "JHipster na Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "Publiczny chat room JHipster",
-      "follow": "skontaktuj się z @java_hipster na Twitterze"
-    },
-    "like": "Jeśli lubisz JHipster, nie zapomnij dać nam gwiazdki na",
-    "github": "GitHubie"
+    "reservation_info": "Aby zarezerować sale na przyszłe zajęcia wybierz \"Nowa rezerwacja\" z menu nawigacji."
   }
 }

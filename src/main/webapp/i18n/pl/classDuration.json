@@ -2,22 +2,22 @@
   "srsApp": {
     "classDuration": {
       "home": {
-        "title": "Class Duration",
-        "createLabel": "Dodaj Class Duration",
-        "createOrEditLabel": "Dodaj lub edytuj: Class Duration",
-        "notFound": "No Class Durations found"
+        "title": "Długość zajęć",
+        "createLabel": "Dodaj Długość Zajęć",
+        "createOrEditLabel": "Dodaj lub edytuj: Długość zajęć",
+        "notFound": "Nie znaleziono długości zajęć"
       },
-      "created": "Utworzono nowy obiekt typu Class Duration z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Class Duration z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Class Duration z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Długość zajęć z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Długość zajęć z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Długość zajęć z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Class Duration {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Długość zajęć {{ id }}?"
       },
       "detail": {
-        "title": "Class Duration"
+        "title": "Długość zajęć"
       },
-      "name": "Name",
-      "reservation": "Reservation"
+      "name": "Nazwa",
+      "reservation": "Rezerwacja"
     }
   }
 }

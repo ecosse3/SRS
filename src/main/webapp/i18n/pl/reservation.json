@@ -2,32 +2,32 @@
   "srsApp": {
     "reservation": {
       "home": {
-        "title": "Reservation",
-        "createLabel": "Dodaj Reservation",
-        "createOrEditLabel": "Dodaj lub edytuj: Reservation",
-        "notFound": "No Reservations found"
+        "title": "Rezerwacja",
+        "createLabel": "Dodaj nową rezerwację",
+        "createOrEditLabel": "Dodaj lub edytuj: Rezerwacja",
+        "notFound": "Nie znaleziono rezerwacji"
       },
-      "created": "Utworzono nowy obiekt typu Reservation z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Reservation z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Reservation z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Rezerwacja z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Rezerwacja z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Rezerwacja z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Reservation {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć rezerwację {{ id }}?"
       },
       "detail": {
         "title": "Reservation"
       },
-      "name": "Name",
-      "noteToTeacher": "Note To Teacher",
-      "originalClassDate": "Original Class Date",
-      "newClassDate": "New Class Date",
-      "requestedBy": "Requested By",
-      "participants": "Participants",
-      "schoolGroup": "School Group",
-      "building": "Building",
-      "classRoom": "Class Room",
-      "originalStartTime": "Original Start Time",
-      "newStartTime": "New Start Time",
-      "classDuration": "Class Duration"
+      "name": "Nazwa",
+      "noteToTeacher": "Wiadomość do nauczyciela",
+      "originalClassDate": "Orygnalna data zajęć",
+      "newClassDate": "Nowa data zajęć",
+      "requestedBy": "Zgłoszone przez",
+      "participants": "Uczestnicy",
+      "schoolGroup": "Grupa studencka",
+      "building": "Budynek",
+      "classRoom": "Sala",
+      "originalStartTime": "Oryginalny czas rozpoczęcia",
+      "newStartTime": "Proponowany czas rozpoczęcia",
+      "classDuration": "Długość zajęć"
     }
   }
 }

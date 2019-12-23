@@ -2,24 +2,24 @@
   "srsApp": {
     "classHours": {
       "home": {
-        "title": "Class Hours",
-        "createLabel": "Dodaj Class Hours",
-        "createOrEditLabel": "Dodaj lub edytuj: Class Hours",
-        "notFound": "No Class Hours found"
+        "title": "Godziny Zajęć",
+        "createLabel": "Dodaj Godziny Zajęć",
+        "createOrEditLabel": "Dodaj lub edytuj: Godziny Zajęć",
+        "notFound": "Nie znaleziono godzin zajęć"
       },
-      "created": "Utworzono nowy obiekt typu Class Hours z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Class Hours z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Class Hours z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Godziny Zajęć z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Godziny Zajęć z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Godziny Zajęć z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Class Hours {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Godziny Zajęć {{ id }}?"
       },
       "detail": {
-        "title": "Class Hours"
+        "title": "Godziny Zajęć"
       },
-      "startTime": "Start Time",
-      "endTime": "End Time",
-      "originalStartTime": "Original Start Time",
-      "newStartTime": "New Start Time"
+      "startTime": "Godzina rozpoczęcia",
+      "endTime": "Godzina zakończenia",
+      "originalStartTime": "Oryginalna godzina rozpoczęcia",
+      "newStartTime": "Nowa godzina rozpoczęcia"
     }
   }
 }

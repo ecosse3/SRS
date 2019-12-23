@@ -2,23 +2,23 @@
   "srsApp": {
     "building": {
       "home": {
-        "title": "Building",
-        "createLabel": "Dodaj Building",
-        "createOrEditLabel": "Dodaj lub edytuj: Building",
-        "notFound": "No Buildings found"
+        "title": "Budynek",
+        "createLabel": "Dodaj Budynek",
+        "createOrEditLabel": "Dodaj lub edytuj: Budynek",
+        "notFound": "Nie znaleziono budynków"
       },
-      "created": "Utworzono nowy obiekt typu Building z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Building z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Building z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Budynek z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Budynek z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Budynek z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Building {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Budynek {{ id }}?"
       },
       "detail": {
-        "title": "Building"
+        "title": "Budynek"
       },
-      "number": "Number",
-      "classRoomB": "Class Room B",
-      "reservationB": "Reservation B"
+      "number": "Numer",
+      "classRoomB": "Sala Lekcyjna B",
+      "reservationB": "Rezerwacja B"
     }
   }
 }

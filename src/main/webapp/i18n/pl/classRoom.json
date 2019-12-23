@@ -2,25 +2,25 @@
   "srsApp": {
     "classRoom": {
       "home": {
-        "title": "Class Room",
-        "createLabel": "Dodaj Class Room",
-        "createOrEditLabel": "Dodaj lub edytuj: Class Room",
-        "notFound": "No Class Rooms found"
+        "title": "Sale Lekcyjne",
+        "createLabel": "Dodaj Sale Lekcyjną",
+        "createOrEditLabel": "Dodaj lub edytuj: Sala Lekcyjna",
+        "notFound": "Nie znaleziono sal lekcyjnych"
       },
-      "created": "Utworzono nowy obiekt typu Class Room z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Class Room z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Class Room z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Sala Lekcyjna z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Sala Lekcyjna z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Sala Lekcyjna z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Class Room {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Sala Lekcyjna {{ id }}?"
       },
       "detail": {
-        "title": "Class Room"
+        "title": "Sala Lekcyjna"
       },
-      "number": "Number",
-      "maximumSize": "Maximum Size",
-      "reservationC": "Reservation C",
-      "classModel": "Class Model",
-      "building": "Building"
+      "number": "Numer",
+      "maximumSize": "Maksymalna ilość osób",
+      "reservationC": "Rezerwacja C",
+      "classModel": "Model",
+      "building": "Budynek"
     }
   }
 }

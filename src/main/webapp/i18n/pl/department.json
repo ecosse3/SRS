@@ -2,22 +2,22 @@
   "srsApp": {
     "department": {
       "home": {
-        "title": "Department",
-        "createLabel": "Dodaj Department",
-        "createOrEditLabel": "Dodaj lub edytuj: Department",
-        "notFound": "No Departments found"
+        "title": "Wydział",
+        "createLabel": "Dodaj Wydział",
+        "createOrEditLabel": "Dodaj lub edytuj: Wydział",
+        "notFound": "Nie znaleziono wydziałów"
       },
-      "created": "Utworzono nowy obiekt typu Department z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Department z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Department z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Wydział z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Wydział z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Wydział z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Department {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Wydział {{ id }}?"
       },
       "detail": {
-        "title": "Department"
+        "title": "Wydział"
       },
-      "name": "Name",
-      "major": "Major"
+      "name": "Nazwa",
+      "major": "Kierunek"
     }
   }
 }
