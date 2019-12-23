@@ -39,6 +39,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'class-model',
         loadChildren: () => import('./class-model/class-model.module').then(m => m.SrsClassModelModule)
+      },
+      {
+        path: 'my-reservations',
+        loadChildren: () => import('./my-reservations/my-reservations.module').then(m => m.SrsMyReservationsModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

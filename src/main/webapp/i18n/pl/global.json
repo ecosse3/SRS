@@ -17,6 +17,7 @@
         "classHours": "Class Hours",
         "classDuration": "Class Duration",
         "classModel": "Class Model",
+        "myReservations": "My Reservations",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -108,7 +109,7 @@
       "edit": "Edytuj",
       "open": "Otwórz",
       "save": "Zapisz",
-      "view": "Widok"
+      "view": "Szczegóły"
     },
     "detail": {
       "field": "Pole",

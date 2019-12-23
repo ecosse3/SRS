@@ -105,6 +105,12 @@
                             <span jhiTranslate="global.menu.entities.classModel">Class Model</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="my-reservations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.myReservations">My Reservations</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

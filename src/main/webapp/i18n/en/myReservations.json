@@ -1,0 +1,23 @@
+{
+  "srsApp": {
+    "myReservations": {
+      "home": {
+        "title": "My Reservations",
+        "createLabel": "Create a new reservation",
+        "createOrEditLabel": "Create or edit a reservation",
+        "notFound": "No reservations found",
+        "count": "Number of your reservations:"
+      },
+      "created": "A new My Reservations is created with identifier {{ param }}",
+      "updated": "A My Reservations is updated with identifier {{ param }}",
+      "deleted": "A My Reservations is deleted with identifier {{ param }}",
+      "delete": {
+        "title": "Confirm cancel operation",
+        "question": "Are you sure you want to cancel Reservation {{ id }}?"
+      },
+      "detail": {
+        "title": "My Reservations"
+      }
+    }
+  }
+}
