@@ -21,6 +21,14 @@
                 <tr>
                     <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col"><span jhiTranslate="srsApp.reservation.name">Name</span></th>
+                    <th scope="col"><span jhiTranslate="srsApp.reservation.originalClassDate">Original Class
+                            Date</span>
+                    </th>
+                    <th scope="col"><span jhiTranslate="srsApp.reservation.newClassDate">New
+                            Class Date</span>
+                    </th>
+                     <th scope="col"><span jhiTranslate="srsApp.reservation.originalStartTime">Original Start Time</span></th>
+            <th scope="col"><span jhiTranslate="srsApp.reservation.newStartTime">New Start Time</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -29,6 +37,18 @@
                     <td><a [routerLink]="['/reservation', myReservations.id, 'view' ]">{{myReservations.id}}</a>
                     </td>
                     <td>{{myReservations.name}}</td>
+                    <td>{{myReservations.originalClassDate | date:'mediumDate'}}</td>
+                    <td>{{myReservations.newClassDate | date:'mediumDate'}}</td>
+                     <td>
+                    <div *ngIf="myReservations.originalStartTime">
+                        <a [routerLink]="['/class-hours', myReservations.originalStartTime?.id, 'view' ]" >{{myReservations.originalStartTime?.startTime}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="myReservations.newStartTime">
+                        <a [routerLink]="['/class-hours', myReservations.newStartTime?.id, 'view' ]" >{{myReservations.newStartTime?.startTime}}</a>
+                    </div>
+                </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit" [routerLink]="['/reservation', myReservations.id, 'view' ]"
