@@ -47,7 +47,7 @@
     },
     "form": {
       "username.label": "Nazwa użytkownika",
-      "username.placeholder": "Twój login",
+      "username.placeholder": "Twój email",
       "currentpassword.label": "Aktualne hasło",
       "currentpassword.placeholder": "Aktualne hasło",
       "newpassword.label": "Nowe hasło",
