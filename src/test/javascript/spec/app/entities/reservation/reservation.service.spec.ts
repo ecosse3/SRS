@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Reservation(0, 'AAAAAAA', 'AAAAAAA', currentDate, currentDate);
+      elemDefault = new Reservation(0, 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -77,7 +77,8 @@ describe('Service Tests', () => {
             name: 'BBBBBB',
             noteToTeacher: 'BBBBBB',
             originalClassDate: currentDate.format(DATE_FORMAT),
-            newClassDate: currentDate.format(DATE_FORMAT)
+            newClassDate: currentDate.format(DATE_FORMAT),
+            requestedBy: 'BBBBBB'
           },
           elemDefault
         );
@@ -104,7 +105,8 @@ describe('Service Tests', () => {
             name: 'BBBBBB',
             noteToTeacher: 'BBBBBB',
             originalClassDate: currentDate.format(DATE_FORMAT),
-            newClassDate: currentDate.format(DATE_FORMAT)
+            newClassDate: currentDate.format(DATE_FORMAT),
+            requestedBy: 'BBBBBB'
           },
           elemDefault
         );

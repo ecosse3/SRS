@@ -23,6 +23,7 @@
             <th scope="col"  jhiSortBy="noteToTeacher"><span jhiTranslate="srsApp.reservation.noteToTeacher">Note To Teacher</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="originalClassDate"><span jhiTranslate="srsApp.reservation.originalClassDate">Original Class Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="newClassDate"><span jhiTranslate="srsApp.reservation.newClassDate">New Class Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="requestedBy"><span jhiTranslate="srsApp.reservation.requestedBy">Requested By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="schoolGroup.name"><span jhiTranslate="srsApp.reservation.schoolGroup">School Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="building.number"><span jhiTranslate="srsApp.reservation.building">Building</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="classRoom.number"><span jhiTranslate="srsApp.reservation.classRoom">Class Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -39,6 +40,7 @@
                 <td>{{reservation.noteToTeacher}}</td>
                 <td>{{reservation.originalClassDate | date:'mediumDate'}}</td>
                 <td>{{reservation.newClassDate | date:'mediumDate'}}</td>
+                <td>{{reservation.requestedBy}}</td>
                 <td>
                     <div *ngIf="reservation.schoolGroup">
                         <a [routerLink]="['/school-group', reservation.schoolGroup?.id, 'view' ]" >{{reservation.schoolGroup?.name}}</a>

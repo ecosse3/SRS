@@ -40,6 +40,9 @@ public class Reservation implements Serializable {
     @Column(name = "new_class_date", nullable = false)
     private LocalDate newClassDate;
 
+    @Column(name = "requested_by")
+    private String requestedBy;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "reservation_participants",
@@ -134,6 +137,19 @@ public class Reservation implements Serializable {
 
     public void setNewClassDate(LocalDate newClassDate) {
         this.newClassDate = newClassDate;
+    }
+
+    public String getRequestedBy() {
+        return requestedBy;
+    }
+
+    public Reservation requestedBy(String requestedBy) {
+        this.requestedBy = requestedBy;
+        return this;
+    }
+
+    public void setRequestedBy(String requestedBy) {
+        this.requestedBy = requestedBy;
     }
 
     public Set<User> getParticipants() {
@@ -262,6 +278,7 @@ public class Reservation implements Serializable {
             ", noteToTeacher='" + getNoteToTeacher() + "'" +
             ", originalClassDate='" + getOriginalClassDate() + "'" +
             ", newClassDate='" + getNewClassDate() + "'" +
+            ", requestedBy='" + getRequestedBy() + "'" +
             "}";
     }
 }

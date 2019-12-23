@@ -12,6 +12,7 @@ export interface IReservation {
   noteToTeacher?: string;
   originalClassDate?: Moment;
   newClassDate?: Moment;
+  requestedBy?: string;
   participants?: IUser[];
   schoolGroup?: ISchoolGroup;
   building?: IBuilding;
@@ -28,6 +29,7 @@ export class Reservation implements IReservation {
     public noteToTeacher?: string,
     public originalClassDate?: Moment,
     public newClassDate?: Moment,
+    public requestedBy?: string,
     public participants?: IUser[],
     public schoolGroup?: ISchoolGroup,
     public building?: IBuilding,

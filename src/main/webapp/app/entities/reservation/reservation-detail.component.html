@@ -21,6 +21,10 @@
                 <dd>
                     <span>{{reservation.newClassDate}}</span>
                 </dd>
+                <dt><span jhiTranslate="srsApp.reservation.requestedBy">Requested By</span></dt>
+                <dd>
+                    <span>{{reservation.requestedBy}}</span>
+                </dd>
                 <dt><span jhiTranslate="srsApp.reservation.participants">Participants</span></dt>
                 <dd>
                     <span *ngFor="let participants of reservation.participants; let last = last">

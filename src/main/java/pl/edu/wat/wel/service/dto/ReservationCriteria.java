@@ -35,6 +35,8 @@ public class ReservationCriteria implements Serializable, Criteria {
 
     private LocalDateFilter newClassDate;
 
+    private StringFilter requestedBy;
+
     private LongFilter participantsId;
 
     private LongFilter schoolGroupId;
@@ -58,6 +60,7 @@ public class ReservationCriteria implements Serializable, Criteria {
         this.noteToTeacher = other.noteToTeacher == null ? null : other.noteToTeacher.copy();
         this.originalClassDate = other.originalClassDate == null ? null : other.originalClassDate.copy();
         this.newClassDate = other.newClassDate == null ? null : other.newClassDate.copy();
+        this.requestedBy = other.requestedBy == null ? null : other.requestedBy.copy();
         this.participantsId = other.participantsId == null ? null : other.participantsId.copy();
         this.schoolGroupId = other.schoolGroupId == null ? null : other.schoolGroupId.copy();
         this.buildingId = other.buildingId == null ? null : other.buildingId.copy();
@@ -110,6 +113,14 @@ public class ReservationCriteria implements Serializable, Criteria {
 
     public void setNewClassDate(LocalDateFilter newClassDate) {
         this.newClassDate = newClassDate;
+    }
+
+    public StringFilter getRequestedBy() {
+        return requestedBy;
+    }
+
+    public void setRequestedBy(StringFilter requestedBy) {
+        this.requestedBy = requestedBy;
     }
 
     public LongFilter getParticipantsId() {
@@ -184,6 +195,7 @@ public class ReservationCriteria implements Serializable, Criteria {
             Objects.equals(noteToTeacher, that.noteToTeacher) &&
             Objects.equals(originalClassDate, that.originalClassDate) &&
             Objects.equals(newClassDate, that.newClassDate) &&
+            Objects.equals(requestedBy, that.requestedBy) &&
             Objects.equals(participantsId, that.participantsId) &&
             Objects.equals(schoolGroupId, that.schoolGroupId) &&
             Objects.equals(buildingId, that.buildingId) &&
@@ -201,6 +213,7 @@ public class ReservationCriteria implements Serializable, Criteria {
         noteToTeacher,
         originalClassDate,
         newClassDate,
+        requestedBy,
         participantsId,
         schoolGroupId,
         buildingId,
@@ -219,6 +232,7 @@ public class ReservationCriteria implements Serializable, Criteria {
                 (noteToTeacher != null ? "noteToTeacher=" + noteToTeacher + ", " : "") +
                 (originalClassDate != null ? "originalClassDate=" + originalClassDate + ", " : "") +
                 (newClassDate != null ? "newClassDate=" + newClassDate + ", " : "") +
+                (requestedBy != null ? "requestedBy=" + requestedBy + ", " : "") +
                 (participantsId != null ? "participantsId=" + participantsId + ", " : "") +
                 (schoolGroupId != null ? "schoolGroupId=" + schoolGroupId + ", " : "") +
                 (buildingId != null ? "buildingId=" + buildingId + ", " : "") +

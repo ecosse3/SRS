@@ -35,4 +35,8 @@ export class ClassRoomService {
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
+  getClassRoomsByBuildingId(buildingId: number): Observable<EntityArrayResponseType> {
+    return this.http.get<IClassRoom[]>(`${this.resourceUrl}?buildingId.equals=${buildingId}`, { observe: 'response' });
+  }
 }
