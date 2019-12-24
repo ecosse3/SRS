@@ -93,7 +93,7 @@
                 </button>
               </div>
               <button
-                *ngIf="currentAccount.authorities.includes('ROLE_USER') && !currentAccount.authorities.includes('ROLE_TEACHER') && myReservations.status.id !== 2"
+                *ngIf="currentAccount.authorities.includes('ROLE_USER') && !currentAccount.authorities.includes('ROLE_TEACHER') && myReservations.status.id !== 2 && myReservations.status.id !== 3 && myReservations.status.id !== 4"
                 type="submit" [routerLink]="['/my-reservations', { outlets: { popup: myReservations.id + '/delete' } }]"
                 replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
                 <fa-icon [icon]="'times'"></fa-icon>
