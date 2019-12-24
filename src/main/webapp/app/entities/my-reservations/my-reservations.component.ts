@@ -68,12 +68,16 @@ export class MyReservationsComponent implements OnInit, OnDestroy {
   changeBackgroundColorByStatus(item: any) {
     let color = null;
 
-    switch (item.status.polishName || item.status.englishName) {
-      case 'Zatwierdzone':
+    switch (item.status.englishName) {
+      case 'Accepted':
         color = 'rgba(0, 255, 0, 0.2)';
         break;
 
-      case 'Anulowane':
+      case 'Canceled':
+        color = 'rgba(246, 71, 71, 0.2)';
+        break;
+
+      case 'Rejected':
         color = 'rgba(246, 71, 71, 0.2)';
         break;
 
