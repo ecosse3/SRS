@@ -1,6 +1,7 @@
 package pl.edu.wat.wel.web.rest;
 
 import pl.edu.wat.wel.domain.Reservation;
+import pl.edu.wat.wel.domain.Status;
 import pl.edu.wat.wel.service.ReservationService;
 import pl.edu.wat.wel.service.UserService;
 import pl.edu.wat.wel.web.rest.errors.BadRequestAlertException;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +59,9 @@ public class ReservationResource {
     /**
      * {@code POST  /reservations} : Create a new reservation.
      *
-     * @param reservation the reservation to create.
+     * @param reservation the reservation to create.reason: actual and formal
+     *                    argument lists differ in lengthreason: actual and formal
+     *                    argument lists differ in length
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
      *         body the new reservation, or with status {@code 400 (Bad Request)} if
      *         the reservation has already an ID.
@@ -72,6 +75,7 @@ public class ReservationResource {
             throw new BadRequestAlertException("A new reservation cannot already have an ID", ENTITY_NAME, "idexists");
         }
         reservation.setRequestedBy(userService.getUserWithAuthorities().get().getEmail());
+        reservation.setCreatedDate(Instant.now());
         Reservation result = reservationService.save(reservation);
         return ResponseEntity
                 .created(new URI("/api/reservations/" + result.getId())).headers(HeaderUtil

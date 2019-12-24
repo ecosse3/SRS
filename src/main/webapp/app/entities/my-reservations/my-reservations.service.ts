@@ -37,11 +37,30 @@ export class MyReservationsService {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  cancel(myReservations: IReservation): Observable<EntityResponseType> {
+    return this.http.put<IReservation>(
+      this.resourceUrl,
+      {
+        ...myReservations,
+        status: {
+          id: 2,
+          polishName: 'Anulowane',
+          englishName: 'Canceled'
+        }
+      },
+      { observe: 'response' }
+    );
+  }
+
   getCountUserReservationsByAccountName(currentAccount: String): Observable<EntityArrayResponseType> {
     return this.http.get<IReservation[]>(`${this.resourceUrl}/count?requestedBy.equals=${currentAccount}`, { observe: 'response' });
   }
 
   getUserReservationsByAccountName(currentAccount: String): Observable<EntityArrayResponseType> {
     return this.http.get<IReservation[]>(`${this.resourceUrl}?requestedBy.equals=${currentAccount}`, { observe: 'response' });
+  }
+
+  getTeacherReservationsByAccountName(currentAccount: String): Observable<EntityArrayResponseType> {
+    return this.http.get<IReservation[]>(`${this.resourceUrl}?participants.equals=${currentAccount}`, { observe: 'response' });
   }
 }

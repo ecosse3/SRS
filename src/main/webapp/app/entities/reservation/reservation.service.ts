@@ -57,7 +57,8 @@ export class ReservationService {
           ? reservation.originalClassDate.format(DATE_FORMAT)
           : null,
       newClassDate:
-        reservation.newClassDate != null && reservation.newClassDate.isValid() ? reservation.newClassDate.format(DATE_FORMAT) : null
+        reservation.newClassDate != null && reservation.newClassDate.isValid() ? reservation.newClassDate.format(DATE_FORMAT) : null,
+      createdDate: reservation.createdDate != null && reservation.createdDate.isValid() ? reservation.createdDate.toJSON() : null
     });
     return copy;
   }
@@ -66,6 +67,7 @@ export class ReservationService {
     if (res.body) {
       res.body.originalClassDate = res.body.originalClassDate != null ? moment(res.body.originalClassDate) : null;
       res.body.newClassDate = res.body.newClassDate != null ? moment(res.body.newClassDate) : null;
+      res.body.createdDate = res.body.createdDate != null ? moment(res.body.createdDate) : null;
     }
     return res;
   }
@@ -75,6 +77,7 @@ export class ReservationService {
       res.body.forEach((reservation: IReservation) => {
         reservation.originalClassDate = reservation.originalClassDate != null ? moment(reservation.originalClassDate) : null;
         reservation.newClassDate = reservation.newClassDate != null ? moment(reservation.newClassDate) : null;
+        reservation.createdDate = reservation.createdDate != null ? moment(reservation.createdDate) : null;
       });
     }
     return res;

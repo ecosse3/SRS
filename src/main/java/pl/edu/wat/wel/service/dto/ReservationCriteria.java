@@ -10,6 +10,7 @@ import io.github.jhipster.service.filter.FloatFilter;
 import io.github.jhipster.service.filter.IntegerFilter;
 import io.github.jhipster.service.filter.LongFilter;
 import io.github.jhipster.service.filter.StringFilter;
+import io.github.jhipster.service.filter.InstantFilter;
 import io.github.jhipster.service.filter.LocalDateFilter;
 
 /**
@@ -37,6 +38,8 @@ public class ReservationCriteria implements Serializable, Criteria {
 
     private StringFilter requestedBy;
 
+    private InstantFilter createdDate;
+
     private LongFilter participantsId;
 
     private LongFilter schoolGroupId;
@@ -51,6 +54,8 @@ public class ReservationCriteria implements Serializable, Criteria {
 
     private LongFilter classDurationId;
 
+    private LongFilter statusId;
+
     public ReservationCriteria(){
     }
 
@@ -61,6 +66,7 @@ public class ReservationCriteria implements Serializable, Criteria {
         this.originalClassDate = other.originalClassDate == null ? null : other.originalClassDate.copy();
         this.newClassDate = other.newClassDate == null ? null : other.newClassDate.copy();
         this.requestedBy = other.requestedBy == null ? null : other.requestedBy.copy();
+        this.createdDate = other.createdDate == null ? null : other.createdDate.copy();
         this.participantsId = other.participantsId == null ? null : other.participantsId.copy();
         this.schoolGroupId = other.schoolGroupId == null ? null : other.schoolGroupId.copy();
         this.buildingId = other.buildingId == null ? null : other.buildingId.copy();
@@ -68,6 +74,7 @@ public class ReservationCriteria implements Serializable, Criteria {
         this.originalStartTimeId = other.originalStartTimeId == null ? null : other.originalStartTimeId.copy();
         this.newStartTimeId = other.newStartTimeId == null ? null : other.newStartTimeId.copy();
         this.classDurationId = other.classDurationId == null ? null : other.classDurationId.copy();
+        this.statusId = other.statusId == null ? null : other.statusId.copy();
     }
 
     @Override
@@ -121,6 +128,14 @@ public class ReservationCriteria implements Serializable, Criteria {
 
     public void setRequestedBy(StringFilter requestedBy) {
         this.requestedBy = requestedBy;
+    }
+
+    public InstantFilter getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(InstantFilter createdDate) {
+        this.createdDate = createdDate;
     }
 
     public LongFilter getParticipantsId() {
@@ -179,6 +194,14 @@ public class ReservationCriteria implements Serializable, Criteria {
         this.classDurationId = classDurationId;
     }
 
+    public LongFilter getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(LongFilter statusId) {
+        this.statusId = statusId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -196,13 +219,15 @@ public class ReservationCriteria implements Serializable, Criteria {
             Objects.equals(originalClassDate, that.originalClassDate) &&
             Objects.equals(newClassDate, that.newClassDate) &&
             Objects.equals(requestedBy, that.requestedBy) &&
+            Objects.equals(createdDate, that.createdDate) &&
             Objects.equals(participantsId, that.participantsId) &&
             Objects.equals(schoolGroupId, that.schoolGroupId) &&
             Objects.equals(buildingId, that.buildingId) &&
             Objects.equals(classRoomId, that.classRoomId) &&
             Objects.equals(originalStartTimeId, that.originalStartTimeId) &&
             Objects.equals(newStartTimeId, that.newStartTimeId) &&
-            Objects.equals(classDurationId, that.classDurationId);
+            Objects.equals(classDurationId, that.classDurationId) &&
+            Objects.equals(statusId, that.statusId);
     }
 
     @Override
@@ -214,13 +239,15 @@ public class ReservationCriteria implements Serializable, Criteria {
         originalClassDate,
         newClassDate,
         requestedBy,
+        createdDate,
         participantsId,
         schoolGroupId,
         buildingId,
         classRoomId,
         originalStartTimeId,
         newStartTimeId,
-        classDurationId
+        classDurationId,
+        statusId
         );
     }
 
@@ -233,6 +260,7 @@ public class ReservationCriteria implements Serializable, Criteria {
                 (originalClassDate != null ? "originalClassDate=" + originalClassDate + ", " : "") +
                 (newClassDate != null ? "newClassDate=" + newClassDate + ", " : "") +
                 (requestedBy != null ? "requestedBy=" + requestedBy + ", " : "") +
+                (createdDate != null ? "createdDate=" + createdDate + ", " : "") +
                 (participantsId != null ? "participantsId=" + participantsId + ", " : "") +
                 (schoolGroupId != null ? "schoolGroupId=" + schoolGroupId + ", " : "") +
                 (buildingId != null ? "buildingId=" + buildingId + ", " : "") +
@@ -240,6 +268,7 @@ public class ReservationCriteria implements Serializable, Criteria {
                 (originalStartTimeId != null ? "originalStartTimeId=" + originalStartTimeId + ", " : "") +
                 (newStartTimeId != null ? "newStartTimeId=" + newStartTimeId + ", " : "") +
                 (classDurationId != null ? "classDurationId=" + classDurationId + ", " : "") +
+                (statusId != null ? "statusId=" + statusId + ", " : "") +
             "}";
     }
 

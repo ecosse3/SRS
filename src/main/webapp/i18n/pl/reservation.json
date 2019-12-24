@@ -14,20 +14,22 @@
         "question": "Czy na pewno chcesz usunąć rezerwację {{ id }}?"
       },
       "detail": {
-        "title": "Reservation"
+        "title": "Rezerwacja"
       },
       "name": "Nazwa",
       "noteToTeacher": "Wiadomość do nauczyciela",
       "originalClassDate": "Orygnalna data zajęć",
       "newClassDate": "Nowa data zajęć",
       "requestedBy": "Zgłoszone przez",
+      "createdDate": "Data zgłoszenia",
       "participants": "Uczestnicy",
       "schoolGroup": "Grupa studencka",
       "building": "Budynek",
       "classRoom": "Sala",
       "originalStartTime": "Oryginalny czas rozpoczęcia",
       "newStartTime": "Proponowany czas rozpoczęcia",
-      "classDuration": "Długość zajęć"
+      "classDuration": "Długość zajęć",
+      "status": "Status"
     }
   }
 }

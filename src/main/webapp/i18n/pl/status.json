@@ -1,0 +1,24 @@
+{
+  "srsApp": {
+    "status": {
+      "home": {
+        "title": "Status",
+        "createLabel": "Dodaj Status",
+        "createOrEditLabel": "Dodaj lub edytuj: Status",
+        "notFound": "No Statuses found"
+      },
+      "created": "Utworzono nowy obiekt typu Status z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Status z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Status z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Status"
+      },
+      "polishName": "Polish Name",
+      "englishName": "English Name",
+      "reservation": "Reservation"
+    }
+  }
+}

@@ -8,6 +8,7 @@ import pl.edu.wat.wel.domain.Building;
 import pl.edu.wat.wel.domain.ClassRoom;
 import pl.edu.wat.wel.domain.ClassHours;
 import pl.edu.wat.wel.domain.ClassDuration;
+import pl.edu.wat.wel.domain.Status;
 import pl.edu.wat.wel.repository.ReservationRepository;
 import pl.edu.wat.wel.service.ReservationService;
 import pl.edu.wat.wel.web.rest.errors.ExceptionTranslator;
@@ -32,7 +33,9 @@ import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.Instant;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +68,9 @@ public class ReservationResourceIT {
 
     private static final String DEFAULT_REQUESTED_BY = "AAAAAAAAAA";
     private static final String UPDATED_REQUESTED_BY = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private ReservationRepository reservationRepository;
@@ -124,7 +130,8 @@ public class ReservationResourceIT {
             .noteToTeacher(DEFAULT_NOTE_TO_TEACHER)
             .originalClassDate(DEFAULT_ORIGINAL_CLASS_DATE)
             .newClassDate(DEFAULT_NEW_CLASS_DATE)
-            .requestedBy(DEFAULT_REQUESTED_BY);
+            .requestedBy(DEFAULT_REQUESTED_BY)
+            .createdDate(DEFAULT_CREATED_DATE);
         // Add required entity
         SchoolGroup schoolGroup;
         if (TestUtil.findAll(em, SchoolGroup.class).isEmpty()) {
@@ -179,7 +186,8 @@ public class ReservationResourceIT {
             .noteToTeacher(UPDATED_NOTE_TO_TEACHER)
             .originalClassDate(UPDATED_ORIGINAL_CLASS_DATE)
             .newClassDate(UPDATED_NEW_CLASS_DATE)
-            .requestedBy(UPDATED_REQUESTED_BY);
+            .requestedBy(UPDATED_REQUESTED_BY)
+            .createdDate(UPDATED_CREATED_DATE);
         // Add required entity
         SchoolGroup schoolGroup;
         if (TestUtil.findAll(em, SchoolGroup.class).isEmpty()) {
@@ -248,6 +256,7 @@ public class ReservationResourceIT {
         assertThat(testReservation.getOriginalClassDate()).isEqualTo(DEFAULT_ORIGINAL_CLASS_DATE);
         assertThat(testReservation.getNewClassDate()).isEqualTo(DEFAULT_NEW_CLASS_DATE);
         assertThat(testReservation.getRequestedBy()).isEqualTo(DEFAULT_REQUESTED_BY);
+        assertThat(testReservation.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
     }
 
     @Test
@@ -339,7 +348,8 @@ public class ReservationResourceIT {
             .andExpect(jsonPath("$.[*].noteToTeacher").value(hasItem(DEFAULT_NOTE_TO_TEACHER)))
             .andExpect(jsonPath("$.[*].originalClassDate").value(hasItem(DEFAULT_ORIGINAL_CLASS_DATE.toString())))
             .andExpect(jsonPath("$.[*].newClassDate").value(hasItem(DEFAULT_NEW_CLASS_DATE.toString())))
-            .andExpect(jsonPath("$.[*].requestedBy").value(hasItem(DEFAULT_REQUESTED_BY)));
+            .andExpect(jsonPath("$.[*].requestedBy").value(hasItem(DEFAULT_REQUESTED_BY)))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -390,7 +400,8 @@ public class ReservationResourceIT {
             .andExpect(jsonPath("$.noteToTeacher").value(DEFAULT_NOTE_TO_TEACHER))
             .andExpect(jsonPath("$.originalClassDate").value(DEFAULT_ORIGINAL_CLASS_DATE.toString()))
             .andExpect(jsonPath("$.newClassDate").value(DEFAULT_NEW_CLASS_DATE.toString()))
-            .andExpect(jsonPath("$.requestedBy").value(DEFAULT_REQUESTED_BY));
+            .andExpect(jsonPath("$.requestedBy").value(DEFAULT_REQUESTED_BY))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()));
     }
 
     @Test
@@ -839,6 +850,58 @@ public class ReservationResourceIT {
 
     @Test
     @Transactional
+    public void getAllReservationsByCreatedDateIsEqualToSomething() throws Exception {
+        // Initialize the database
+        reservationRepository.saveAndFlush(reservation);
+
+        // Get all the reservationList where createdDate equals to DEFAULT_CREATED_DATE
+        defaultReservationShouldBeFound("createdDate.equals=" + DEFAULT_CREATED_DATE);
+
+        // Get all the reservationList where createdDate equals to UPDATED_CREATED_DATE
+        defaultReservationShouldNotBeFound("createdDate.equals=" + UPDATED_CREATED_DATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllReservationsByCreatedDateIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        reservationRepository.saveAndFlush(reservation);
+
+        // Get all the reservationList where createdDate not equals to DEFAULT_CREATED_DATE
+        defaultReservationShouldNotBeFound("createdDate.notEquals=" + DEFAULT_CREATED_DATE);
+
+        // Get all the reservationList where createdDate not equals to UPDATED_CREATED_DATE
+        defaultReservationShouldBeFound("createdDate.notEquals=" + UPDATED_CREATED_DATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllReservationsByCreatedDateIsInShouldWork() throws Exception {
+        // Initialize the database
+        reservationRepository.saveAndFlush(reservation);
+
+        // Get all the reservationList where createdDate in DEFAULT_CREATED_DATE or UPDATED_CREATED_DATE
+        defaultReservationShouldBeFound("createdDate.in=" + DEFAULT_CREATED_DATE + "," + UPDATED_CREATED_DATE);
+
+        // Get all the reservationList where createdDate equals to UPDATED_CREATED_DATE
+        defaultReservationShouldNotBeFound("createdDate.in=" + UPDATED_CREATED_DATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllReservationsByCreatedDateIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        reservationRepository.saveAndFlush(reservation);
+
+        // Get all the reservationList where createdDate is not null
+        defaultReservationShouldBeFound("createdDate.specified=true");
+
+        // Get all the reservationList where createdDate is null
+        defaultReservationShouldNotBeFound("createdDate.specified=false");
+    }
+
+    @Test
+    @Transactional
     public void getAllReservationsByParticipantsIsEqualToSomething() throws Exception {
         // Initialize the database
         reservationRepository.saveAndFlush(reservation);
@@ -960,6 +1023,26 @@ public class ReservationResourceIT {
         defaultReservationShouldNotBeFound("classDurationId.equals=" + (classDurationId + 1));
     }
 
+
+    @Test
+    @Transactional
+    public void getAllReservationsByStatusIsEqualToSomething() throws Exception {
+        // Initialize the database
+        reservationRepository.saveAndFlush(reservation);
+        Status status = StatusResourceIT.createEntity(em);
+        em.persist(status);
+        em.flush();
+        reservation.setStatus(status);
+        reservationRepository.saveAndFlush(reservation);
+        Long statusId = status.getId();
+
+        // Get all the reservationList where status equals to statusId
+        defaultReservationShouldBeFound("statusId.equals=" + statusId);
+
+        // Get all the reservationList where status equals to statusId + 1
+        defaultReservationShouldNotBeFound("statusId.equals=" + (statusId + 1));
+    }
+
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -972,7 +1055,8 @@ public class ReservationResourceIT {
             .andExpect(jsonPath("$.[*].noteToTeacher").value(hasItem(DEFAULT_NOTE_TO_TEACHER)))
             .andExpect(jsonPath("$.[*].originalClassDate").value(hasItem(DEFAULT_ORIGINAL_CLASS_DATE.toString())))
             .andExpect(jsonPath("$.[*].newClassDate").value(hasItem(DEFAULT_NEW_CLASS_DATE.toString())))
-            .andExpect(jsonPath("$.[*].requestedBy").value(hasItem(DEFAULT_REQUESTED_BY)));
+            .andExpect(jsonPath("$.[*].requestedBy").value(hasItem(DEFAULT_REQUESTED_BY)))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())));
 
         // Check, that the count call also returns 1
         restReservationMockMvc.perform(get("/api/reservations/count?sort=id,desc&" + filter))
@@ -1024,7 +1108,8 @@ public class ReservationResourceIT {
             .noteToTeacher(UPDATED_NOTE_TO_TEACHER)
             .originalClassDate(UPDATED_ORIGINAL_CLASS_DATE)
             .newClassDate(UPDATED_NEW_CLASS_DATE)
-            .requestedBy(UPDATED_REQUESTED_BY);
+            .requestedBy(UPDATED_REQUESTED_BY)
+            .createdDate(UPDATED_CREATED_DATE);
 
         restReservationMockMvc.perform(put("/api/reservations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -1040,6 +1125,7 @@ public class ReservationResourceIT {
         assertThat(testReservation.getOriginalClassDate()).isEqualTo(UPDATED_ORIGINAL_CLASS_DATE);
         assertThat(testReservation.getNewClassDate()).isEqualTo(UPDATED_NEW_CLASS_DATE);
         assertThat(testReservation.getRequestedBy()).isEqualTo(UPDATED_REQUESTED_BY);
+        assertThat(testReservation.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
     }
 
     @Test

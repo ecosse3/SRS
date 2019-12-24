@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IReservation, Reservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from './reservation.service';
@@ -22,6 +23,8 @@ import { IClassHours } from 'app/shared/model/class-hours.model';
 import { ClassHoursService } from 'app/entities/class-hours/class-hours.service';
 import { IClassDuration } from 'app/shared/model/class-duration.model';
 import { ClassDurationService } from 'app/entities/class-duration/class-duration.service';
+import { IStatus } from 'app/shared/model/status.model';
+import { StatusService } from 'app/entities/status/status.service';
 
 @Component({
   selector: 'jhi-reservation-update',
@@ -41,6 +44,8 @@ export class ReservationUpdateComponent implements OnInit {
   classhours: IClassHours[];
 
   classdurations: IClassDuration[];
+
+  statuses: IStatus[];
   originalClassDateDp: any;
   newClassDateDp: any;
 
@@ -51,13 +56,15 @@ export class ReservationUpdateComponent implements OnInit {
     originalClassDate: [null, [Validators.required]],
     newClassDate: [null, [Validators.required]],
     requestedBy: [],
+    createdDate: [],
     participants: [],
     schoolGroup: [null, Validators.required],
     building: [null, Validators.required],
     classRoom: [],
     originalStartTime: [null, Validators.required],
     newStartTime: [],
-    classDuration: [null, Validators.required]
+    classDuration: [null, Validators.required],
+    status: []
   });
 
   constructor(
@@ -69,6 +76,7 @@ export class ReservationUpdateComponent implements OnInit {
     protected classRoomService: ClassRoomService,
     protected classHoursService: ClassHoursService,
     protected classDurationService: ClassDurationService,
+    protected statusService: StatusService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -120,6 +128,13 @@ export class ReservationUpdateComponent implements OnInit {
         map((response: HttpResponse<IClassDuration[]>) => response.body)
       )
       .subscribe((res: IClassDuration[]) => (this.classdurations = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.statusService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IStatus[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IStatus[]>) => response.body)
+      )
+      .subscribe((res: IStatus[]) => (this.statuses = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(reservation: IReservation) {
@@ -130,13 +145,15 @@ export class ReservationUpdateComponent implements OnInit {
       originalClassDate: reservation.originalClassDate,
       newClassDate: reservation.newClassDate,
       requestedBy: reservation.requestedBy,
+      createdDate: reservation.createdDate != null ? reservation.createdDate.format(DATE_TIME_FORMAT) : null,
       participants: reservation.participants,
       schoolGroup: reservation.schoolGroup,
       building: reservation.building,
       classRoom: reservation.classRoom,
       originalStartTime: reservation.originalStartTime,
       newStartTime: reservation.newStartTime,
-      classDuration: reservation.classDuration
+      classDuration: reservation.classDuration,
+      status: reservation.status
     });
   }
 
@@ -163,13 +180,16 @@ export class ReservationUpdateComponent implements OnInit {
       originalClassDate: this.editForm.get(['originalClassDate']).value,
       newClassDate: this.editForm.get(['newClassDate']).value,
       requestedBy: this.editForm.get(['requestedBy']).value,
+      createdDate:
+        this.editForm.get(['createdDate']).value != null ? moment(this.editForm.get(['createdDate']).value, DATE_TIME_FORMAT) : undefined,
       participants: this.editForm.get(['participants']).value,
       schoolGroup: this.editForm.get(['schoolGroup']).value,
       building: this.editForm.get(['building']).value,
       classRoom: this.editForm.get(['classRoom']).value,
       originalStartTime: this.editForm.get(['originalStartTime']).value,
       newStartTime: this.editForm.get(['newStartTime']).value,
-      classDuration: this.editForm.get(['classDuration']).value
+      classDuration: this.editForm.get(['classDuration']).value,
+      status: this.editForm.get(['status']).value
     };
   }
 
@@ -210,6 +230,10 @@ export class ReservationUpdateComponent implements OnInit {
   }
 
   trackClassDurationById(index: number, item: IClassDuration) {
+    return item.id;
+  }
+
+  trackStatusById(index: number, item: IStatus) {
     return item.id;
   }
 

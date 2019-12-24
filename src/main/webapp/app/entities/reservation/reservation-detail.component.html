@@ -25,6 +25,10 @@
                 <dd>
                     <span>{{reservation.requestedBy}}</span>
                 </dd>
+                <dt><span jhiTranslate="srsApp.reservation.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{reservation.createdDate}}</span>
+                </dd>
                 <dt><span jhiTranslate="srsApp.reservation.participants">Participants</span></dt>
                 <dd>
                     <span *ngFor="let participants of reservation.participants; let last = last">
@@ -65,6 +69,12 @@
                 <dd>
                     <div *ngIf="reservation.classDuration">
                         <a [routerLink]="['/class-duration', reservation.classDuration?.id, 'view']">{{reservation.classDuration?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.reservation.status">Status</span></dt>
+                <dd>
+                    <div *ngIf="reservation.status">
+                        <a [routerLink]="['/status', reservation.status?.id, 'view']">{{reservation.status?.polishName}}</a>
                     </div>
                 </dd>
             </dl>

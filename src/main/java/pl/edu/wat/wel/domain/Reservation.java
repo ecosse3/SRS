@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,6 +44,9 @@ public class Reservation implements Serializable {
     @Column(name = "requested_by")
     private String requestedBy;
 
+    @Column(name = "created_date")
+    private Instant createdDate;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "reservation_participants",
@@ -77,6 +81,10 @@ public class Reservation implements Serializable {
     @NotNull
     @JsonIgnoreProperties("reservations")
     private ClassDuration classDuration;
+
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Status status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -150,6 +158,19 @@ public class Reservation implements Serializable {
 
     public void setRequestedBy(String requestedBy) {
         this.requestedBy = requestedBy;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public Reservation createdDate(Instant createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Set<User> getParticipants() {
@@ -252,6 +273,19 @@ public class Reservation implements Serializable {
     public void setClassDuration(ClassDuration classDuration) {
         this.classDuration = classDuration;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public Reservation status(Status status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -279,6 +313,7 @@ public class Reservation implements Serializable {
             ", originalClassDate='" + getOriginalClassDate() + "'" +
             ", newClassDate='" + getNewClassDate() + "'" +
             ", requestedBy='" + getRequestedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
             "}";
     }
 }

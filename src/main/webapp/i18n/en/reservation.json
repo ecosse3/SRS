@@ -2,7 +2,7 @@
   "srsApp": {
     "reservation": {
       "home": {
-        "title": "Reservations",
+        "title": "Reservation",
         "createLabel": "Create a new Reservation",
         "createOrEditLabel": "Create or edit a Reservation",
         "notFound": "No Reservations found"
@@ -21,13 +21,15 @@
       "originalClassDate": "Original Class Date",
       "newClassDate": "New Class Date",
       "requestedBy": "Requested By",
+      "createdDate": "Created Date",
       "participants": "Participants",
       "schoolGroup": "School Group",
       "building": "Building",
       "classRoom": "Class Room",
       "originalStartTime": "Original Start Time",
       "newStartTime": "New Start Time",
-      "classDuration": "Class Duration"
+      "classDuration": "Class Duration",
+      "status": "Status"
     }
   }
 }

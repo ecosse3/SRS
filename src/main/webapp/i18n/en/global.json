@@ -18,6 +18,7 @@
         "classDuration": "Class Duration",
         "classModel": "Class Model",
         "myReservations": "My Reservations",
+        "status": "Status",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -109,7 +110,9 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
-      "view": "View"
+      "view": "View",
+      "accept": "Accept",
+      "reject": "Reject"
     },
     "detail": {
       "field": "Field",
@@ -143,5 +146,5 @@
     "idexists": "A new {{ entityName }} cannot already have an ID",
     "idnull": "Invalid ID"
   },
-  "footer": "This is your footer"
+  "footer": "SRS - Classroom Reservation System made by Łukasz Kurpiewski"
 }

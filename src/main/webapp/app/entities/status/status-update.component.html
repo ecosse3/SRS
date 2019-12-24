@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-status-heading" jhiTranslate="srsApp.status.home.createOrEditLabel">Create or edit a Status</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.status.polishName" for="field_polishName">Polish Name</label>
+                    <input type="text" class="form-control" name="polishName" id="field_polishName"
+                           formControlName="polishName"/>
+                    <div *ngIf="editForm.get('polishName').invalid && (editForm.get('polishName').dirty || editForm.get('polishName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('polishName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.status.englishName" for="field_englishName">English Name</label>
+                    <input type="text" class="form-control" name="englishName" id="field_englishName"
+                           formControlName="englishName"/>
+                    <div *ngIf="editForm.get('englishName').invalid && (editForm.get('englishName').dirty || editForm.get('englishName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('englishName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

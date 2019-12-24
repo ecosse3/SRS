@@ -6,6 +6,7 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { IMyReservations } from 'app/shared/model/my-reservations.model';
 import { MyReservationsService } from './my-reservations.service';
+import { IReservation } from 'app/shared/model/reservation.model';
 
 @Component({
   selector: 'jhi-my-reservations-delete-dialog',
@@ -24,11 +25,11 @@ export class MyReservationsDeleteDialogComponent {
     this.activeModal.dismiss('cancel');
   }
 
-  confirmDelete(id: number) {
-    this.myReservationsService.delete(id).subscribe(response => {
+  confirmCancel(myReservation: IReservation) {
+    this.myReservationsService.cancel(myReservation).subscribe(response => {
       this.eventManager.broadcast({
         name: 'myReservationsListModification',
-        content: 'Deleted an myReservations'
+        content: 'Canceled an myReservations'
       });
       this.activeModal.dismiss(true);
     });

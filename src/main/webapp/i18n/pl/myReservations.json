@@ -6,12 +6,13 @@
         "createLabel": "Dodaj My Reservations",
         "createOrEditLabel": "Dodaj lub edytuj: My Reservations",
         "notFound": "Nie posiadasz zgłoszonych rezerwacji!",
-        "count": "Liczba twoich rezerwacji:"
+        "count": "Liczba twoich rezerwacji:",
+        "count_teacher": "Liczba rezerwacji przydzielonych do Ciebie:"
       },
       "created": "Utworzono nowy obiekt typu My Reservations z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu My Reservations z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu My Reservations z identyfikatorem {{ param }}",
-      "delete": {
+      "canceled": "Anulowano obiekt typu My Reservations z identyfikatorem {{ param }}",
+      "cancel": {
         "title": "Potwierdź anulacje",
         "question": "Czy na pewno chcesz anulować Rezerwacje {{ id }}?"
       },

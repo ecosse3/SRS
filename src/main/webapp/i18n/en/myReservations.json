@@ -6,12 +6,13 @@
         "createLabel": "Create a new reservation",
         "createOrEditLabel": "Create or edit a reservation",
         "notFound": "No reservations found",
-        "count": "Number of your reservations:"
+        "count": "Number of your reservations:",
+        "count_teacher": "Number of reservations assigned to you:"
       },
       "created": "A new My Reservations is created with identifier {{ param }}",
       "updated": "A My Reservations is updated with identifier {{ param }}",
-      "deleted": "A My Reservations is deleted with identifier {{ param }}",
-      "delete": {
+      "canceled": "A My Reservations is canceled with identifier {{ param }}",
+      "cancel": {
         "title": "Confirm cancel operation",
         "question": "Are you sure you want to cancel Reservation {{ id }}?"
       },

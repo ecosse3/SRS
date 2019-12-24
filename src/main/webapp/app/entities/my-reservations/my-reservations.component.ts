@@ -3,7 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiLanguageService } from 'ng-jhipster';
 
 import { IMyReservations } from 'app/shared/model/my-reservations.model';
 import { IReservation } from 'app/shared/model/reservation.model';
@@ -20,11 +20,13 @@ export class MyReservationsComponent implements OnInit, OnDestroy {
   eventSubscriber: Subscription;
   userReservations: any;
   userReservationsCount: any;
+  language: any;
 
   constructor(
     protected myReservationsService: MyReservationsService,
     protected eventManager: JhiEventManager,
-    protected accountService: AccountService
+    protected accountService: AccountService,
+    protected languageService: JhiLanguageService
   ) {}
 
   loadAll() {
@@ -47,6 +49,8 @@ export class MyReservationsComponent implements OnInit, OnDestroy {
     this.registerChangeInMyReservations();
     this.getCountUserReservations(this.currentAccount.email);
     this.getUserReservations(this.currentAccount.email);
+
+    this.language = this.languageService.currentLang;
   }
 
   ngOnDestroy() {
@@ -59,6 +63,26 @@ export class MyReservationsComponent implements OnInit, OnDestroy {
 
   registerChangeInMyReservations() {
     this.eventSubscriber = this.eventManager.subscribe('myReservationsListModification', response => this.loadAll());
+  }
+
+  changeBackgroundColorByStatus(item: any) {
+    let color = null;
+
+    switch (item.status.polishName || item.status.englishName) {
+      case 'Zatwierdzone':
+        color = 'rgba(0, 255, 0, 0.2)';
+        break;
+
+      case 'Anulowane':
+        color = 'rgba(246, 71, 71, 0.2)';
+        break;
+
+      default:
+        color = null;
+        break;
+    }
+
+    return color;
   }
 
   getUserReservations(currentAccount: any) {

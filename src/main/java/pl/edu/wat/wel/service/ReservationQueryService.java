@@ -100,6 +100,9 @@ public class ReservationQueryService extends QueryService<Reservation> {
             if (criteria.getRequestedBy() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getRequestedBy(), Reservation_.requestedBy));
             }
+            if (criteria.getCreatedDate() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getCreatedDate(), Reservation_.createdDate));
+            }
             if (criteria.getParticipantsId() != null) {
                 specification = specification.and(buildSpecification(criteria.getParticipantsId(),
                     root -> root.join(Reservation_.participants, JoinType.LEFT).get(User_.id)));
@@ -127,6 +130,10 @@ public class ReservationQueryService extends QueryService<Reservation> {
             if (criteria.getClassDurationId() != null) {
                 specification = specification.and(buildSpecification(criteria.getClassDurationId(),
                     root -> root.join(Reservation_.classDuration, JoinType.LEFT).get(ClassDuration_.id)));
+            }
+            if (criteria.getStatusId() != null) {
+                specification = specification.and(buildSpecification(criteria.getStatusId(),
+                    root -> root.join(Reservation_.status, JoinType.LEFT).get(Status_.id)));
             }
         }
         return specification;

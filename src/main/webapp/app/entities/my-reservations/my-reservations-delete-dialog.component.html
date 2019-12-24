@@ -1,11 +1,11 @@
-<form name="deleteForm" (ngSubmit)="confirmDelete(myReservations.id)">
+<form name="cancelForm" (ngSubmit)="confirmCancel(myReservations)">
     <div class="modal-header">
-        <h4 class="modal-title" jhiTranslate="srsApp.myReservations.delete.title">Confirm delete operation</h4>
+        <h4 class="modal-title" jhiTranslate="srsApp.myReservations.cancel.title">Confirm cancel operation</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <p id="jhi-delete-myReservations-heading" jhiTranslate="srsApp.myReservations.delete.question"
+        <p id="jhi-delete-myReservations-heading" jhiTranslate="srsApp.myReservations.cancel.question"
             [translateValues]="{id: myReservations.id}">Are you sure you want to cancel this Reservation?</p>
     </div>
     <div class="modal-footer">

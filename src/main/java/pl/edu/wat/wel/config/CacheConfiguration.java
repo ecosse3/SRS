@@ -67,6 +67,8 @@ public class CacheConfiguration {
             createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName() + ".reservationCS");
             createCache(cm, pl.edu.wat.wel.domain.Building.class.getName() + ".reservationBS");
             createCache(cm, pl.edu.wat.wel.domain.SchoolGroup.class.getName() + ".reservationS");
+            createCache(cm, pl.edu.wat.wel.domain.Status.class.getName());
+            createCache(cm, pl.edu.wat.wel.domain.Status.class.getName() + ".reservations");
             // jhipster-needle-ehcache-add-entry
         };
     }

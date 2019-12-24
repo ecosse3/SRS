@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_FORMAT, DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
 import { IReservation, Reservation } from 'app/shared/model/reservation.model';
 
@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Reservation(0, 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA');
+      elemDefault = new Reservation(0, 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
@@ -32,7 +32,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             originalClassDate: currentDate.format(DATE_FORMAT),
-            newClassDate: currentDate.format(DATE_FORMAT)
+            newClassDate: currentDate.format(DATE_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -51,14 +52,16 @@ describe('Service Tests', () => {
           {
             id: 0,
             originalClassDate: currentDate.format(DATE_FORMAT),
-            newClassDate: currentDate.format(DATE_FORMAT)
+            newClassDate: currentDate.format(DATE_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
             originalClassDate: currentDate,
-            newClassDate: currentDate
+            newClassDate: currentDate,
+            createdDate: currentDate
           },
           returnedFromService
         );
@@ -78,7 +81,8 @@ describe('Service Tests', () => {
             noteToTeacher: 'BBBBBB',
             originalClassDate: currentDate.format(DATE_FORMAT),
             newClassDate: currentDate.format(DATE_FORMAT),
-            requestedBy: 'BBBBBB'
+            requestedBy: 'BBBBBB',
+            createdDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -86,7 +90,8 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             originalClassDate: currentDate,
-            newClassDate: currentDate
+            newClassDate: currentDate,
+            createdDate: currentDate
           },
           returnedFromService
         );
@@ -106,14 +111,16 @@ describe('Service Tests', () => {
             noteToTeacher: 'BBBBBB',
             originalClassDate: currentDate.format(DATE_FORMAT),
             newClassDate: currentDate.format(DATE_FORMAT),
-            requestedBy: 'BBBBBB'
+            requestedBy: 'BBBBBB',
+            createdDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
             originalClassDate: currentDate,
-            newClassDate: currentDate
+            newClassDate: currentDate,
+            createdDate: currentDate
           },
           returnedFromService
         );

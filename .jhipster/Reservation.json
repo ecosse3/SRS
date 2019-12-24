@@ -29,6 +29,10 @@
         {
             "fieldName": "requestedBy",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "Instant"
         }
     ],
     "relationships": [
@@ -85,6 +89,13 @@
             "relationshipValidateRules": "required",
             "relationshipName": "classDuration",
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "status",
+            "otherEntityName": "status",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "polishName",
+            "otherEntityRelationshipName": "reservation"
         }
     ],
     "changelogDate": "20191118222406",
