@@ -52,6 +52,36 @@ export class MyReservationsService {
     );
   }
 
+  reject(myReservations: IReservation): Observable<EntityResponseType> {
+    return this.http.put<IReservation>(
+      this.resourceUrl,
+      {
+        ...myReservations,
+        status: {
+          id: 4,
+          polishName: 'Odrzucone',
+          englishName: 'Rejected'
+        }
+      },
+      { observe: 'response' }
+    );
+  }
+
+  accept(myReservations: IReservation): Observable<EntityResponseType> {
+    return this.http.put<IReservation>(
+      this.resourceUrl,
+      {
+        ...myReservations,
+        status: {
+          id: 3,
+          polishName: 'Zaakceptowane',
+          englishName: 'Accepted'
+        }
+      },
+      { observe: 'response' }
+    );
+  }
+
   getCountUserReservationsByAccountName(currentAccount: String): Observable<EntityArrayResponseType> {
     return this.http.get<IReservation[]>(`${this.resourceUrl}/count?requestedBy.equals=${currentAccount}`, { observe: 'response' });
   }

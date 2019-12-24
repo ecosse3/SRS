@@ -16,6 +16,14 @@
         "title": "Confirm cancel operation",
         "question": "Are you sure you want to cancel Reservation {{ id }}?"
       },
+      "reject": {
+        "title": "Confirm reject operation",
+        "question": "Are you sure you want to reject Reservation {{ id }}?"
+      },
+      "accept": {
+        "title": "Confirm accept operation",
+        "question": "Are you sure you want to accept Reservation {{ id }}?"
+      },
       "detail": {
         "title": "My Reservations"
       }

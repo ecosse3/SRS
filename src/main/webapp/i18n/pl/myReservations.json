@@ -16,6 +16,14 @@
         "title": "Potwierdź anulacje",
         "question": "Czy na pewno chcesz anulować Rezerwacje {{ id }}?"
       },
+      "reject": {
+        "title": "Potwierdź odrzucenie",
+        "question": "Czy na pewno chcesz odrzucić Rezerwacje {{ id }}?"
+      },
+      "accept": {
+        "title": "Potwierdź akceptację",
+        "question": "Czy na pewno chcesz zaakceptować Rezerwacje {{ id }}?"
+      },
       "detail": {
         "title": "My Reservations"
       }

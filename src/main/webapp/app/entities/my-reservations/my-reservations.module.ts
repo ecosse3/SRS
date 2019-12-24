@@ -5,6 +5,8 @@ import { SrsSharedModule } from 'app/shared/shared.module';
 import { MyReservationsComponent } from './my-reservations.component';
 import { MyReservationsDetailComponent } from './my-reservations-detail.component';
 import { MyReservationsDeletePopupComponent, MyReservationsDeleteDialogComponent } from './my-reservations-delete-dialog.component';
+import { MyReservationsRejectPopupComponent, MyReservationsRejectDialogComponent } from './my-reservations-reject-dialog.component';
+import { MyReservationsAcceptPopupComponent, MyReservationsAcceptDialogComponent } from './my-reservations-accept-dialog.component';
 import { myReservationsRoute, myReservationsPopupRoute } from './my-reservations.route';
 
 const ENTITY_STATES = [...myReservationsRoute, ...myReservationsPopupRoute];
@@ -15,8 +17,12 @@ const ENTITY_STATES = [...myReservationsRoute, ...myReservationsPopupRoute];
     MyReservationsComponent,
     MyReservationsDetailComponent,
     MyReservationsDeleteDialogComponent,
-    MyReservationsDeletePopupComponent
+    MyReservationsDeletePopupComponent,
+    MyReservationsRejectDialogComponent,
+    MyReservationsRejectPopupComponent,
+    MyReservationsAcceptDialogComponent,
+    MyReservationsAcceptPopupComponent
   ],
-  entryComponents: [MyReservationsDeleteDialogComponent]
+  entryComponents: [MyReservationsDeleteDialogComponent, MyReservationsRejectDialogComponent, MyReservationsAcceptDialogComponent]
 })
 export class SrsMyReservationsModule {}

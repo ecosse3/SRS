@@ -76,17 +76,17 @@
                 <fa-icon [icon]="'eye'"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
-              <div *ngIf="myReservations.status.id !== 2">
+              <div *ngIf="myReservations.status.id !== 2 && myReservations.status.id !== 3">
                 <button *jhiHasAnyAuthority="'ROLE_TEACHER'" type="submit"
-                  [routerLink]="['/my-reservations', { outlets: { popup: myReservations.id + '/delete' } }]"
+                  [routerLink]="['/my-reservations', { outlets: { popup: myReservations.id + '/accept' } }]"
                   replaceUrl="true" queryParamsHandling="merge" class="btn btn-success btn-sm">
                   <fa-icon [icon]="'check'"></fa-icon>
                   <span class="d-none d-md-inline" jhiTranslate="entity.action.accept">Accept</span>
                 </button>
               </div>
-              <div *ngIf="myReservations.status.id !== 2">
+              <div *ngIf="myReservations.status.id !== 2 && myReservations.status.id !== 4">
                 <button *jhiHasAnyAuthority="'ROLE_TEACHER'" type="submit"
-                  [routerLink]="['/my-reservations', { outlets: { popup: myReservations.id + '/delete' } }]"
+                  [routerLink]="['/my-reservations', { outlets: { popup: myReservations.id + '/reject' } }]"
                   replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
                   <fa-icon [icon]="'times'"></fa-icon>
                   <span class="d-none d-md-inline" jhiTranslate="entity.action.reject">Reject</span>

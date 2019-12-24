@@ -9,6 +9,8 @@ import { MyReservationsService } from './my-reservations.service';
 import { MyReservationsComponent } from './my-reservations.component';
 import { MyReservationsDetailComponent } from './my-reservations-detail.component';
 import { MyReservationsDeletePopupComponent } from './my-reservations-delete-dialog.component';
+import { MyReservationsRejectPopupComponent } from './my-reservations-reject-dialog.component';
+import { MyReservationsAcceptPopupComponent } from './my-reservations-accept-dialog.component';
 import { IMyReservations } from 'app/shared/model/my-reservations.model';
 
 @Injectable({ providedIn: 'root' })
@@ -59,7 +61,33 @@ export const myReservationsPopupRoute: Routes = [
       myReservations: MyReservationsResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
+      pageTitle: 'srsApp.myReservations.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
+  {
+    path: ':id/reject',
+    component: MyReservationsRejectPopupComponent,
+    resolve: {
+      myReservations: MyReservationsResolve
+    },
+    data: {
+      authorities: ['ROLE_TEACHER'],
+      pageTitle: 'srsApp.myReservations.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
+  {
+    path: ':id/accept',
+    component: MyReservationsAcceptPopupComponent,
+    resolve: {
+      myReservations: MyReservationsResolve
+    },
+    data: {
+      authorities: ['ROLE_TEACHER'],
       pageTitle: 'srsApp.myReservations.home.title'
     },
     canActivate: [UserRouteAccessService],
