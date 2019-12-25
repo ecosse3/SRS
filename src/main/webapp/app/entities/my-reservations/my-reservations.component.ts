@@ -47,8 +47,14 @@ export class MyReservationsComponent implements OnInit, OnDestroy {
       this.currentAccount = account;
     });
     this.registerChangeInMyReservations();
-    this.getCountUserReservations(this.currentAccount.email);
-    this.getUserReservations(this.currentAccount.email);
+
+    if (this.currentAccount.authorities.includes('ROLE_USER') && !this.currentAccount.authorities.includes('ROLE_TEACHER')) {
+      this.getCountUserReservations(this.currentAccount.email);
+      this.getUserReservations(this.currentAccount.email);
+    } else if (this.currentAccount.authorities.includes('ROLE_TEACHER')) {
+      this.getCountTeacherReservations(this.currentAccount.id);
+      this.getTeacherReservations(this.currentAccount.id);
+    }
 
     this.language = this.languageService.currentLang;
   }
@@ -97,6 +103,18 @@ export class MyReservationsComponent implements OnInit, OnDestroy {
 
   getCountUserReservations(currentAccount: any) {
     this.myReservationsService.getCountUserReservationsByAccountName(currentAccount).subscribe(res => {
+      this.userReservationsCount = res.body;
+    });
+  }
+
+  getTeacherReservations(currentAccount: any) {
+    this.myReservationsService.getTeacherReservationsByAccountName(currentAccount).subscribe(res => {
+      this.userReservations = res.body;
+    });
+  }
+
+  getCountTeacherReservations(currentAccount: any) {
+    this.myReservationsService.getCountTeacherReservationsByAccountName(currentAccount).subscribe(res => {
       this.userReservationsCount = res.body;
     });
   }

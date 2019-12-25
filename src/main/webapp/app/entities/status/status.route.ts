@@ -57,7 +57,7 @@ export const statusRoute: Routes = [
       status: StatusResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.status.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const statusRoute: Routes = [
       status: StatusResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.status.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const statusPopupRoute: Routes = [
       status: StatusResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'srsApp.status.home.title'
     },
     canActivate: [UserRouteAccessService],

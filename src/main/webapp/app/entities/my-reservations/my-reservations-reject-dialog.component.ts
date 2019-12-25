@@ -7,6 +7,8 @@ import { JhiEventManager } from 'ng-jhipster';
 import { IMyReservations } from 'app/shared/model/my-reservations.model';
 import { MyReservationsService } from './my-reservations.service';
 import { IReservation } from 'app/shared/model/reservation.model';
+import { HttpResponse } from '@angular/common/http';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'jhi-my-reservations-reject-dialog',

@@ -90,7 +90,11 @@ export class MyReservationsService {
     return this.http.get<IReservation[]>(`${this.resourceUrl}?requestedBy.equals=${currentAccount}`, { observe: 'response' });
   }
 
+  getCountTeacherReservationsByAccountName(currentAccount: String): Observable<EntityArrayResponseType> {
+    return this.http.get<IReservation[]>(`${this.resourceUrl}/count?participantsId.equals=${currentAccount}`, { observe: 'response' });
+  }
+
   getTeacherReservationsByAccountName(currentAccount: String): Observable<EntityArrayResponseType> {
-    return this.http.get<IReservation[]>(`${this.resourceUrl}?participants.equals=${currentAccount}`, { observe: 'response' });
+    return this.http.get<IReservation[]>(`${this.resourceUrl}?participantsId.equals=${currentAccount}`, { observe: 'response' });
   }
 }
