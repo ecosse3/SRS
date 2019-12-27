@@ -142,10 +142,6 @@ export class ReservationUpdateComponent implements OnInit {
       )
       .subscribe((res: IStatus[]) => (this.statuses = res), (res: HttpErrorResponse) => this.onError(res.message));
 
-    if (this.editForm.get(['newStartTime']).value == null) {
-      this.minDateToday = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
-    }
-
     this.participantsDropdownSettings = {
       singleSelection: false,
       text: this.onSelectParticipantsLabel(),
@@ -158,6 +154,10 @@ export class ReservationUpdateComponent implements OnInit {
       enableCheckAll: false,
       classes: 'myclass custom-class'
     };
+
+    if (this.editForm.get(['newStartTime']).value === undefined) {
+      this.minDateToday = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
+    }
   }
 
   private getLabel(english, polish) {
