@@ -78,7 +78,6 @@
                             *ngFor="let userOption of users; trackBy: trackUserById">{{ userOption.login }}</option>
                     </select> -->
                     <angular2-multiselect [data]="users" [settings]="participantsDropdownSettings"
-                        (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
                         formControlName="participants">
                         <c-item>
                             <ng-template let-item="item">
