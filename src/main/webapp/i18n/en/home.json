@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "Welcome in Classroom Reservation System",
-    "subtitle": "This is your homepage",
+    "title": "Classroom Reservation System",
+    "subtitle": "Created for engineering thesis purposes for Military University of Technology in Warsaw.",
     "logged": {
       "message": "You are logged in as \"{{username}}\"."
     },

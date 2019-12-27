@@ -72,11 +72,6 @@
                 </div>
                 <div class="form-group">
                     <label jhiTranslate="srsApp.reservation.participants" for="field_participants">Participants</label>
-                    <!-- <select class="form-control" id="field_participants" multiple name="participants"
-                        formControlName="participants">
-                        <option [ngValue]="getSelected(editForm.get('participants').value, userOption)"
-                            *ngFor="let userOption of users; trackBy: trackUserById">{{ userOption.login }}</option>
-                    </select> -->
                     <angular2-multiselect [data]="users" [settings]="participantsDropdownSettings"
                         formControlName="participants">
                         <c-item>
@@ -90,6 +85,13 @@
                             </ng-template>
                         </c-badge>
                     </angular2-multiselect>
+                    <div
+                        *ngIf="editForm.get('participants').invalid && (editForm.get('participants').dirty || editForm.get('participants').touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('participants').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.schoolGroup"
@@ -102,13 +104,13 @@
               " *ngFor="let schoolGroupOption of schoolgroups; trackBy: trackSchoolGroupById">
                             {{ schoolGroupOption.name }}</option>
                     </select>
-                </div>
-                <div
-                    *ngIf="editForm.get('schoolGroup').invalid && (editForm.get('schoolGroup').dirty || editForm.get('schoolGroup').touched)">
-                    <small class="form-text text-danger" *ngIf="editForm.get('schoolGroup').errors.required"
-                        jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
+                    <div
+                        *ngIf="editForm.get('schoolGroup').invalid && (editForm.get('schoolGroup').dirty || editForm.get('schoolGroup').touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('schoolGroup').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.building"
@@ -120,13 +122,13 @@
                             *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">
                             {{ buildingOption.number }}</option>
                     </select>
-                </div>
-                <div
-                    *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
-                    <small class="form-text text-danger" *ngIf="editForm.get('building').errors.required"
-                        jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
+                    <div
+                        *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('building').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.classRoom"
@@ -152,15 +154,15 @@
               " *ngFor="let classHoursOption of classhours; trackBy: trackClassHoursById">
                             {{ classHoursOption.startTime }}</option>
                     </select>
-                </div>
-                <div *ngIf="
-            editForm.get('originalStartTime').invalid &&
-            (editForm.get('originalStartTime').dirty || editForm.get('originalStartTime').touched)
-          ">
-                    <small class="form-text text-danger" *ngIf="editForm.get('originalStartTime').errors.required"
-                        jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
+                    <div *ngIf="
+                                                editForm.get('originalStartTime').invalid &&
+                                                (editForm.get('originalStartTime').dirty || editForm.get('originalStartTime').touched)
+                                              ">
+                        <small class="form-text text-danger" *ngIf="editForm.get('originalStartTime').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.newStartTime"
@@ -187,13 +189,13 @@
               " *ngFor="let classDurationOption of classdurations; trackBy: trackClassDurationById">
                             {{ classDurationOption.name }}</option>
                     </select>
-                </div>
-                <div
-                    *ngIf="editForm.get('classDuration').invalid && (editForm.get('classDuration').dirty || editForm.get('classDuration').touched)">
-                    <small class="form-text text-danger" *ngIf="editForm.get('classDuration').errors.required"
-                        jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
+                    <div
+                        *ngIf="editForm.get('classDuration').invalid && (editForm.get('classDuration').dirty || editForm.get('classDuration').touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('classDuration').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group d-none">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.status"

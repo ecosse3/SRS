@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "Witamy w Systemie Rezerwacji Sal",
-    "subtitle": "To jest twoja strona domowa",
+    "title": "System Rezerwacji Sal",
+    "subtitle": "Stworzony do celów pracy inżynierskiej dla Wojskowej Akademii Technicznej.",
     "logged": {
       "message": "Jesteś zalogowany jako \"{{username}}\"."
     },

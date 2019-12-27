@@ -30,6 +30,26 @@ a:hover {
   color: $dropdown-link-hover-color;
 }
 
+.font-weight-300 {
+  font-weight: 300;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-weight-700 {
+  font-weight: 700;
+}
+
 /* ==========================================================================
 Browser Upgrade Prompt
 ========================================================================== */
@@ -51,6 +71,14 @@ Generic styles
 }
 
 .ng-invalid:not(form) {
+  border-left: 5px solid red;
+}
+
+.participants-multiselect.ng-invalid:not(form) {
+  border-left: none;
+}
+
+.participants-multiselect.ng-invalid:not(form) > .cuppa-dropdown .selected-list .c-btn {
   border-left: 5px solid red;
 }
 
@@ -179,7 +207,9 @@ ui bootstrap tweaks
   white-space: nowrap;
 }
 
-/* jhipster-needle-scss-add-main JHipster will add new css style */
+/* ==========================================================================
+multiselect2
+========================================================================== */
 
 .c-btn {
   background: #fff;
@@ -193,7 +223,7 @@ ui bootstrap tweaks
 }
 
 .selected-list .c-list .c-token {
-  background: #0079fe;
+  background: #3e8acc;
 }
 .selected-list .c-list .c-token .c-label {
   color: #fff;
@@ -251,7 +281,7 @@ ui bootstrap tweaks
 
 .pure-checkbox input[type='checkbox']:focus + label:before,
 .pure-checkbox input[type='checkbox']:hover + label:before {
-  border-color: #0079fe;
+  border-color: #3e8acc;
   background-color: #f2f2f2;
 }
 
@@ -260,13 +290,12 @@ ui bootstrap tweaks
 }
 
 .pure-checkbox input[type='checkbox'] + label:before {
-  color: #0079fe;
-  border: 2px solid #0079fe;
+  color: #3e8acc;
+  border: 2px solid #3e8acc;
 }
 
 .pure-checkbox input[type='checkbox'] + label:after {
-  background-color: #0079fe;
-  top: 65% !important;
+  background-color: #3e8acc;
   left: 4px !important;
 }
 
@@ -287,7 +316,7 @@ ui bootstrap tweaks
 }
 
 .pure-checkbox input[type='checkbox']:checked + label:before {
-  background: #0079fe;
+  background: #3e8acc;
 }
 
 .selected-item {
@@ -295,7 +324,9 @@ ui bootstrap tweaks
 }
 
 .btn-iceblue {
-  background: #0079fe;
+  background: #3e8acc;
   border: 1px solid #ccc;
   color: #fff;
 }
+
+/* jhipster-needle-scss-add-main JHipster will add new css style */

@@ -61,7 +61,7 @@ export class ReservationUpdateComponent implements OnInit {
     newClassDate: [null, [Validators.required]],
     requestedBy: [],
     createdDate: [],
-    participants: [],
+    participants: [null, [Validators.required]],
     schoolGroup: [null, Validators.required],
     building: [null, Validators.required],
     classRoom: [],
@@ -152,7 +152,7 @@ export class ReservationUpdateComponent implements OnInit {
       searchNoRenderText: 'Type in search box to see results...',
       enableSearchFilter: true,
       enableCheckAll: false,
-      classes: 'myclass custom-class'
+      classes: 'participants-multiselect'
     };
 
     if (this.editForm.get(['newStartTime']).value === undefined) {
