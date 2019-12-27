@@ -49,6 +49,8 @@ export class ReservationUpdateComponent implements OnInit {
   originalClassDateDp: any;
   newClassDateDp: any;
 
+  minDateToday: any;
+
   editForm = this.fb.group({
     id: [],
     name: [null, [Validators.required]],
@@ -82,6 +84,7 @@ export class ReservationUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const currentDate = new Date();
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ reservation }) => {
       this.updateForm(reservation);
@@ -135,6 +138,10 @@ export class ReservationUpdateComponent implements OnInit {
         map((response: HttpResponse<IStatus[]>) => response.body)
       )
       .subscribe((res: IStatus[]) => (this.statuses = res), (res: HttpErrorResponse) => this.onError(res.message));
+
+    if (this.editForm.get(['newStartTime']).value == null) {
+      this.minDateToday = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
+    }
   }
 
   updateForm(reservation: IReservation) {

@@ -54,7 +54,8 @@
                         for="field_newClassDate">New Class Date</label>
                     <div class="input-group">
                         <input id="field_newClassDate" type="text" class="form-control" name="newClassDate"
-                            ngbDatepicker #newClassDateDp="ngbDatepicker" formControlName="newClassDate" />
+                            ngbDatepicker [minDate]="minDateToday" #newClassDateDp="ngbDatepicker"
+                            formControlName="newClassDate" />
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="newClassDateDp.toggle()">
                                 <fa-icon [icon]="'calendar-alt'"></fa-icon>
