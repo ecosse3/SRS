@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 import { IReservation, Reservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from './reservation.service';
 import { IUser } from 'app/core/user/user.model';
@@ -51,6 +51,8 @@ export class ReservationUpdateComponent implements OnInit {
 
   minDateToday: any;
 
+  participantsDropdownSettings = {};
+
   editForm = this.fb.group({
     id: [],
     name: [null, [Validators.required]],
@@ -80,7 +82,8 @@ export class ReservationUpdateComponent implements OnInit {
     protected classDurationService: ClassDurationService,
     protected statusService: StatusService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    protected languageService: JhiLanguageService
   ) {}
 
   ngOnInit() {
@@ -142,6 +145,46 @@ export class ReservationUpdateComponent implements OnInit {
     if (this.editForm.get(['newStartTime']).value == null) {
       this.minDateToday = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
     }
+
+    this.participantsDropdownSettings = {
+      singleSelection: false,
+      text: this.onSelectParticipantsLabel(),
+      searchPlaceholderText: this.onSelectParticipantsSearch(),
+      noDataLabel: this.onSelectParticipantsNoDataLabel(),
+      filterSelectAllText: this.onSelectParticipantsFilterSelectAllText(),
+      filterUnSelectAllText: this.onSelectParticipantsFilterUnSelectAllText(),
+      searchNoRenderText: 'Type in search box to see results...',
+      enableSearchFilter: true,
+      enableCheckAll: false,
+      classes: 'myclass custom-class'
+    };
+  }
+
+  private getLabel(english, polish) {
+    if (this.languageService.currentLang === 'en') {
+      return english;
+    }
+    return polish;
+  }
+
+  onSelectParticipantsLabel() {
+    return this.getLabel('Select participants', 'Wybierz uczestników');
+  }
+
+  onSelectParticipantsSearch() {
+    return this.getLabel('Search...', 'Szukaj...');
+  }
+
+  onSelectParticipantsNoDataLabel() {
+    return this.getLabel('Nothing found', 'Nic nie znaleziono');
+  }
+
+  onSelectParticipantsFilterSelectAllText() {
+    return this.getLabel('Select all filtered results', 'Zaznacz wszystkich pofiltrowanych uczestników');
+  }
+
+  onSelectParticipantsFilterUnSelectAllText() {
+    return this.getLabel('Unselect all filtered results', 'Odznacz wszystkich pofiltrowanych uczestników');
   }
 
   updateForm(reservation: IReservation) {

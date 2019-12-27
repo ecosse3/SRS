@@ -72,11 +72,25 @@
                 </div>
                 <div class="form-group">
                     <label jhiTranslate="srsApp.reservation.participants" for="field_participants">Participants</label>
-                    <select class="form-control" id="field_participants" multiple name="participants"
+                    <!-- <select class="form-control" id="field_participants" multiple name="participants"
                         formControlName="participants">
                         <option [ngValue]="getSelected(editForm.get('participants').value, userOption)"
                             *ngFor="let userOption of users; trackBy: trackUserById">{{ userOption.login }}</option>
-                    </select>
+                    </select> -->
+                    <angular2-multiselect [data]="users" [settings]="participantsDropdownSettings"
+                        (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+                        formControlName="participants">
+                        <c-item>
+                            <ng-template let-item="item">
+                                <label style="color: #333;min-width: 150px;font-weight: 400">{{item.email}}</label>
+                            </ng-template>
+                        </c-item>
+                        <c-badge>
+                            <ng-template let-item="item">
+                                <label style="margin: 0px;">{{item.email}}</label>
+                            </ng-template>
+                        </c-badge>
+                    </angular2-multiselect>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.schoolGroup"
