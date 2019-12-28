@@ -38,20 +38,26 @@ export class ReservationUpdateComponent implements OnInit {
   schoolgroups: ISchoolGroup[];
 
   buildings: IBuilding[];
+  selectedBuilding: any;
 
   classrooms: IClassRoom[];
+  filteredClassRooms: IClassRoom[];
+  selectedClassRoom: any;
 
   classhours: IClassHours[];
 
   classdurations: IClassDuration[];
 
   statuses: IStatus[];
+
   originalClassDateDp: any;
   newClassDateDp: any;
-
   minDateToday: any;
 
   participantsDropdownSettings = {};
+  buildingsDropdownSettings = {};
+  classRoomsDropdownSettings = {};
+  classRoomsDisabledDropdownSettings = {};
 
   editForm = this.fb.group({
     id: [],
@@ -145,11 +151,50 @@ export class ReservationUpdateComponent implements OnInit {
     this.participantsDropdownSettings = {
       singleSelection: false,
       text: this.onSelectParticipantsLabel(),
-      searchPlaceholderText: this.onSelectParticipantsSearch(),
-      noDataLabel: this.onSelectParticipantsNoDataLabel(),
-      filterSelectAllText: this.onSelectParticipantsFilterSelectAllText(),
-      filterUnSelectAllText: this.onSelectParticipantsFilterUnSelectAllText(),
-      searchNoRenderText: 'Type in search box to see results...',
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      filterSelectAllText: this.onSelectFilterSelectAllText(),
+      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
+      enableSearchFilter: true,
+      enableCheckAll: false,
+      classes: 'participants-multiselect'
+    };
+
+    this.buildingsDropdownSettings = {
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectBuildingLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      filterSelectAllText: this.onSelectFilterSelectAllText(),
+      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
+      enableSearchFilter: true,
+      enableCheckAll: false,
+      classes: 'participants-multiselect'
+    };
+
+    this.classRoomsDropdownSettings = {
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectClassRoomLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      filterSelectAllText: this.onSelectFilterSelectAllText(),
+      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
+      enableSearchFilter: true,
+      enableCheckAll: false,
+      classes: 'participants-multiselect'
+    };
+
+    this.classRoomsDisabledDropdownSettings = {
+      disabled: true,
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectDisabledClassRoomLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      filterSelectAllText: this.onSelectFilterSelectAllText(),
+      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
       enableSearchFilter: true,
       enableCheckAll: false,
       classes: 'participants-multiselect'
@@ -158,6 +203,21 @@ export class ReservationUpdateComponent implements OnInit {
     if (this.editForm.get(['newStartTime']).value === undefined) {
       this.minDateToday = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
     }
+
+    if (this.editForm.get(['building']).value !== undefined || null) {
+      this.selectedBuilding = [this.editForm.get(['building']).value];
+    }
+
+    if (this.editForm.get(['classRoom']).value !== undefined) {
+      this.selectedClassRoom = [this.editForm.get(['classRoom']).value];
+    }
+
+    if (this.editForm.get(['classRoom']).value === null) {
+      this.selectedClassRoom = null;
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(this.editForm.get(['classRoom']).value);
   }
 
   private getLabel(english, polish) {
@@ -171,19 +231,31 @@ export class ReservationUpdateComponent implements OnInit {
     return this.getLabel('Select participants', 'Wybierz uczestników');
   }
 
-  onSelectParticipantsSearch() {
+  onSelectBuildingLabel() {
+    return this.getLabel('Select building', 'Wybierz budynek');
+  }
+
+  onSelectClassRoomLabel() {
+    return this.getLabel('Select classroom', 'Wybierz salę');
+  }
+
+  onSelectDisabledClassRoomLabel() {
+    return this.getLabel('Select building first', 'Wybierz najpierw budynek');
+  }
+
+  onSelectSearch() {
     return this.getLabel('Search...', 'Szukaj...');
   }
 
-  onSelectParticipantsNoDataLabel() {
+  onSelectNoDataLabel() {
     return this.getLabel('Nothing found', 'Nic nie znaleziono');
   }
 
-  onSelectParticipantsFilterSelectAllText() {
+  onSelectFilterSelectAllText() {
     return this.getLabel('Select all filtered results', 'Zaznacz wszystkich pofiltrowanych uczestników');
   }
 
-  onSelectParticipantsFilterUnSelectAllText() {
+  onSelectFilterUnSelectAllText() {
     return this.getLabel('Unselect all filtered results', 'Odznacz wszystkich pofiltrowanych uczestników');
   }
 
@@ -205,6 +277,10 @@ export class ReservationUpdateComponent implements OnInit {
       classDuration: reservation.classDuration,
       status: reservation.status
     });
+
+    if (reservation.building) {
+      this.getClassRoomByBuildingId(reservation.building);
+    }
   }
 
   previousState() {
@@ -234,8 +310,8 @@ export class ReservationUpdateComponent implements OnInit {
         this.editForm.get(['createdDate']).value != null ? moment(this.editForm.get(['createdDate']).value, DATE_TIME_FORMAT) : undefined,
       participants: this.editForm.get(['participants']).value,
       schoolGroup: this.editForm.get(['schoolGroup']).value,
-      building: this.editForm.get(['building']).value,
-      classRoom: this.editForm.get(['classRoom']).value,
+      building: this.editForm.get(['building']).value[0],
+      classRoom: this.editForm.get(['classRoom']).value != null ? this.editForm.get(['classRoom']).value[0] : undefined,
       originalStartTime: this.editForm.get(['originalStartTime']).value,
       newStartTime: this.editForm.get(['newStartTime']).value,
       classDuration: this.editForm.get(['classDuration']).value,
@@ -287,14 +363,15 @@ export class ReservationUpdateComponent implements OnInit {
     return item.id;
   }
 
-  getSelected(selectedVals: any[], option: any) {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
+  getClassRoomByBuildingId(building: any) {
+    this.classRoomService.getClassRoomsByBuildingId(building.id).subscribe(res => {
+      this.filteredClassRooms = res.body;
+    });
+
+    this.selectedClassRoom = [];
+  }
+
+  unSelectClassRoom() {
+    this.selectedClassRoom = [];
   }
 }

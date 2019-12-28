@@ -2,7 +2,8 @@
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-reservation-heading" jhiTranslate="srsApp.reservation.home.createOrEditLabel">Create or edit a
-                Reservation</h2>
+                Reservation
+            </h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -73,7 +74,7 @@
                 <div class="form-group">
                     <label jhiTranslate="srsApp.reservation.participants" for="field_participants">Participants</label>
                     <angular2-multiselect [data]="users" [settings]="participantsDropdownSettings"
-                        formControlName="participants">
+                        formControlName="participants" name="field_participants" id="field_participants">
                         <c-item>
                             <ng-template let-item="item">
                                 <label style="color: #333;min-width: 150px;font-weight: 400">{{item.email}}</label>
@@ -115,13 +116,29 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.building"
                         for="field_building">Building</label>
-                    <select class="form-control" id="field_building" name="building" formControlName="building">
+                    <!-- <select class="form-control" id="field_building" name="building" formControlName="building">
                         <option *ngIf="!editForm.get('building').value" [ngValue]="null" selected></option>
                         <option
                             [ngValue]="buildingOption.id === editForm.get('building').value?.id ? editForm.get('building').value : buildingOption"
                             *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">
                             {{ buildingOption.number }}</option>
-                    </select>
+                    </select> -->
+
+                    <angular2-multiselect id="field_building" name="building" [settings]="buildingsDropdownSettings"
+                        [data]="buildings" [ngModel]="selectedBuilding" formControlName="building"
+                        (onSelect)="getClassRoomByBuildingId($event)" (onDeSelect)="unSelectClassRoom()">
+                        <c-item>
+                            <ng-template let-item="item">
+                                <label style="color: #333;min-width: 150px;font-weight: 400">{{item.number}}</label>
+                            </ng-template>
+                        </c-item>
+                        <c-badge>
+                            <ng-template let-item="item">
+                                <label style="margin: 0px;">{{item.number}}</label>
+                            </ng-template>
+                        </c-badge>
+                    </angular2-multiselect>
+
                     <div
                         *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
                         <small class="form-text text-danger" *ngIf="editForm.get('building').errors.required"
@@ -130,16 +147,41 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div *ngIf="editForm.get(['building']).value" class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.classRoom"
                         for="field_classRoom">Class Room</label>
-                    <select class="form-control" id="field_classRoom" name="classRoom" formControlName="classRoom">
-                        <option [ngValue]="null"></option>
-                        <option
-                            [ngValue]="classRoomOption.id === editForm.get('classRoom').value?.id ? editForm.get('classRoom').value : classRoomOption"
-                            *ngFor="let classRoomOption of classrooms; trackBy: trackClassRoomById">
-                            {{ classRoomOption.number }}</option>
-                    </select>
+                    <angular2-multiselect id="field_classRoom" name="classRoom" [settings]="classRoomsDropdownSettings"
+                        [data]="filteredClassRooms ? filteredClassRooms : classrooms" formControlName="classRoom"
+                        [(ngModel)]="selectedClassRoom">
+                        <c-item>
+                            <ng-template let-item="item">
+                                <label style="color: #333;min-width: 150px;font-weight: 400">{{item.number}}</label>
+                            </ng-template>
+                        </c-item>
+                        <c-badge>
+                            <ng-template let-item="item">
+                                <label style="margin: 0px;">{{item.number}}</label>
+                            </ng-template>
+                        </c-badge>
+                    </angular2-multiselect>
+                </div>
+                <div *ngIf="!editForm.get(['building']).value" class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.reservation.classRoom"
+                        for="field_classRoom">Class Room</label>
+                    <angular2-multiselect id="field_classRoom" name="classRoom"
+                        [settings]="classRoomsDisabledDropdownSettings"
+                        [data]="filteredClassRooms ? filteredClassRooms : classrooms" formControlName="classRoom">
+                        <c-item>
+                            <ng-template let-item="item">
+                                <label style="color: #333;min-width: 150px;font-weight: 400">{{item.number}}</label>
+                            </ng-template>
+                        </c-item>
+                        <c-badge>
+                            <ng-template let-item="item">
+                                <label style="margin: 0px;">{{item.number}}</label>
+                            </ng-template>
+                        </c-badge>
+                    </angular2-multiselect>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.originalStartTime"
