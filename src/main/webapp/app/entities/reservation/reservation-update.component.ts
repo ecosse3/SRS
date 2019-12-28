@@ -36,6 +36,7 @@ export class ReservationUpdateComponent implements OnInit {
   users: IUser[];
 
   schoolgroups: ISchoolGroup[];
+  selectedSchoolGroup: any;
 
   buildings: IBuilding[];
   selectedBuilding: any;
@@ -58,6 +59,7 @@ export class ReservationUpdateComponent implements OnInit {
   buildingsDropdownSettings = {};
   classRoomsDropdownSettings = {};
   classRoomsDisabledDropdownSettings = {};
+  schoolGroupDropdownSettings = {};
 
   editForm = this.fb.group({
     id: [],
@@ -153,10 +155,12 @@ export class ReservationUpdateComponent implements OnInit {
       text: this.onSelectParticipantsLabel(),
       searchPlaceholderText: this.onSelectSearch(),
       noDataLabel: this.onSelectNoDataLabel(),
-      filterSelectAllText: this.onSelectFilterSelectAllText(),
-      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
+      filterSelectAllText: this.onSelectFilterSelectAllParticipantsText(),
+      filterUnSelectAllText: this.onSelectFilterUnSelectAllParticipantsText(),
       enableSearchFilter: true,
+      enableFilterSelectAll: false,
       enableCheckAll: false,
+      badgeShowLimit: 7,
       classes: 'participants-multiselect'
     };
 
@@ -166,9 +170,8 @@ export class ReservationUpdateComponent implements OnInit {
       text: this.onSelectBuildingLabel(),
       searchPlaceholderText: this.onSelectSearch(),
       noDataLabel: this.onSelectNoDataLabel(),
-      filterSelectAllText: this.onSelectFilterSelectAllText(),
-      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
       enableSearchFilter: true,
+      enableFilterSelectAll: false,
       enableCheckAll: false,
       classes: 'participants-multiselect'
     };
@@ -179,9 +182,8 @@ export class ReservationUpdateComponent implements OnInit {
       text: this.onSelectClassRoomLabel(),
       searchPlaceholderText: this.onSelectSearch(),
       noDataLabel: this.onSelectNoDataLabel(),
-      filterSelectAllText: this.onSelectFilterSelectAllText(),
-      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
       enableSearchFilter: true,
+      enableFilterSelectAll: false,
       enableCheckAll: false,
       classes: 'participants-multiselect'
     };
@@ -193,9 +195,20 @@ export class ReservationUpdateComponent implements OnInit {
       text: this.onSelectDisabledClassRoomLabel(),
       searchPlaceholderText: this.onSelectSearch(),
       noDataLabel: this.onSelectNoDataLabel(),
-      filterSelectAllText: this.onSelectFilterSelectAllText(),
-      filterUnSelectAllText: this.onSelectFilterUnSelectAllText(),
       enableSearchFilter: true,
+      enableFilterSelectAll: false,
+      enableCheckAll: false,
+      classes: 'participants-multiselect'
+    };
+
+    this.schoolGroupDropdownSettings = {
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectSchoolGroupLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      enableSearchFilter: true,
+      enableFilterSelectAll: false,
       enableCheckAll: false,
       classes: 'participants-multiselect'
     };
@@ -212,12 +225,12 @@ export class ReservationUpdateComponent implements OnInit {
       this.selectedClassRoom = [this.editForm.get(['classRoom']).value];
     }
 
+    if (this.editForm.get(['schoolGroup']).value !== undefined) {
+      this.selectedSchoolGroup = [this.editForm.get(['schoolGroup']).value];
+    }
     if (this.editForm.get(['classRoom']).value === null) {
       this.selectedClassRoom = null;
     }
-
-    // eslint-disable-next-line no-console
-    console.log(this.editForm.get(['classRoom']).value);
   }
 
   private getLabel(english, polish) {
@@ -239,6 +252,10 @@ export class ReservationUpdateComponent implements OnInit {
     return this.getLabel('Select classroom', 'Wybierz salę');
   }
 
+  onSelectSchoolGroupLabel() {
+    return this.getLabel('Select school group', 'Wybierz grupę studencką');
+  }
+
   onSelectDisabledClassRoomLabel() {
     return this.getLabel('Select building first', 'Wybierz najpierw budynek');
   }
@@ -251,11 +268,11 @@ export class ReservationUpdateComponent implements OnInit {
     return this.getLabel('Nothing found', 'Nic nie znaleziono');
   }
 
-  onSelectFilterSelectAllText() {
+  onSelectFilterSelectAllParticipantsText() {
     return this.getLabel('Select all filtered results', 'Zaznacz wszystkich pofiltrowanych uczestników');
   }
 
-  onSelectFilterUnSelectAllText() {
+  onSelectFilterUnSelectAllParticipantsText() {
     return this.getLabel('Unselect all filtered results', 'Odznacz wszystkich pofiltrowanych uczestników');
   }
 
@@ -309,7 +326,7 @@ export class ReservationUpdateComponent implements OnInit {
       createdDate:
         this.editForm.get(['createdDate']).value != null ? moment(this.editForm.get(['createdDate']).value, DATE_TIME_FORMAT) : undefined,
       participants: this.editForm.get(['participants']).value,
-      schoolGroup: this.editForm.get(['schoolGroup']).value,
+      schoolGroup: this.editForm.get(['schoolGroup']).value[0],
       building: this.editForm.get(['building']).value[0],
       classRoom: this.editForm.get(['classRoom']).value != null ? this.editForm.get(['classRoom']).value[0] : undefined,
       originalStartTime: this.editForm.get(['originalStartTime']).value,

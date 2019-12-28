@@ -40,10 +40,7 @@
                             </button>
                         </span>
                     </div>
-                    <div *ngIf="
-              editForm.get('originalClassDate').invalid &&
-              (editForm.get('originalClassDate').dirty || editForm.get('originalClassDate').touched)
-            ">
+                    <div *ngIf="editForm.get('originalClassDate').invalid && (editForm.get('originalClassDate').dirty || editForm.get('originalClassDate').touched)">
                         <small class="form-text text-danger" *ngIf="editForm.get('originalClassDate').errors.required"
                             jhiTranslate="entity.validation.required">
                             This field is required.
@@ -97,14 +94,20 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.schoolGroup"
                         for="field_schoolGroup">School Group</label>
-                    <select class="form-control" id="field_schoolGroup" name="schoolGroup"
+                    <angular2-multiselect id="field_schoolGroup" name="schoolGroup"
+                        [settings]="schoolGroupDropdownSettings" [data]="schoolgroups" [ngModel]="selectedSchoolGroup"
                         formControlName="schoolGroup">
-                        <option *ngIf="!editForm.get('schoolGroup').value" [ngValue]="null" selected></option>
-                        <option [ngValue]="
-                schoolGroupOption.id === editForm.get('schoolGroup').value?.id ? editForm.get('schoolGroup').value : schoolGroupOption
-              " *ngFor="let schoolGroupOption of schoolgroups; trackBy: trackSchoolGroupById">
-                            {{ schoolGroupOption.name }}</option>
-                    </select>
+                        <c-item>
+                            <ng-template let-item="item">
+                                <label style="color: #333;min-width: 150px;font-weight: 400">{{item.name}}</label>
+                            </ng-template>
+                        </c-item>
+                        <c-badge>
+                            <ng-template let-item="item">
+                                <label style="margin: 0px;">{{item.name}}</label>
+                            </ng-template>
+                        </c-badge>
+                    </angular2-multiselect>
                     <div
                         *ngIf="editForm.get('schoolGroup').invalid && (editForm.get('schoolGroup').dirty || editForm.get('schoolGroup').touched)">
                         <small class="form-text text-danger" *ngIf="editForm.get('schoolGroup').errors.required"
@@ -116,14 +119,6 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="srsApp.reservation.building"
                         for="field_building">Building</label>
-                    <!-- <select class="form-control" id="field_building" name="building" formControlName="building">
-                        <option *ngIf="!editForm.get('building').value" [ngValue]="null" selected></option>
-                        <option
-                            [ngValue]="buildingOption.id === editForm.get('building').value?.id ? editForm.get('building').value : buildingOption"
-                            *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">
-                            {{ buildingOption.number }}</option>
-                    </select> -->
-
                     <angular2-multiselect id="field_building" name="building" [settings]="buildingsDropdownSettings"
                         [data]="buildings" [ngModel]="selectedBuilding" formControlName="building"
                         (onSelect)="getClassRoomByBuildingId($event)" (onDeSelect)="unSelectClassRoom()">
