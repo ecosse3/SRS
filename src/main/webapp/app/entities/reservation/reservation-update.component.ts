@@ -390,5 +390,6 @@ export class ReservationUpdateComponent implements OnInit {
 
   unSelectClassRoom() {
     this.selectedClassRoom = [];
+    this.filteredClassRooms = [];
   }
 }
