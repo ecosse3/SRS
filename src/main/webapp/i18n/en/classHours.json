@@ -19,7 +19,8 @@
       "startTime": "Start Time",
       "endTime": "End Time",
       "originalStartTime": "Original Start Time",
-      "newStartTime": "New Start Time"
+      "newStartTime": "New Start Time",
+      "timetable": "Timetable"
     }
   }
 }

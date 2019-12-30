@@ -46,6 +46,16 @@ public class Timetable implements Serializable {
     @JsonIgnoreProperties("timetables")
     private ClassRoom classRoom;
 
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("timetables")
+    private ClassHours startTime;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("timetables")
+    private ClassDuration classDuration;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -118,6 +128,32 @@ public class Timetable implements Serializable {
 
     public void setClassRoom(ClassRoom classRoom) {
         this.classRoom = classRoom;
+    }
+
+    public ClassHours getStartTime() {
+        return startTime;
+    }
+
+    public Timetable startTime(ClassHours classHours) {
+        this.startTime = classHours;
+        return this;
+    }
+
+    public void setStartTime(ClassHours classHours) {
+        this.startTime = classHours;
+    }
+
+    public ClassDuration getClassDuration() {
+        return classDuration;
+    }
+
+    public Timetable classDuration(ClassDuration classDuration) {
+        this.classDuration = classDuration;
+        return this;
+    }
+
+    public void setClassDuration(ClassDuration classDuration) {
+        this.classDuration = classDuration;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

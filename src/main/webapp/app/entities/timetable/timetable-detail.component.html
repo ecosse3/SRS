@@ -31,6 +31,18 @@
                         <a [routerLink]="['/class-room', timetable.classRoom?.id, 'view']">{{timetable.classRoom?.number}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="srsApp.timetable.startTime">Start Time</span></dt>
+                <dd>
+                    <div *ngIf="timetable.startTime">
+                        <a [routerLink]="['/class-hours', timetable.startTime?.id, 'view']">{{timetable.startTime?.startTime}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="srsApp.timetable.classDuration">Class Duration</span></dt>
+                <dd>
+                    <div *ngIf="timetable.classDuration">
+                        <a [routerLink]="['/class-duration', timetable.classDuration?.id, 'view']">{{timetable.classDuration?.name}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

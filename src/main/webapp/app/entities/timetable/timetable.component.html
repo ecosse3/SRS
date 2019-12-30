@@ -24,6 +24,8 @@
             <th scope="col"  jhiSortBy="schoolGroup.name"><span jhiTranslate="srsApp.timetable.schoolGroup">School Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="building.number"><span jhiTranslate="srsApp.timetable.building">Building</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="classRoom.number"><span jhiTranslate="srsApp.timetable.classRoom">Class Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="startTime.startTime"><span jhiTranslate="srsApp.timetable.startTime">Start Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="classDuration.name"><span jhiTranslate="srsApp.timetable.classDuration">Class Duration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -45,6 +47,16 @@
                 <td>
                     <div *ngIf="timetable.classRoom">
                         <a [routerLink]="['/class-room', timetable.classRoom?.id, 'view' ]" >{{timetable.classRoom?.number}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="timetable.startTime">
+                        <a [routerLink]="['/class-hours', timetable.startTime?.id, 'view' ]" >{{timetable.startTime?.startTime}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="timetable.classDuration">
+                        <a [routerLink]="['/class-duration', timetable.classDuration?.id, 'view' ]" >{{timetable.classDuration?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">

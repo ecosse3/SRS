@@ -17,7 +17,8 @@
         "title": "Długość zajęć"
       },
       "name": "Nazwa",
-      "reservation": "Rezerwacja"
+      "reservation": "Rezerwacja",
+      "timetable": "Plan zajęć"
     }
   }
 }

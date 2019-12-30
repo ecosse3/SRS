@@ -19,7 +19,8 @@
       "startTime": "Godzina rozpoczęcia",
       "endTime": "Godzina zakończenia",
       "originalStartTime": "Oryginalna godzina rozpoczęcia",
-      "newStartTime": "Nowa godzina rozpoczęcia"
+      "newStartTime": "Nowa godzina rozpoczęcia",
+      "timetable": "Plan zajęć"
     }
   }
 }

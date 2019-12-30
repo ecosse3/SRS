@@ -26,5 +26,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="class_room"/>
 
+        <addForeignKeyConstraint baseColumnNames="start_time_id"
+                                 baseTableName="timetable"
+                                 constraintName="fk_timetable_start_time_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_hours"/>
+
+        <addForeignKeyConstraint baseColumnNames="class_duration_id"
+                                 baseTableName="timetable"
+                                 constraintName="fk_timetable_class_duration_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_duration"/>
+
     </changeSet>
 </databaseChangeLog>

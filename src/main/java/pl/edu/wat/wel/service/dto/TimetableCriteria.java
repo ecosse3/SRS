@@ -37,6 +37,10 @@ public class TimetableCriteria implements Serializable, Criteria {
 
     private LongFilter classRoomId;
 
+    private LongFilter startTimeId;
+
+    private LongFilter classDurationId;
+
     public TimetableCriteria(){
     }
 
@@ -47,6 +51,8 @@ public class TimetableCriteria implements Serializable, Criteria {
         this.schoolGroupId = other.schoolGroupId == null ? null : other.schoolGroupId.copy();
         this.buildingId = other.buildingId == null ? null : other.buildingId.copy();
         this.classRoomId = other.classRoomId == null ? null : other.classRoomId.copy();
+        this.startTimeId = other.startTimeId == null ? null : other.startTimeId.copy();
+        this.classDurationId = other.classDurationId == null ? null : other.classDurationId.copy();
     }
 
     @Override
@@ -102,6 +108,22 @@ public class TimetableCriteria implements Serializable, Criteria {
         this.classRoomId = classRoomId;
     }
 
+    public LongFilter getStartTimeId() {
+        return startTimeId;
+    }
+
+    public void setStartTimeId(LongFilter startTimeId) {
+        this.startTimeId = startTimeId;
+    }
+
+    public LongFilter getClassDurationId() {
+        return classDurationId;
+    }
+
+    public void setClassDurationId(LongFilter classDurationId) {
+        this.classDurationId = classDurationId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -118,7 +140,9 @@ public class TimetableCriteria implements Serializable, Criteria {
             Objects.equals(classDate, that.classDate) &&
             Objects.equals(schoolGroupId, that.schoolGroupId) &&
             Objects.equals(buildingId, that.buildingId) &&
-            Objects.equals(classRoomId, that.classRoomId);
+            Objects.equals(classRoomId, that.classRoomId) &&
+            Objects.equals(startTimeId, that.startTimeId) &&
+            Objects.equals(classDurationId, that.classDurationId);
     }
 
     @Override
@@ -129,7 +153,9 @@ public class TimetableCriteria implements Serializable, Criteria {
         classDate,
         schoolGroupId,
         buildingId,
-        classRoomId
+        classRoomId,
+        startTimeId,
+        classDurationId
         );
     }
 
@@ -142,6 +168,8 @@ public class TimetableCriteria implements Serializable, Criteria {
                 (schoolGroupId != null ? "schoolGroupId=" + schoolGroupId + ", " : "") +
                 (buildingId != null ? "buildingId=" + buildingId + ", " : "") +
                 (classRoomId != null ? "classRoomId=" + classRoomId + ", " : "") +
+                (startTimeId != null ? "startTimeId=" + startTimeId + ", " : "") +
+                (classDurationId != null ? "classDurationId=" + classDurationId + ", " : "") +
             "}";
     }
 

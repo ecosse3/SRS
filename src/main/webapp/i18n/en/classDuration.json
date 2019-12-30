@@ -17,7 +17,8 @@
         "title": "Class Duration"
       },
       "name": "Name",
-      "reservation": "Reservation"
+      "reservation": "Reservation",
+      "timetable": "Timetable"
     }
   }
 }

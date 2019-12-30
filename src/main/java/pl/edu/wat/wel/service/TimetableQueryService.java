@@ -103,6 +103,14 @@ public class TimetableQueryService extends QueryService<Timetable> {
                 specification = specification.and(buildSpecification(criteria.getClassRoomId(),
                     root -> root.join(Timetable_.classRoom, JoinType.LEFT).get(ClassRoom_.id)));
             }
+            if (criteria.getStartTimeId() != null) {
+                specification = specification.and(buildSpecification(criteria.getStartTimeId(),
+                    root -> root.join(Timetable_.startTime, JoinType.LEFT).get(ClassHours_.id)));
+            }
+            if (criteria.getClassDurationId() != null) {
+                specification = specification.and(buildSpecification(criteria.getClassDurationId(),
+                    root -> root.join(Timetable_.classDuration, JoinType.LEFT).get(ClassDuration_.id)));
+            }
         }
         return specification;
     }

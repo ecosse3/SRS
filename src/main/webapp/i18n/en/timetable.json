@@ -20,7 +20,9 @@
       "classDate": "Class Date",
       "schoolGroup": "School Group",
       "building": "Building",
-      "classRoom": "Class Room"
+      "classRoom": "Class Room",
+      "startTime": "Start Time",
+      "classDuration": "Class Duration"
     }
   }
 }

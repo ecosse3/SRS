@@ -39,6 +39,10 @@ public class ClassHours implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> newStartTimes = new HashSet<>();
 
+    @OneToMany(mappedBy = "startTime")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Timetable> timetables = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -122,6 +126,31 @@ public class ClassHours implements Serializable {
 
     public void setNewStartTimes(Set<Reservation> reservations) {
         this.newStartTimes = reservations;
+    }
+
+    public Set<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public ClassHours timetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
+        return this;
+    }
+
+    public ClassHours addTimetable(Timetable timetable) {
+        this.timetables.add(timetable);
+        timetable.setStartTime(this);
+        return this;
+    }
+
+    public ClassHours removeTimetable(Timetable timetable) {
+        this.timetables.remove(timetable);
+        timetable.setStartTime(null);
+        return this;
+    }
+
+    public void setTimetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

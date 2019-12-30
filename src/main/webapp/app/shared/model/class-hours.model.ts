@@ -1,4 +1,5 @@
 import { IReservation } from 'app/shared/model/reservation.model';
+import { ITimetable } from 'app/shared/model/timetable.model';
 
 export interface IClassHours {
   id?: number;
@@ -6,6 +7,7 @@ export interface IClassHours {
   endTime?: string;
   originalStartTimes?: IReservation[];
   newStartTimes?: IReservation[];
+  timetables?: ITimetable[];
 }
 
 export class ClassHours implements IClassHours {
@@ -14,6 +16,7 @@ export class ClassHours implements IClassHours {
     public startTime?: string,
     public endTime?: string,
     public originalStartTimes?: IReservation[],
-    public newStartTimes?: IReservation[]
+    public newStartTimes?: IReservation[],
+    public timetables?: ITimetable[]
   ) {}
 }

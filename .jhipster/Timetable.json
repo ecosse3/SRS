@@ -31,6 +31,26 @@
             ],
             "otherEntityField": "number",
             "otherEntityRelationshipName": "timetable"
+        },
+        {
+            "relationshipName": "startTime",
+            "otherEntityName": "classHours",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "startTime",
+            "otherEntityRelationshipName": "timetable"
+        },
+        {
+            "relationshipName": "classDuration",
+            "otherEntityName": "classDuration",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "timetable"
         }
     ],
     "fields": [

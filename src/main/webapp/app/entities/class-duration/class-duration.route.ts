@@ -33,7 +33,7 @@ export const classDurationRoute: Routes = [
     path: '',
     component: ClassDurationComponent,
     data: {
-      authorities: ['ROLE_ADMIN'],
+      authorities: ['ROLE_USER'],
       pageTitle: 'srsApp.classDuration.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const classDurationRoute: Routes = [
       classDuration: ClassDurationResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN'],
+      authorities: ['ROLE_USER'],
       pageTitle: 'srsApp.classDuration.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const classDurationRoute: Routes = [
       classDuration: ClassDurationResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN'],
+      authorities: ['ROLE_USER'],
       pageTitle: 'srsApp.classDuration.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const classDurationRoute: Routes = [
       classDuration: ClassDurationResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN'],
+      authorities: ['ROLE_USER'],
       pageTitle: 'srsApp.classDuration.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const classDurationPopupRoute: Routes = [
       classDuration: ClassDurationResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN'],
+      authorities: ['ROLE_USER'],
       pageTitle: 'srsApp.classDuration.home.title'
     },
     canActivate: [UserRouteAccessService],

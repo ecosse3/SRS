@@ -15,6 +15,12 @@
             "otherEntityName": "reservation",
             "otherEntityRelationshipName": "classDuration",
             "relationshipName": "reservation"
+        },
+        {
+            "relationshipName": "timetable",
+            "otherEntityName": "timetable",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "classDuration"
         }
     ],
     "changelogDate": "20191118222408",
@@ -26,5 +32,7 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

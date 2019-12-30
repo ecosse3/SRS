@@ -2,6 +2,8 @@ import { Moment } from 'moment';
 import { ISchoolGroup } from 'app/shared/model/school-group.model';
 import { IBuilding } from 'app/shared/model/building.model';
 import { IClassRoom } from 'app/shared/model/class-room.model';
+import { IClassHours } from 'app/shared/model/class-hours.model';
+import { IClassDuration } from 'app/shared/model/class-duration.model';
 
 export interface ITimetable {
   id?: number;
@@ -10,6 +12,8 @@ export interface ITimetable {
   schoolGroup?: ISchoolGroup;
   building?: IBuilding;
   classRoom?: IClassRoom;
+  startTime?: IClassHours;
+  classDuration?: IClassDuration;
 }
 
 export class Timetable implements ITimetable {
@@ -19,6 +23,8 @@ export class Timetable implements ITimetable {
     public classDate?: Moment,
     public schoolGroup?: ISchoolGroup,
     public building?: IBuilding,
-    public classRoom?: IClassRoom
+    public classRoom?: IClassRoom,
+    public startTime?: IClassHours,
+    public classDuration?: IClassDuration
   ) {}
 }

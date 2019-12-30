@@ -16,6 +16,10 @@ import { IBuilding } from 'app/shared/model/building.model';
 import { BuildingService } from 'app/entities/building/building.service';
 import { IClassRoom } from 'app/shared/model/class-room.model';
 import { ClassRoomService } from 'app/entities/class-room/class-room.service';
+import { IClassHours } from 'app/shared/model/class-hours.model';
+import { ClassHoursService } from 'app/entities/class-hours/class-hours.service';
+import { IClassDuration } from 'app/shared/model/class-duration.model';
+import { ClassDurationService } from 'app/entities/class-duration/class-duration.service';
 
 @Component({
   selector: 'jhi-timetable-update',
@@ -29,6 +33,10 @@ export class TimetableUpdateComponent implements OnInit {
   buildings: IBuilding[];
 
   classrooms: IClassRoom[];
+
+  classhours: IClassHours[];
+
+  classdurations: IClassDuration[];
   classDateDp: any;
 
   editForm = this.fb.group({
@@ -37,7 +45,9 @@ export class TimetableUpdateComponent implements OnInit {
     classDate: [null, [Validators.required]],
     schoolGroup: [null, Validators.required],
     building: [null, Validators.required],
-    classRoom: [null, Validators.required]
+    classRoom: [null, Validators.required],
+    startTime: [null, Validators.required],
+    classDuration: [null, Validators.required]
   });
 
   constructor(
@@ -46,6 +56,8 @@ export class TimetableUpdateComponent implements OnInit {
     protected schoolGroupService: SchoolGroupService,
     protected buildingService: BuildingService,
     protected classRoomService: ClassRoomService,
+    protected classHoursService: ClassHoursService,
+    protected classDurationService: ClassDurationService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -76,6 +88,20 @@ export class TimetableUpdateComponent implements OnInit {
         map((response: HttpResponse<IClassRoom[]>) => response.body)
       )
       .subscribe((res: IClassRoom[]) => (this.classrooms = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.classHoursService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IClassHours[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IClassHours[]>) => response.body)
+      )
+      .subscribe((res: IClassHours[]) => (this.classhours = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.classDurationService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IClassDuration[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IClassDuration[]>) => response.body)
+      )
+      .subscribe((res: IClassDuration[]) => (this.classdurations = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(timetable: ITimetable) {
@@ -85,7 +111,9 @@ export class TimetableUpdateComponent implements OnInit {
       classDate: timetable.classDate,
       schoolGroup: timetable.schoolGroup,
       building: timetable.building,
-      classRoom: timetable.classRoom
+      classRoom: timetable.classRoom,
+      startTime: timetable.startTime,
+      classDuration: timetable.classDuration
     });
   }
 
@@ -111,7 +139,9 @@ export class TimetableUpdateComponent implements OnInit {
       classDate: this.editForm.get(['classDate']).value,
       schoolGroup: this.editForm.get(['schoolGroup']).value,
       building: this.editForm.get(['building']).value,
-      classRoom: this.editForm.get(['classRoom']).value
+      classRoom: this.editForm.get(['classRoom']).value,
+      startTime: this.editForm.get(['startTime']).value,
+      classDuration: this.editForm.get(['classDuration']).value
     };
   }
 
@@ -140,6 +170,14 @@ export class TimetableUpdateComponent implements OnInit {
   }
 
   trackClassRoomById(index: number, item: IClassRoom) {
+    return item.id;
+  }
+
+  trackClassHoursById(index: number, item: IClassHours) {
+    return item.id;
+  }
+
+  trackClassDurationById(index: number, item: IClassDuration) {
     return item.id;
   }
 }

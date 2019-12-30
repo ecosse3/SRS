@@ -31,6 +31,12 @@
             <column name="class_room_id" type="bigint">
                 <constraints nullable="false" />
             </column>
+            <column name="start_time_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="class_duration_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
@@ -59,6 +65,8 @@
             <column name="school_group_id" type="numeric"/>
             <column name="building_id" type="numeric"/>
             <column name="class_room_id" type="numeric"/>
+            <column name="start_time_id" type="numeric"/>
+            <column name="class_duration_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

@@ -75,6 +75,32 @@
                         This field is required.
                     </small>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.startTime" for="field_startTime">Start Time</label>
+                    <select class="form-control" id="field_startTime" name="startTime" formControlName="startTime">
+                        <option *ngIf="!editForm.get('startTime').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="classHoursOption.id === editForm.get('startTime').value?.id ? editForm.get('startTime').value : classHoursOption" *ngFor="let classHoursOption of classhours; trackBy: trackClassHoursById">{{classHoursOption.startTime}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('startTime').invalid && (editForm.get('startTime').dirty || editForm.get('startTime').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('startTime').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classDuration" for="field_classDuration">Class Duration</label>
+                    <select class="form-control" id="field_classDuration" name="classDuration" formControlName="classDuration">
+                        <option *ngIf="!editForm.get('classDuration').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="classDurationOption.id === editForm.get('classDuration').value?.id ? editForm.get('classDuration').value : classDurationOption" *ngFor="let classDurationOption of classdurations; trackBy: trackClassDurationById">{{classDurationOption.name}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('classDuration').invalid && (editForm.get('classDuration').dirty || editForm.get('classDuration').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('classDuration').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
