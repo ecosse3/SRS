@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Reservation.
+    -->
+    <changeSet id="20191118222406-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="reservation_id"
+                                 baseTableName="reservation_participants"
+                                 constraintName="fk_reservation_participants_reservation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reservation"/>
+
+        <addForeignKeyConstraint baseColumnNames="participants_id"
+                                 baseTableName="reservation_participants"
+                                 constraintName="fk_reservation_participants_participants_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+        <addForeignKeyConstraint baseColumnNames="school_group_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_school_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="school_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="building_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_building_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="building"/>
+
+        <addForeignKeyConstraint baseColumnNames="class_room_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_class_room_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_room"/>
+
+        <addForeignKeyConstraint baseColumnNames="original_start_time_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_original_start_time_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_hours"/>
+
+        <addForeignKeyConstraint baseColumnNames="new_start_time_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_new_start_time_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_hours"/>
+
+        <addForeignKeyConstraint baseColumnNames="class_duration_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_class_duration_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_duration"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="status"/>
+
+    </changeSet>
+</databaseChangeLog>

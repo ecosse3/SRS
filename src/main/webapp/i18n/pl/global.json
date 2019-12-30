@@ -19,6 +19,7 @@
         "classModel": "Class Model",
         "myReservations": "My Reservations",
         "status": "Status",
+        "timetable": "Timetable",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

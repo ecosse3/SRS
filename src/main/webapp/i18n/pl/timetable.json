@@ -1,0 +1,23 @@
+{
+  "srsApp": {
+    "timetable": {
+      "home": {
+        "title": "Timetable",
+        "createLabel": "Dodaj Timetable",
+        "createOrEditLabel": "Dodaj lub edytuj: Timetable",
+        "notFound": "No Timetables found"
+      },
+      "created": "Utworzono nowy obiekt typu Timetable z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Timetable z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Timetable z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Timetable {{ id }}?"
+      },
+      "detail": {
+        "title": "Timetable"
+      },
+      "subject": "Subject",
+      "classDate": "Class Date"
+    }
+  }
+}
