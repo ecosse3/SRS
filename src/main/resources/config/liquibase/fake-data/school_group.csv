@@ -1,11 +1,11 @@
-id;name
-1;mobile Fish
-2;Home Loan Account Table Computer
-3;Trace
-4;Savings Account alarm
-5;Tasty Metal Bacon
-6;red Chips Soap
-7;Home Loan Account
-8;web-readiness
-9;Namibia
-10;Steel zero administration
+id;name;major_id
+1;mobile Fish;1
+2;Home Loan Account Table Computer;2
+3;Trace;3
+4;Savings Account alarm;4
+5;Tasty Metal Bacon;5
+6;red Chips Soap;6
+7;Home Loan Account;7
+8;web-readiness;8
+9;Namibia;9
+10;Steel zero administration;10

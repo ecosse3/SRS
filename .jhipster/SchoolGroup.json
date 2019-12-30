@@ -31,6 +31,12 @@
             "relationshipValidateRules": "required",
             "relationshipName": "major",
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "timetable",
+            "otherEntityName": "timetable",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "schoolGroup"
         }
     ],
     "changelogDate": "20191118222403",
@@ -42,5 +48,7 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

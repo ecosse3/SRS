@@ -21,6 +21,7 @@
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="subject"><span jhiTranslate="srsApp.timetable.subject">Subject</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="classDate"><span jhiTranslate="srsApp.timetable.classDate">Class Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="schoolGroup.name"><span jhiTranslate="srsApp.timetable.schoolGroup">School Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -29,6 +30,11 @@
                 <td><a [routerLink]="['/timetable', timetable.id, 'view' ]">{{timetable.id}}</a></td>
                 <td>{{timetable.subject}}</td>
                 <td>{{timetable.classDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="timetable.schoolGroup">
+                        <a [routerLink]="['/school-group', timetable.schoolGroup?.id, 'view' ]" >{{timetable.schoolGroup?.name}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

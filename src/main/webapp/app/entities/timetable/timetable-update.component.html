@@ -36,6 +36,19 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.schoolGroup" for="field_schoolGroup">School Group</label>
+                    <select class="form-control" id="field_schoolGroup" name="schoolGroup" formControlName="schoolGroup">
+                        <option *ngIf="!editForm.get('schoolGroup').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="schoolGroupOption.id === editForm.get('schoolGroup').value?.id ? editForm.get('schoolGroup').value : schoolGroupOption" *ngFor="let schoolGroupOption of schoolgroups; trackBy: trackSchoolGroupById">{{schoolGroupOption.name}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('schoolGroup').invalid && (editForm.get('schoolGroup').dirty || editForm.get('schoolGroup').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('schoolGroup').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

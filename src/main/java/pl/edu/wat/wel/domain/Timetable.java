@@ -1,4 +1,5 @@
 package pl.edu.wat.wel.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -29,6 +30,11 @@ public class Timetable implements Serializable {
     @NotNull
     @Column(name = "class_date", nullable = false)
     private LocalDate classDate;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("timetables")
+    private SchoolGroup schoolGroup;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -63,6 +69,19 @@ public class Timetable implements Serializable {
 
     public void setClassDate(LocalDate classDate) {
         this.classDate = classDate;
+    }
+
+    public SchoolGroup getSchoolGroup() {
+        return schoolGroup;
+    }
+
+    public Timetable schoolGroup(SchoolGroup schoolGroup) {
+        this.schoolGroup = schoolGroup;
+        return this;
+    }
+
+    public void setSchoolGroup(SchoolGroup schoolGroup) {
+        this.schoolGroup = schoolGroup;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -13,6 +13,12 @@
                 <dd>
                     <span>{{timetable.classDate}}</span>
                 </dd>
+                <dt><span jhiTranslate="srsApp.timetable.schoolGroup">School Group</span></dt>
+                <dd>
+                    <div *ngIf="timetable.schoolGroup">
+                        <a [routerLink]="['/school-group', timetable.schoolGroup?.id, 'view']">{{timetable.schoolGroup?.name}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

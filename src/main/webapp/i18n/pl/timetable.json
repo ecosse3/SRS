@@ -17,7 +17,8 @@
         "title": "Timetable"
       },
       "subject": "Subject",
-      "classDate": "Class Date"
+      "classDate": "Class Date",
+      "schoolGroup": "School Group"
     }
   }
 }

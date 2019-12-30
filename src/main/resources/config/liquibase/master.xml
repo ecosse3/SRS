@@ -30,5 +30,6 @@
     <include file="config/liquibase/changelog/20191118222403_added_entity_constraints_SchoolGroup.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191118222405_added_entity_constraints_ClassRoom.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191118222406_added_entity_constraints_Reservation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191230114834_added_entity_constraints_Timetable.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

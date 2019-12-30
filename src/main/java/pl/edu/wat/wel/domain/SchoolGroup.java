@@ -41,6 +41,10 @@ public class SchoolGroup implements Serializable {
     @JsonIgnoreProperties("schoolGroups")
     private Major major;
 
+    @OneToMany(mappedBy = "schoolGroup")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Timetable> timetables = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -112,6 +116,31 @@ public class SchoolGroup implements Serializable {
 
     public void setMajor(Major major) {
         this.major = major;
+    }
+
+    public Set<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public SchoolGroup timetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
+        return this;
+    }
+
+    public SchoolGroup addTimetable(Timetable timetable) {
+        this.timetables.add(timetable);
+        timetable.setSchoolGroup(this);
+        return this;
+    }
+
+    public SchoolGroup removeTimetable(Timetable timetable) {
+        this.timetables.remove(timetable);
+        timetable.setSchoolGroup(null);
+        return this;
+    }
+
+    public void setTimetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

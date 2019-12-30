@@ -34,6 +34,8 @@ public class SchoolGroupCriteria implements Serializable, Criteria {
 
     private LongFilter majorId;
 
+    private LongFilter timetableId;
+
     public SchoolGroupCriteria(){
     }
 
@@ -43,6 +45,7 @@ public class SchoolGroupCriteria implements Serializable, Criteria {
         this.starostId = other.starostId == null ? null : other.starostId.copy();
         this.reservationSId = other.reservationSId == null ? null : other.reservationSId.copy();
         this.majorId = other.majorId == null ? null : other.majorId.copy();
+        this.timetableId = other.timetableId == null ? null : other.timetableId.copy();
     }
 
     @Override
@@ -90,6 +93,14 @@ public class SchoolGroupCriteria implements Serializable, Criteria {
         this.majorId = majorId;
     }
 
+    public LongFilter getTimetableId() {
+        return timetableId;
+    }
+
+    public void setTimetableId(LongFilter timetableId) {
+        this.timetableId = timetableId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -105,7 +116,8 @@ public class SchoolGroupCriteria implements Serializable, Criteria {
             Objects.equals(name, that.name) &&
             Objects.equals(starostId, that.starostId) &&
             Objects.equals(reservationSId, that.reservationSId) &&
-            Objects.equals(majorId, that.majorId);
+            Objects.equals(majorId, that.majorId) &&
+            Objects.equals(timetableId, that.timetableId);
     }
 
     @Override
@@ -115,7 +127,8 @@ public class SchoolGroupCriteria implements Serializable, Criteria {
         name,
         starostId,
         reservationSId,
-        majorId
+        majorId,
+        timetableId
         );
     }
 
@@ -127,6 +140,7 @@ public class SchoolGroupCriteria implements Serializable, Criteria {
                 (starostId != null ? "starostId=" + starostId + ", " : "") +
                 (reservationSId != null ? "reservationSId=" + reservationSId + ", " : "") +
                 (majorId != null ? "majorId=" + majorId + ", " : "") +
+                (timetableId != null ? "timetableId=" + timetableId + ", " : "") +
             "}";
     }
 

@@ -100,6 +100,10 @@ public class SchoolGroupQueryService extends QueryService<SchoolGroup> {
                 specification = specification.and(buildSpecification(criteria.getMajorId(),
                     root -> root.join(SchoolGroup_.major, JoinType.LEFT).get(Major_.id)));
             }
+            if (criteria.getTimetableId() != null) {
+                specification = specification.and(buildSpecification(criteria.getTimetableId(),
+                    root -> root.join(SchoolGroup_.timetables, JoinType.LEFT).get(Timetable_.id)));
+            }
         }
         return specification;
     }

@@ -19,7 +19,8 @@
       "name": "Nazwa grupy",
       "starost": "Starosta",
       "reservationS": "Rezerwacja S",
-      "major": "Kierunek"
+      "major": "Kierunek",
+      "timetable": "Plan zajęć"
     }
   }
 }
