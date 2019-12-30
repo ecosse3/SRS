@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="school_group"/>
 
+        <addForeignKeyConstraint baseColumnNames="building_id"
+                                 baseTableName="timetable"
+                                 constraintName="fk_timetable_building_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="building"/>
+
     </changeSet>
 </databaseChangeLog>

@@ -33,6 +33,8 @@ public class TimetableCriteria implements Serializable, Criteria {
 
     private LongFilter schoolGroupId;
 
+    private LongFilter buildingId;
+
     public TimetableCriteria(){
     }
 
@@ -41,6 +43,7 @@ public class TimetableCriteria implements Serializable, Criteria {
         this.subject = other.subject == null ? null : other.subject.copy();
         this.classDate = other.classDate == null ? null : other.classDate.copy();
         this.schoolGroupId = other.schoolGroupId == null ? null : other.schoolGroupId.copy();
+        this.buildingId = other.buildingId == null ? null : other.buildingId.copy();
     }
 
     @Override
@@ -80,6 +83,14 @@ public class TimetableCriteria implements Serializable, Criteria {
         this.schoolGroupId = schoolGroupId;
     }
 
+    public LongFilter getBuildingId() {
+        return buildingId;
+    }
+
+    public void setBuildingId(LongFilter buildingId) {
+        this.buildingId = buildingId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -94,7 +105,8 @@ public class TimetableCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(subject, that.subject) &&
             Objects.equals(classDate, that.classDate) &&
-            Objects.equals(schoolGroupId, that.schoolGroupId);
+            Objects.equals(schoolGroupId, that.schoolGroupId) &&
+            Objects.equals(buildingId, that.buildingId);
     }
 
     @Override
@@ -103,7 +115,8 @@ public class TimetableCriteria implements Serializable, Criteria {
         id,
         subject,
         classDate,
-        schoolGroupId
+        schoolGroupId,
+        buildingId
         );
     }
 
@@ -114,6 +127,7 @@ public class TimetableCriteria implements Serializable, Criteria {
                 (subject != null ? "subject=" + subject + ", " : "") +
                 (classDate != null ? "classDate=" + classDate + ", " : "") +
                 (schoolGroupId != null ? "schoolGroupId=" + schoolGroupId + ", " : "") +
+                (buildingId != null ? "buildingId=" + buildingId + ", " : "") +
             "}";
     }
 

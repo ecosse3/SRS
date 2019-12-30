@@ -18,7 +18,8 @@
       },
       "number": "Number",
       "classRoomB": "Class Room B",
-      "reservationB": "Reservation B"
+      "reservationB": "Reservation B",
+      "timetable": "Timetable"
     }
   }
 }

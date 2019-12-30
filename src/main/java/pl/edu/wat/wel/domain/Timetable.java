@@ -36,6 +36,11 @@ public class Timetable implements Serializable {
     @JsonIgnoreProperties("timetables")
     private SchoolGroup schoolGroup;
 
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("timetables")
+    private Building building;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -82,6 +87,19 @@ public class Timetable implements Serializable {
 
     public void setSchoolGroup(SchoolGroup schoolGroup) {
         this.schoolGroup = schoolGroup;
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public Timetable building(Building building) {
+        this.building = building;
+        return this;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

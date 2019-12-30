@@ -11,6 +11,16 @@
             ],
             "otherEntityField": "name",
             "otherEntityRelationshipName": "timetable"
+        },
+        {
+            "relationshipName": "building",
+            "otherEntityName": "building",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "number",
+            "otherEntityRelationshipName": "timetable"
         }
     ],
     "fields": [

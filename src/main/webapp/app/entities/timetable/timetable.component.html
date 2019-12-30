@@ -22,6 +22,7 @@
             <th scope="col"  jhiSortBy="subject"><span jhiTranslate="srsApp.timetable.subject">Subject</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="classDate"><span jhiTranslate="srsApp.timetable.classDate">Class Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="schoolGroup.name"><span jhiTranslate="srsApp.timetable.schoolGroup">School Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="building.number"><span jhiTranslate="srsApp.timetable.building">Building</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -33,6 +34,11 @@
                 <td>
                     <div *ngIf="timetable.schoolGroup">
                         <a [routerLink]="['/school-group', timetable.schoolGroup?.id, 'view' ]" >{{timetable.schoolGroup?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="timetable.building">
+                        <a [routerLink]="['/building', timetable.building?.id, 'view' ]" >{{timetable.building?.number}}</a>
                     </div>
                 </td>
                 <td class="text-right">

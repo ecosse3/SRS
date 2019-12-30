@@ -32,6 +32,8 @@ public class BuildingCriteria implements Serializable, Criteria {
 
     private LongFilter reservationBId;
 
+    private LongFilter timetableId;
+
     public BuildingCriteria(){
     }
 
@@ -40,6 +42,7 @@ public class BuildingCriteria implements Serializable, Criteria {
         this.number = other.number == null ? null : other.number.copy();
         this.classRoomBId = other.classRoomBId == null ? null : other.classRoomBId.copy();
         this.reservationBId = other.reservationBId == null ? null : other.reservationBId.copy();
+        this.timetableId = other.timetableId == null ? null : other.timetableId.copy();
     }
 
     @Override
@@ -79,6 +82,14 @@ public class BuildingCriteria implements Serializable, Criteria {
         this.reservationBId = reservationBId;
     }
 
+    public LongFilter getTimetableId() {
+        return timetableId;
+    }
+
+    public void setTimetableId(LongFilter timetableId) {
+        this.timetableId = timetableId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -93,7 +104,8 @@ public class BuildingCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(number, that.number) &&
             Objects.equals(classRoomBId, that.classRoomBId) &&
-            Objects.equals(reservationBId, that.reservationBId);
+            Objects.equals(reservationBId, that.reservationBId) &&
+            Objects.equals(timetableId, that.timetableId);
     }
 
     @Override
@@ -102,7 +114,8 @@ public class BuildingCriteria implements Serializable, Criteria {
         id,
         number,
         classRoomBId,
-        reservationBId
+        reservationBId,
+        timetableId
         );
     }
 
@@ -113,6 +126,7 @@ public class BuildingCriteria implements Serializable, Criteria {
                 (number != null ? "number=" + number + ", " : "") +
                 (classRoomBId != null ? "classRoomBId=" + classRoomBId + ", " : "") +
                 (reservationBId != null ? "reservationBId=" + reservationBId + ", " : "") +
+                (timetableId != null ? "timetableId=" + timetableId + ", " : "") +
             "}";
     }
 

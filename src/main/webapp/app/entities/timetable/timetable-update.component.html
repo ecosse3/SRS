@@ -49,6 +49,19 @@
                         This field is required.
                     </small>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.building" for="field_building">Building</label>
+                    <select class="form-control" id="field_building" name="building" formControlName="building">
+                        <option *ngIf="!editForm.get('building').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="buildingOption.id === editForm.get('building').value?.id ? editForm.get('building').value : buildingOption" *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">{{buildingOption.number}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('building').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

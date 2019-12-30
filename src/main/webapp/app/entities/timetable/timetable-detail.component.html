@@ -19,6 +19,12 @@
                         <a [routerLink]="['/school-group', timetable.schoolGroup?.id, 'view']">{{timetable.schoolGroup?.name}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="srsApp.timetable.building">Building</span></dt>
+                <dd>
+                    <div *ngIf="timetable.building">
+                        <a [routerLink]="['/building', timetable.building?.id, 'view']">{{timetable.building?.number}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -35,6 +35,10 @@ public class Building implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> reservationBS = new HashSet<>();
 
+    @OneToMany(mappedBy = "building")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Timetable> timetables = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -105,6 +109,31 @@ public class Building implements Serializable {
 
     public void setReservationBS(Set<Reservation> reservations) {
         this.reservationBS = reservations;
+    }
+
+    public Set<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public Building timetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
+        return this;
+    }
+
+    public Building addTimetable(Timetable timetable) {
+        this.timetables.add(timetable);
+        timetable.setBuilding(this);
+        return this;
+    }
+
+    public Building removeTimetable(Timetable timetable) {
+        this.timetables.remove(timetable);
+        timetable.setBuilding(null);
+        return this;
+    }
+
+    public void setTimetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

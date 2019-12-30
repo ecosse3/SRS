@@ -18,7 +18,8 @@
       },
       "subject": "Subject",
       "classDate": "Class Date",
-      "schoolGroup": "School Group"
+      "schoolGroup": "School Group",
+      "building": "Building"
     }
   }
 }

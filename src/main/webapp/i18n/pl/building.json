@@ -18,7 +18,8 @@
       },
       "number": "Numer",
       "classRoomB": "Sala Lekcyjna B",
-      "reservationB": "Rezerwacja B"
+      "reservationB": "Rezerwacja B",
+      "timetable": "Plan zajęć"
     }
   }
 }

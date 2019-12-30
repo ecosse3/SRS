@@ -96,6 +96,10 @@ public class BuildingQueryService extends QueryService<Building> {
                 specification = specification.and(buildSpecification(criteria.getReservationBId(),
                     root -> root.join(Building_.reservationBS, JoinType.LEFT).get(Reservation_.id)));
             }
+            if (criteria.getTimetableId() != null) {
+                specification = specification.and(buildSpecification(criteria.getTimetableId(),
+                    root -> root.join(Building_.timetables, JoinType.LEFT).get(Timetable_.id)));
+            }
         }
         return specification;
     }
