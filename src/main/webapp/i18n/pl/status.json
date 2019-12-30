@@ -5,7 +5,7 @@
         "title": "Status",
         "createLabel": "Dodaj Status",
         "createOrEditLabel": "Dodaj lub edytuj: Status",
-        "notFound": "No Statuses found"
+        "notFound": "Nie znaleziono statusów"
       },
       "created": "Utworzono nowy obiekt typu Status z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Status z identyfikatorem {{ param }}",
@@ -16,9 +16,9 @@
       "detail": {
         "title": "Status"
       },
-      "polishName": "Polish Name",
-      "englishName": "English Name",
-      "reservation": "Reservation"
+      "polishName": "Nazwa polska",
+      "englishName": "Nazwa angielska",
+      "reservation": "Rezerwacja"
     }
   }
 }

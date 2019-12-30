@@ -2,27 +2,27 @@
   "srsApp": {
     "timetable": {
       "home": {
-        "title": "Timetable",
-        "createLabel": "Dodaj Timetable",
-        "createOrEditLabel": "Dodaj lub edytuj: Timetable",
-        "notFound": "No Timetables found"
+        "title": "Plan zajęć",
+        "createLabel": "Dodaj wpis do planu zajęć",
+        "createOrEditLabel": "Dodaj lub edytuj: Plan zajęć",
+        "notFound": "Nie znaleziono wpisów w planach zajęć"
       },
-      "created": "Utworzono nowy obiekt typu Timetable z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Timetable z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Timetable z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Plan zajęć z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Plan zajęć z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Plan zajęć z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Timetable {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Plan zajęć {{ id }}?"
       },
       "detail": {
-        "title": "Timetable"
+        "title": "Plan zajęć"
       },
-      "subject": "Subject",
-      "classDate": "Class Date",
-      "schoolGroup": "School Group",
-      "building": "Building",
-      "classRoom": "Class Room",
-      "startTime": "Start Time",
-      "classDuration": "Class Duration"
+      "subject": "Przedmiot",
+      "classDate": "Data zajęcia",
+      "schoolGroup": "Grupa studencka",
+      "building": "Budynek",
+      "classRoom": "Sala lekcyjna",
+      "startTime": "Godzina rozpoczęcia",
+      "classDuration": "Długość zajęć"
     }
   }
 }
