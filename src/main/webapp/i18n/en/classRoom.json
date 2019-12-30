@@ -20,7 +20,8 @@
       "maximumSize": "Maximum Size",
       "reservationC": "Reservation C",
       "classModel": "Class Model",
-      "building": "Building"
+      "building": "Building",
+      "timetable": "Timetable"
     }
   }
 }

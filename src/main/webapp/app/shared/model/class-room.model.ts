@@ -1,6 +1,7 @@
 import { IReservation } from 'app/shared/model/reservation.model';
 import { IClassModel } from 'app/shared/model/class-model.model';
 import { IBuilding } from 'app/shared/model/building.model';
+import { ITimetable } from 'app/shared/model/timetable.model';
 
 export interface IClassRoom {
   id?: number;
@@ -9,6 +10,7 @@ export interface IClassRoom {
   reservationCS?: IReservation[];
   classModels?: IClassModel[];
   building?: IBuilding;
+  timetables?: ITimetable[];
 }
 
 export class ClassRoom implements IClassRoom {
@@ -18,6 +20,7 @@ export class ClassRoom implements IClassRoom {
     public maximumSize?: number,
     public reservationCS?: IReservation[],
     public classModels?: IClassModel[],
-    public building?: IBuilding
+    public building?: IBuilding,
+    public timetables?: ITimetable[]
   ) {}
 }

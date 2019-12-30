@@ -72,6 +72,7 @@ public class CacheConfiguration {
             createCache(cm, pl.edu.wat.wel.domain.Timetable.class.getName());
             createCache(cm, pl.edu.wat.wel.domain.SchoolGroup.class.getName() + ".timetables");
             createCache(cm, pl.edu.wat.wel.domain.Building.class.getName() + ".timetables");
+            createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName() + ".timetables");
             // jhipster-needle-ehcache-add-entry
         };
     }

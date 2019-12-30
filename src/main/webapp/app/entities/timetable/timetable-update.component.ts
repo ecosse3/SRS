@@ -14,6 +14,8 @@ import { ISchoolGroup } from 'app/shared/model/school-group.model';
 import { SchoolGroupService } from 'app/entities/school-group/school-group.service';
 import { IBuilding } from 'app/shared/model/building.model';
 import { BuildingService } from 'app/entities/building/building.service';
+import { IClassRoom } from 'app/shared/model/class-room.model';
+import { ClassRoomService } from 'app/entities/class-room/class-room.service';
 
 @Component({
   selector: 'jhi-timetable-update',
@@ -25,6 +27,8 @@ export class TimetableUpdateComponent implements OnInit {
   schoolgroups: ISchoolGroup[];
 
   buildings: IBuilding[];
+
+  classrooms: IClassRoom[];
   classDateDp: any;
 
   editForm = this.fb.group({
@@ -32,7 +36,8 @@ export class TimetableUpdateComponent implements OnInit {
     subject: [null, [Validators.required]],
     classDate: [null, [Validators.required]],
     schoolGroup: [null, Validators.required],
-    building: [null, Validators.required]
+    building: [null, Validators.required],
+    classRoom: [null, Validators.required]
   });
 
   constructor(
@@ -40,6 +45,7 @@ export class TimetableUpdateComponent implements OnInit {
     protected timetableService: TimetableService,
     protected schoolGroupService: SchoolGroupService,
     protected buildingService: BuildingService,
+    protected classRoomService: ClassRoomService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -63,6 +69,13 @@ export class TimetableUpdateComponent implements OnInit {
         map((response: HttpResponse<IBuilding[]>) => response.body)
       )
       .subscribe((res: IBuilding[]) => (this.buildings = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.classRoomService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IClassRoom[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IClassRoom[]>) => response.body)
+      )
+      .subscribe((res: IClassRoom[]) => (this.classrooms = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(timetable: ITimetable) {
@@ -71,7 +84,8 @@ export class TimetableUpdateComponent implements OnInit {
       subject: timetable.subject,
       classDate: timetable.classDate,
       schoolGroup: timetable.schoolGroup,
-      building: timetable.building
+      building: timetable.building,
+      classRoom: timetable.classRoom
     });
   }
 
@@ -96,7 +110,8 @@ export class TimetableUpdateComponent implements OnInit {
       subject: this.editForm.get(['subject']).value,
       classDate: this.editForm.get(['classDate']).value,
       schoolGroup: this.editForm.get(['schoolGroup']).value,
-      building: this.editForm.get(['building']).value
+      building: this.editForm.get(['building']).value,
+      classRoom: this.editForm.get(['classRoom']).value
     };
   }
 
@@ -121,6 +136,10 @@ export class TimetableUpdateComponent implements OnInit {
   }
 
   trackBuildingById(index: number, item: IBuilding) {
+    return item.id;
+  }
+
+  trackClassRoomById(index: number, item: IClassRoom) {
     return item.id;
   }
 }

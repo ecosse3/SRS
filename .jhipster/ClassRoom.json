@@ -41,6 +41,12 @@
             "relationshipValidateRules": "required",
             "relationshipName": "building",
             "otherEntityField": "number"
+        },
+        {
+            "relationshipName": "timetable",
+            "otherEntityName": "timetable",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "classRoom"
         }
     ],
     "changelogDate": "20191118222405",
@@ -52,5 +58,7 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

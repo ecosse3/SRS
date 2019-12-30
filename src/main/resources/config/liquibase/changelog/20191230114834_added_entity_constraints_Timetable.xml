@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="building"/>
 
+        <addForeignKeyConstraint baseColumnNames="class_room_id"
+                                 baseTableName="timetable"
+                                 constraintName="fk_timetable_class_room_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_room"/>
+
     </changeSet>
 </databaseChangeLog>

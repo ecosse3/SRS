@@ -21,6 +21,16 @@
             ],
             "otherEntityField": "number",
             "otherEntityRelationshipName": "timetable"
+        },
+        {
+            "relationshipName": "classRoom",
+            "otherEntityName": "classRoom",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "number",
+            "otherEntityRelationshipName": "timetable"
         }
     ],
     "fields": [

@@ -19,7 +19,8 @@
       "subject": "Subject",
       "classDate": "Class Date",
       "schoolGroup": "School Group",
-      "building": "Building"
+      "building": "Building",
+      "classRoom": "Class Room"
     }
   }
 }
