@@ -51,6 +51,13 @@
             ],
             "otherEntityField": "name",
             "otherEntityRelationshipName": "timetable"
+        },
+        {
+            "relationshipName": "endTime",
+            "otherEntityName": "classHours",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "endTime",
+            "otherEntityRelationshipName": "timetable"
         }
     ],
     "fields": [

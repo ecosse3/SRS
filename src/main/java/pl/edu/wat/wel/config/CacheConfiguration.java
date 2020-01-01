@@ -75,6 +75,7 @@ public class CacheConfiguration {
             createCache(cm, pl.edu.wat.wel.domain.ClassRoom.class.getName() + ".timetables");
             createCache(cm, pl.edu.wat.wel.domain.ClassHours.class.getName() + ".timetables");
             createCache(cm, pl.edu.wat.wel.domain.ClassDuration.class.getName() + ".timetables");
+            createCache(cm, pl.edu.wat.wel.domain.ClassHours.class.getName() + ".tt_endTimes");
             // jhipster-needle-ehcache-add-entry
         };
     }

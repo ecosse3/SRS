@@ -26,6 +26,7 @@
             <th scope="col"  jhiSortBy="classRoom.number"><span jhiTranslate="srsApp.timetable.classRoom">Class Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="startTime.startTime"><span jhiTranslate="srsApp.timetable.startTime">Start Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="classDuration.name"><span jhiTranslate="srsApp.timetable.classDuration">Class Duration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="endTime.endTime"><span jhiTranslate="srsApp.timetable.endTime">End Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -57,6 +58,11 @@
                 <td>
                     <div *ngIf="timetable.classDuration">
                         <a [routerLink]="['/class-duration', timetable.classDuration?.id, 'view' ]" >{{timetable.classDuration?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="timetable.endTime">
+                        <a [routerLink]="['/class-hours', timetable.endTime?.id, 'view' ]" >{{timetable.endTime?.endTime}}</a>
                     </div>
                 </td>
                 <td class="text-right">

@@ -7,12 +7,13 @@
         "createOrEditLabel": "Dodaj lub edytuj: Rezerwacja",
         "notFound": "Nie znaleziono rezerwacji"
       },
-      "created": "Utworzono nowy obiekt typu Rezerwacja z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Rezerwacja z identyfikatorem {{ param }}",
+      "created": "Utworzono nową Rezerwacje z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono rezerwację z identyfikatorem {{ param }}",
       "deleted": "Usunięto obiekt typu Rezerwacja z identyfikatorem {{ param }}",
       "delete": {
         "question": "Czy na pewno chcesz usunąć rezerwację {{ id }}?"
       },
+      "occupied": "Wybrana sala jest zajęta w dniu {{ date }} o godzinie {{ hour }}.",
       "detail": {
         "title": "Rezerwacja"
       },

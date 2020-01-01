@@ -47,7 +47,8 @@ export class TimetableUpdateComponent implements OnInit {
     building: [null, Validators.required],
     classRoom: [null, Validators.required],
     startTime: [null, Validators.required],
-    classDuration: [null, Validators.required]
+    classDuration: [null, Validators.required],
+    endTime: []
   });
 
   constructor(
@@ -113,7 +114,8 @@ export class TimetableUpdateComponent implements OnInit {
       building: timetable.building,
       classRoom: timetable.classRoom,
       startTime: timetable.startTime,
-      classDuration: timetable.classDuration
+      classDuration: timetable.classDuration,
+      endTime: timetable.endTime
     });
   }
 
@@ -141,7 +143,8 @@ export class TimetableUpdateComponent implements OnInit {
       building: this.editForm.get(['building']).value,
       classRoom: this.editForm.get(['classRoom']).value,
       startTime: this.editForm.get(['startTime']).value,
-      classDuration: this.editForm.get(['classDuration']).value
+      classDuration: this.editForm.get(['classDuration']).value,
+      endTime: this.editForm.get(['endTime']).value
     };
   }
 

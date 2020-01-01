@@ -13,6 +13,7 @@
       "delete": {
         "question": "Are you sure you want to delete Reservation {{ id }}?"
       },
+      "occupied": "Selected class room is occupied on {{ date }} at {{ hour }}.",
       "detail": {
         "title": "Reservation"
       },

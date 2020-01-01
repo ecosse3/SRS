@@ -5,6 +5,9 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
+html {
+  scroll-behavior: smooth;
+}
 
 body,
 h1,
@@ -132,6 +135,7 @@ Custom alerts for notification
 .alerts {
   .alert {
     text-overflow: ellipsis;
+
     pre {
       background: none;
       border: none;
@@ -140,22 +144,28 @@ Custom alerts for notification
       padding: 0;
       margin: 0;
     }
+
     .popover pre {
       font-size: 10px;
     }
   }
+
   .jhi-toast {
     position: fixed;
     width: 100%;
+
     &.left {
       left: 5px;
     }
+
     &.right {
       right: 5px;
     }
+
     &.top {
       top: 55px;
     }
+
     &.bottom {
       bottom: 55px;
     }
@@ -182,6 +192,7 @@ entity detail page css
     dt {
       margin-bottom: 15px;
     }
+
     dd {
       border-bottom: 1px solid #eee;
       padding-left: 180px;
@@ -225,9 +236,11 @@ multiselect2
 .selected-list .c-list .c-token {
   background: #3e8acc;
 }
+
 .selected-list .c-list .c-token .c-label {
   color: #fff;
 }
+
 .selected-list .c-list .c-token .c-remove svg {
   fill: #fff;
 }
@@ -268,13 +281,16 @@ multiselect2
 .list-filter {
   border-bottom: 1px solid #ccc;
 }
+
 .list-filter .c-search,
 .list-filter .c-clear {
   top: 5px !important;
 }
+
 .list-filter .c-search svg {
   fill: #888;
 }
+
 .list-filter .c-clear svg {
   fill: #888;
 }

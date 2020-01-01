@@ -34,6 +34,12 @@
             "otherEntityName": "timetable",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "startTime"
+        },
+        {
+            "relationshipName": "tt_endTime",
+            "otherEntityName": "timetable",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "endTime"
         }
     ],
     "changelogDate": "20191118222407",

@@ -22,6 +22,7 @@
       "building": "Budynek",
       "classRoom": "Sala lekcyjna",
       "startTime": "Godzina rozpoczęcia",
+      "endTime": "Godzina zakończenia",
       "classDuration": "Długość zajęć"
     }
   }

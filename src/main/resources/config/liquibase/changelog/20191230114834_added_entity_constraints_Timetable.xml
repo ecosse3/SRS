@@ -38,5 +38,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="class_duration"/>
 
+        <addForeignKeyConstraint baseColumnNames="end_time_id"
+                                 baseTableName="timetable"
+                                 constraintName="fk_timetable_end_time_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_hours"/>
+
     </changeSet>
 </databaseChangeLog>

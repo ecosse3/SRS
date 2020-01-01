@@ -43,6 +43,12 @@
                         <a [routerLink]="['/class-duration', timetable.classDuration?.id, 'view']">{{timetable.classDuration?.name}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="srsApp.timetable.endTime">End Time</span></dt>
+                <dd>
+                    <div *ngIf="timetable.endTime">
+                        <a [routerLink]="['/class-hours', timetable.endTime?.id, 'view']">{{timetable.endTime?.endTime}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

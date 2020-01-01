@@ -14,6 +14,7 @@ export interface ITimetable {
   classRoom?: IClassRoom;
   startTime?: IClassHours;
   classDuration?: IClassDuration;
+  endTime?: IClassHours;
 }
 
 export class Timetable implements ITimetable {
@@ -25,6 +26,7 @@ export class Timetable implements ITimetable {
     public building?: IBuilding,
     public classRoom?: IClassRoom,
     public startTime?: IClassHours,
-    public classDuration?: IClassDuration
+    public classDuration?: IClassDuration,
+    public endTime?: IClassHours
   ) {}
 }

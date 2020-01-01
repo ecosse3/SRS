@@ -8,6 +8,7 @@ export interface IClassHours {
   originalStartTimes?: IReservation[];
   newStartTimes?: IReservation[];
   timetables?: ITimetable[];
+  tt_endTimes?: ITimetable[];
 }
 
 export class ClassHours implements IClassHours {
@@ -17,6 +18,7 @@ export class ClassHours implements IClassHours {
     public endTime?: string,
     public originalStartTimes?: IReservation[],
     public newStartTimes?: IReservation[],
-    public timetables?: ITimetable[]
+    public timetables?: ITimetable[],
+    public tt_endTimes?: ITimetable[]
   ) {}
 }

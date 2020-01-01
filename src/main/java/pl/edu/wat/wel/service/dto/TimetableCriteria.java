@@ -41,6 +41,8 @@ public class TimetableCriteria implements Serializable, Criteria {
 
     private LongFilter classDurationId;
 
+    private LongFilter endTimeId;
+
     public TimetableCriteria(){
     }
 
@@ -53,6 +55,7 @@ public class TimetableCriteria implements Serializable, Criteria {
         this.classRoomId = other.classRoomId == null ? null : other.classRoomId.copy();
         this.startTimeId = other.startTimeId == null ? null : other.startTimeId.copy();
         this.classDurationId = other.classDurationId == null ? null : other.classDurationId.copy();
+        this.endTimeId = other.endTimeId == null ? null : other.endTimeId.copy();
     }
 
     @Override
@@ -124,6 +127,14 @@ public class TimetableCriteria implements Serializable, Criteria {
         this.classDurationId = classDurationId;
     }
 
+    public LongFilter getEndTimeId() {
+        return endTimeId;
+    }
+
+    public void setEndTimeId(LongFilter endTimeId) {
+        this.endTimeId = endTimeId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -142,7 +153,8 @@ public class TimetableCriteria implements Serializable, Criteria {
             Objects.equals(buildingId, that.buildingId) &&
             Objects.equals(classRoomId, that.classRoomId) &&
             Objects.equals(startTimeId, that.startTimeId) &&
-            Objects.equals(classDurationId, that.classDurationId);
+            Objects.equals(classDurationId, that.classDurationId) &&
+            Objects.equals(endTimeId, that.endTimeId);
     }
 
     @Override
@@ -155,7 +167,8 @@ public class TimetableCriteria implements Serializable, Criteria {
         buildingId,
         classRoomId,
         startTimeId,
-        classDurationId
+        classDurationId,
+        endTimeId
         );
     }
 
@@ -170,6 +183,7 @@ public class TimetableCriteria implements Serializable, Criteria {
                 (classRoomId != null ? "classRoomId=" + classRoomId + ", " : "") +
                 (startTimeId != null ? "startTimeId=" + startTimeId + ", " : "") +
                 (classDurationId != null ? "classDurationId=" + classDurationId + ", " : "") +
+                (endTimeId != null ? "endTimeId=" + endTimeId + ", " : "") +
             "}";
     }
 

@@ -22,7 +22,8 @@
       "building": "Building",
       "classRoom": "Class Room",
       "startTime": "Start Time",
-      "classDuration": "Class Duration"
+      "classDuration": "Class Duration",
+      "endTime": "End Time"
     }
   }
 }

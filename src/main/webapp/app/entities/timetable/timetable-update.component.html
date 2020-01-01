@@ -1,112 +1,159 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-timetable-heading" jhiTranslate="srsApp.timetable.home.createOrEditLabel">Create or edit a Timetable</h2>
+            <h2 id="jhi-timetable-heading" jhiTranslate="srsApp.timetable.home.createOrEditLabel">Create or edit a
+                Timetable</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.subject" for="field_subject">Subject</label>
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.subject"
+                        for="field_subject">Subject</label>
                     <input type="text" class="form-control" name="subject" id="field_subject"
-                           formControlName="subject"/>
-                    <div *ngIf="editForm.get('subject').invalid && (editForm.get('subject').dirty || editForm.get('subject').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('subject').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                        formControlName="subject" />
+                    <div
+                        *ngIf="editForm.get('subject').invalid && (editForm.get('subject').dirty || editForm.get('subject').touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('subject').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classDate" for="field_classDate">Class Date</label>
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classDate"
+                        for="field_classDate">Class Date</label>
                     <div class="input-group">
-                        <input id="field_classDate" type="text" class="form-control" name="classDate" ngbDatepicker  #classDateDp="ngbDatepicker" formControlName="classDate"/>
+                        <input id="field_classDate" type="text" class="form-control" name="classDate" ngbDatepicker
+                            #classDateDp="ngbDatepicker" formControlName="classDate" />
                         <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="classDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                            <button type="button" class="btn btn-secondary" (click)="classDateDp.toggle()">
+                                <fa-icon [icon]="'calendar-alt'"></fa-icon>
+                            </button>
                         </span>
                     </div>
-                    <div *ngIf="editForm.get('classDate').invalid && (editForm.get('classDate').dirty || editForm.get('classDate').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('classDate').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                    <div
+                        *ngIf="editForm.get('classDate').invalid && (editForm.get('classDate').dirty || editForm.get('classDate').touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('classDate').errors.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.schoolGroup" for="field_schoolGroup">School Group</label>
-                    <select class="form-control" id="field_schoolGroup" name="schoolGroup" formControlName="schoolGroup">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.schoolGroup"
+                        for="field_schoolGroup">School Group</label>
+                    <select class="form-control" id="field_schoolGroup" name="schoolGroup"
+                        formControlName="schoolGroup">
                         <option *ngIf="!editForm.get('schoolGroup').value" [ngValue]="null" selected></option>
-                        <option [ngValue]="schoolGroupOption.id === editForm.get('schoolGroup').value?.id ? editForm.get('schoolGroup').value : schoolGroupOption" *ngFor="let schoolGroupOption of schoolgroups; trackBy: trackSchoolGroupById">{{schoolGroupOption.name}}</option>
+                        <option
+                            [ngValue]="schoolGroupOption.id === editForm.get('schoolGroup').value?.id ? editForm.get('schoolGroup').value : schoolGroupOption"
+                            *ngFor="let schoolGroupOption of schoolgroups; trackBy: trackSchoolGroupById">
+                            {{schoolGroupOption.name}}</option>
                     </select>
                 </div>
-                <div *ngIf="editForm.get('schoolGroup').invalid && (editForm.get('schoolGroup').dirty || editForm.get('schoolGroup').touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('schoolGroup').errors.required" jhiTranslate="entity.validation.required">
+                <div
+                    *ngIf="editForm.get('schoolGroup').invalid && (editForm.get('schoolGroup').dirty || editForm.get('schoolGroup').touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('schoolGroup').errors.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.building" for="field_building">Building</label>
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.building"
+                        for="field_building">Building</label>
                     <select class="form-control" id="field_building" name="building" formControlName="building">
                         <option *ngIf="!editForm.get('building').value" [ngValue]="null" selected></option>
-                        <option [ngValue]="buildingOption.id === editForm.get('building').value?.id ? editForm.get('building').value : buildingOption" *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">{{buildingOption.number}}</option>
+                        <option
+                            [ngValue]="buildingOption.id === editForm.get('building').value?.id ? editForm.get('building').value : buildingOption"
+                            *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">
+                            {{buildingOption.number}}</option>
                     </select>
                 </div>
-                <div *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('building').errors.required" jhiTranslate="entity.validation.required">
+                <div
+                    *ngIf="editForm.get('building').invalid && (editForm.get('building').dirty || editForm.get('building').touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('building').errors.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classRoom" for="field_classRoom">Class Room</label>
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classRoom"
+                        for="field_classRoom">Class Room</label>
                     <select class="form-control" id="field_classRoom" name="classRoom" formControlName="classRoom">
                         <option *ngIf="!editForm.get('classRoom').value" [ngValue]="null" selected></option>
-                        <option [ngValue]="classRoomOption.id === editForm.get('classRoom').value?.id ? editForm.get('classRoom').value : classRoomOption" *ngFor="let classRoomOption of classrooms; trackBy: trackClassRoomById">{{classRoomOption.number}}</option>
+                        <option
+                            [ngValue]="classRoomOption.id === editForm.get('classRoom').value?.id ? editForm.get('classRoom').value : classRoomOption"
+                            *ngFor="let classRoomOption of classrooms; trackBy: trackClassRoomById">
+                            {{classRoomOption.number}}</option>
                     </select>
                 </div>
-                <div *ngIf="editForm.get('classRoom').invalid && (editForm.get('classRoom').dirty || editForm.get('classRoom').touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('classRoom').errors.required" jhiTranslate="entity.validation.required">
+                <div
+                    *ngIf="editForm.get('classRoom').invalid && (editForm.get('classRoom').dirty || editForm.get('classRoom').touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('classRoom').errors.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.startTime" for="field_startTime">Start Time</label>
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.startTime"
+                        for="field_startTime">Start Time</label>
                     <select class="form-control" id="field_startTime" name="startTime" formControlName="startTime">
                         <option *ngIf="!editForm.get('startTime').value" [ngValue]="null" selected></option>
-                        <option [ngValue]="classHoursOption.id === editForm.get('startTime').value?.id ? editForm.get('startTime').value : classHoursOption" *ngFor="let classHoursOption of classhours; trackBy: trackClassHoursById">{{classHoursOption.startTime}}</option>
+                        <option
+                            [ngValue]="classHoursOption.id === editForm.get('startTime').value?.id ? editForm.get('startTime').value : classHoursOption"
+                            *ngFor="let classHoursOption of classhours; trackBy: trackClassHoursById">
+                            {{classHoursOption.startTime}}</option>
                     </select>
                 </div>
-                <div *ngIf="editForm.get('startTime').invalid && (editForm.get('startTime').dirty || editForm.get('startTime').touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('startTime').errors.required" jhiTranslate="entity.validation.required">
+                <div
+                    *ngIf="editForm.get('startTime').invalid && (editForm.get('startTime').dirty || editForm.get('startTime').touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('startTime').errors.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classDuration" for="field_classDuration">Class Duration</label>
-                    <select class="form-control" id="field_classDuration" name="classDuration" formControlName="classDuration">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classDuration"
+                        for="field_classDuration">Class Duration</label>
+                    <select class="form-control" id="field_classDuration" name="classDuration"
+                        formControlName="classDuration">
                         <option *ngIf="!editForm.get('classDuration').value" [ngValue]="null" selected></option>
-                        <option [ngValue]="classDurationOption.id === editForm.get('classDuration').value?.id ? editForm.get('classDuration').value : classDurationOption" *ngFor="let classDurationOption of classdurations; trackBy: trackClassDurationById">{{classDurationOption.name}}</option>
+                        <option
+                            [ngValue]="classDurationOption.id === editForm.get('classDuration').value?.id ? editForm.get('classDuration').value : classDurationOption"
+                            *ngFor="let classDurationOption of classdurations; trackBy: trackClassDurationById">
+                            {{classDurationOption.name}}</option>
                     </select>
                 </div>
-                <div *ngIf="editForm.get('classDuration').invalid && (editForm.get('classDuration').dirty || editForm.get('classDuration').touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('classDuration').errors.required" jhiTranslate="entity.validation.required">
+                <div
+                    *ngIf="editForm.get('classDuration').invalid && (editForm.get('classDuration').dirty || editForm.get('classDuration').touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('classDuration').errors.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
+                </div>
+                <div class="form-group d-none">
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.endTime" for="field_endTime">End
+                        Time</label>
+                    <select class="form-control" id="field_endTime" name="endTime" formControlName="endTime"
+                        [ngModel]="classhours[editForm.get('startTime').value?.id + editForm.get('classDuration').value?.id - 2]">
+                        <option [ngValue]="null"></option>
+                        <option
+                            [ngValue]="classHoursOption.id === editForm.get('endTime').value?.id ? editForm.get('endTime').value : classHoursOption"
+                            *ngFor="let classHoursOption of classhours; trackBy: trackClassHoursById">
+                            {{classHoursOption.endTime}}</option>
+                    </select>
                 </div>
             </div>
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
                     <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

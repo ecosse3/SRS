@@ -20,7 +20,8 @@
       "endTime": "End Time",
       "originalStartTime": "Original Start Time",
       "newStartTime": "New Start Time",
-      "timetable": "Timetable"
+      "timetable": "Timetable",
+      "tt_endTime": "Tt End Time"
     }
   }
 }

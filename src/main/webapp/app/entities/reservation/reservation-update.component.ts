@@ -25,6 +25,8 @@ import { IClassDuration } from 'app/shared/model/class-duration.model';
 import { ClassDurationService } from 'app/entities/class-duration/class-duration.service';
 import { IStatus } from 'app/shared/model/status.model';
 import { StatusService } from 'app/entities/status/status.service';
+import { TimetableService } from 'app/entities/timetable/timetable.service';
+import { ITimetable } from 'app/shared/model/timetable.model';
 
 @Component({
   selector: 'jhi-reservation-update',
@@ -72,9 +74,9 @@ export class ReservationUpdateComponent implements OnInit {
     participants: [null, [Validators.required]],
     schoolGroup: [null, Validators.required],
     building: [null, Validators.required],
-    classRoom: [],
+    classRoom: [null, Validators.required],
     originalStartTime: [null, Validators.required],
-    newStartTime: [],
+    newStartTime: [null, Validators.required],
     classDuration: [null, Validators.required],
     status: []
   });
@@ -89,6 +91,7 @@ export class ReservationUpdateComponent implements OnInit {
     protected classHoursService: ClassHoursService,
     protected classDurationService: ClassDurationService,
     protected statusService: StatusService,
+    protected timetableService: TimetableService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     protected languageService: JhiLanguageService
@@ -228,12 +231,13 @@ export class ReservationUpdateComponent implements OnInit {
     if (this.editForm.get(['schoolGroup']).value !== undefined) {
       this.selectedSchoolGroup = [this.editForm.get(['schoolGroup']).value];
     }
+
     if (this.editForm.get(['classRoom']).value === null) {
       this.selectedClassRoom = null;
     }
   }
 
-  private getLabel(english, polish) {
+  private getLabel(english: any, polish: any) {
     if (this.languageService.currentLang === 'en') {
       return english;
     }
@@ -304,13 +308,28 @@ export class ReservationUpdateComponent implements OnInit {
     window.history.back();
   }
 
-  save() {
+  save(isOccupied: any) {
     this.isSaving = true;
     const reservation = this.createFromForm();
-    if (reservation.id !== undefined) {
-      this.subscribeToSaveResponse(this.reservationService.update(reservation));
+
+    if (isOccupied > 0) {
+      this.jhiAlertService.addAlert(
+        {
+          msg: 'srsApp.reservation.occupied',
+          params: { date: moment(reservation.newClassDate).format('DD-MM-YYYY'), hour: reservation.newStartTime.startTime },
+          type: 'danger',
+          timeout: 10000
+        },
+        []
+      );
+      this.scrollTop();
+      this.isSaving = false;
     } else {
-      this.subscribeToSaveResponse(this.reservationService.create(reservation));
+      if (reservation.id !== undefined) {
+        this.subscribeToSaveResponse(this.reservationService.update(reservation));
+      } else {
+        this.subscribeToSaveResponse(this.reservationService.create(reservation));
+      }
     }
   }
 
@@ -391,5 +410,26 @@ export class ReservationUpdateComponent implements OnInit {
   unSelectClassRoom() {
     this.selectedClassRoom = [];
     this.filteredClassRooms = [];
+  }
+
+  checkIfClassRoomOccupied(building: any, classRoom: any, newClassDate: any, startTime: any, duration: any) {
+    this.timetableService
+      .checkIfClassRoomIsOccupied(
+        building.id,
+        classRoom.id,
+        moment(newClassDate)
+          .format('YYYY-MM-DD')
+          .toString(),
+        startTime.id,
+        duration.id
+      )
+      .subscribe(res => {
+        this.save(res.body);
+      });
+  }
+
+  scrollTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 }

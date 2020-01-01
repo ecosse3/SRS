@@ -72,4 +72,21 @@ export class TimetableService {
     }
     return res;
   }
+
+  checkIfClassRoomIsOccupied(
+    buildingId: any,
+    classRoomId: any,
+    classDate: any,
+    startTime: any,
+    duration: any
+  ): Observable<EntityArrayResponseType> {
+    const endTime = startTime + duration - 1;
+
+    return this.http.get<ITimetable[]>(
+      `${this.resourceUrl}/count?buildingId.equals=${buildingId}&classRoomId.equals=${classRoomId}&classDate.equals=${classDate}&endTimeId.greaterThanOrEqual=${startTime}&startTimeId.lessThanOrEqual=${endTime}`,
+      {
+        observe: 'response'
+      }
+    );
+  }
 }
