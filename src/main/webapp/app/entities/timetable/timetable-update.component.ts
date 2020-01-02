@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 import { ITimetable, Timetable } from 'app/shared/model/timetable.model';
 import { TimetableService } from './timetable.service';
 import { ISchoolGroup } from 'app/shared/model/school-group.model';
@@ -31,13 +31,20 @@ export class TimetableUpdateComponent implements OnInit {
   schoolgroups: ISchoolGroup[];
 
   buildings: IBuilding[];
+  selectedBuilding: any;
 
   classrooms: IClassRoom[];
+  filteredClassRooms: IClassRoom[];
+  selectedClassRoom: any;
 
   classhours: IClassHours[];
 
   classdurations: IClassDuration[];
   classDateDp: any;
+
+  buildingsDropdownSettings = {};
+  classRoomsDropdownSettings = {};
+  classRoomsDisabledDropdownSettings = {};
 
   editForm = this.fb.group({
     id: [],
@@ -60,7 +67,8 @@ export class TimetableUpdateComponent implements OnInit {
     protected classHoursService: ClassHoursService,
     protected classDurationService: ClassDurationService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    protected languageService: JhiLanguageService
   ) {}
 
   ngOnInit() {
@@ -103,6 +111,90 @@ export class TimetableUpdateComponent implements OnInit {
         map((response: HttpResponse<IClassDuration[]>) => response.body)
       )
       .subscribe((res: IClassDuration[]) => (this.classdurations = res), (res: HttpErrorResponse) => this.onError(res.message));
+
+    this.buildingsDropdownSettings = {
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectBuildingLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      enableSearchFilter: true,
+      enableFilterSelectAll: false,
+      enableCheckAll: false,
+      classes: 'angular2-multiselect'
+    };
+
+    this.classRoomsDropdownSettings = {
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectClassRoomLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      enableSearchFilter: true,
+      enableFilterSelectAll: false,
+      enableCheckAll: false,
+      classes: 'angular2-multiselect'
+    };
+
+    this.classRoomsDisabledDropdownSettings = {
+      disabled: true,
+      singleSelection: true,
+      showCheckbox: false,
+      text: this.onSelectDisabledClassRoomLabel(),
+      searchPlaceholderText: this.onSelectSearch(),
+      noDataLabel: this.onSelectNoDataLabel(),
+      enableSearchFilter: true,
+      enableFilterSelectAll: false,
+      enableCheckAll: false,
+      classes: 'angular2-multiselect'
+    };
+
+    if (this.editForm.get(['building']).value !== undefined || null) {
+      this.selectedBuilding = [this.editForm.get(['building']).value];
+    }
+
+    if (this.editForm.get(['classRoom']).value !== undefined) {
+      this.selectedClassRoom = [this.editForm.get(['classRoom']).value];
+    }
+
+    if (this.editForm.get(['classRoom']).value === null) {
+      this.selectedClassRoom = null;
+    }
+  }
+
+  private getLabel(english: any, polish: any) {
+    if (this.languageService.currentLang === 'en') {
+      return english;
+    }
+    return polish;
+  }
+
+  onSelectBuildingLabel() {
+    return this.getLabel('Select building', 'Wybierz budynek');
+  }
+
+  onSelectClassRoomLabel() {
+    return this.getLabel('Select classroom', 'Wybierz salę');
+  }
+
+  onSelectDisabledClassRoomLabel() {
+    return this.getLabel('Select building first', 'Wybierz najpierw budynek');
+  }
+
+  onSelectSearch() {
+    return this.getLabel('Search...', 'Szukaj...');
+  }
+
+  onSelectNoDataLabel() {
+    return this.getLabel('Nothing found', 'Nic nie znaleziono');
+  }
+
+  onSelectFilterSelectAllParticipantsText() {
+    return this.getLabel('Select all filtered results', 'Zaznacz wszystkich pofiltrowanych uczestników');
+  }
+
+  onSelectFilterUnSelectAllParticipantsText() {
+    return this.getLabel('Unselect all filtered results', 'Odznacz wszystkich pofiltrowanych uczestników');
   }
 
   updateForm(timetable: ITimetable) {
@@ -117,6 +209,10 @@ export class TimetableUpdateComponent implements OnInit {
       classDuration: timetable.classDuration,
       endTime: timetable.endTime
     });
+
+    if (timetable.building) {
+      this.getClassRoomByBuildingId(timetable.building);
+    }
   }
 
   previousState() {
@@ -140,8 +236,8 @@ export class TimetableUpdateComponent implements OnInit {
       subject: this.editForm.get(['subject']).value,
       classDate: this.editForm.get(['classDate']).value,
       schoolGroup: this.editForm.get(['schoolGroup']).value,
-      building: this.editForm.get(['building']).value,
-      classRoom: this.editForm.get(['classRoom']).value,
+      building: this.editForm.get(['building']).value[0],
+      classRoom: this.editForm.get(['classRoom']).value != null ? this.editForm.get(['classRoom']).value[0] : undefined,
       startTime: this.editForm.get(['startTime']).value,
       classDuration: this.editForm.get(['classDuration']).value,
       endTime: this.editForm.get(['endTime']).value
@@ -182,5 +278,18 @@ export class TimetableUpdateComponent implements OnInit {
 
   trackClassDurationById(index: number, item: IClassDuration) {
     return item.id;
+  }
+
+  getClassRoomByBuildingId(building: any) {
+    this.classRoomService.getClassRoomsByBuildingId(building.id).subscribe(res => {
+      this.filteredClassRooms = res.body;
+    });
+
+    this.selectedClassRoom = [];
+  }
+
+  unSelectClassRoom() {
+    this.selectedClassRoom = [];
+    this.filteredClassRooms = [];
   }
 }
