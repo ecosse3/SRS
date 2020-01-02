@@ -63,7 +63,7 @@
                     </small>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.reservation.building"
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.building"
                         for="field_building">Building</label>
                     <angular2-multiselect id="field_building" name="building" [settings]="buildingsDropdownSettings"
                         [data]="buildings" [ngModel]="selectedBuilding" formControlName="building"
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div *ngIf="editForm.get(['building']).value" class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.reservation.classRoom"
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classRoom"
                         for="field_classRoom">Class
                         Room</label>
                     <angular2-multiselect id="field_classRoom" name="classRoom" [settings]="classRoomsDropdownSettings"
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div *ngIf="!editForm.get(['building']).value" class="form-group">
-                    <label class="form-control-label" jhiTranslate="srsApp.reservation.classRoom"
+                    <label class="form-control-label" jhiTranslate="srsApp.timetable.classRoom"
                         for="field_classRoom">Class
                         Room</label>
                     <angular2-multiselect id="field_classRoom" name="classRoom"

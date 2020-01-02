@@ -189,14 +189,6 @@ export class TimetableUpdateComponent implements OnInit {
     return this.getLabel('Nothing found', 'Nic nie znaleziono');
   }
 
-  onSelectFilterSelectAllParticipantsText() {
-    return this.getLabel('Select all filtered results', 'Zaznacz wszystkich pofiltrowanych uczestników');
-  }
-
-  onSelectFilterUnSelectAllParticipantsText() {
-    return this.getLabel('Unselect all filtered results', 'Odznacz wszystkich pofiltrowanych uczestników');
-  }
-
   updateForm(timetable: ITimetable) {
     this.editForm.patchValue({
       id: timetable.id,
