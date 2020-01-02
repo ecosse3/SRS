@@ -29,7 +29,7 @@ export class ClassRoomService {
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IClassRoom[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http.get<IClassRoom[]>(`${this.resourceUrl}?size=150`, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<any>> {
@@ -37,6 +37,6 @@ export class ClassRoomService {
   }
 
   getClassRoomsByBuildingId(buildingId: number): Observable<EntityArrayResponseType> {
-    return this.http.get<IClassRoom[]>(`${this.resourceUrl}?buildingId.equals=${buildingId}`, { observe: 'response' });
+    return this.http.get<IClassRoom[]>(`${this.resourceUrl}?buildingId.equals=${buildingId}&size=100`, { observe: 'response' });
   }
 }

@@ -77,11 +77,11 @@ Generic styles
   border-left: 5px solid red;
 }
 
-.participants-multiselect.ng-invalid:not(form) {
+.angular2-multiselect.ng-invalid:not(form) {
   border-left: none;
 }
 
-.participants-multiselect.ng-invalid:not(form) > .cuppa-dropdown .selected-list .c-btn {
+.angular2-multiselect.ng-invalid:not(form) > .cuppa-dropdown .selected-list .c-btn {
   border-left: 5px solid red;
 }
 

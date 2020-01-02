@@ -164,7 +164,7 @@ export class ReservationUpdateComponent implements OnInit {
       enableFilterSelectAll: false,
       enableCheckAll: false,
       badgeShowLimit: 7,
-      classes: 'participants-multiselect'
+      classes: 'angular2-multiselect'
     };
 
     this.buildingsDropdownSettings = {
@@ -176,7 +176,7 @@ export class ReservationUpdateComponent implements OnInit {
       enableSearchFilter: true,
       enableFilterSelectAll: false,
       enableCheckAll: false,
-      classes: 'participants-multiselect'
+      classes: 'angular2-multiselect'
     };
 
     this.classRoomsDropdownSettings = {
@@ -188,7 +188,7 @@ export class ReservationUpdateComponent implements OnInit {
       enableSearchFilter: true,
       enableFilterSelectAll: false,
       enableCheckAll: false,
-      classes: 'participants-multiselect'
+      classes: 'angular2-multiselect'
     };
 
     this.classRoomsDisabledDropdownSettings = {
@@ -201,7 +201,7 @@ export class ReservationUpdateComponent implements OnInit {
       enableSearchFilter: true,
       enableFilterSelectAll: false,
       enableCheckAll: false,
-      classes: 'participants-multiselect'
+      classes: 'angular2-multiselect'
     };
 
     this.schoolGroupDropdownSettings = {
@@ -213,7 +213,7 @@ export class ReservationUpdateComponent implements OnInit {
       enableSearchFilter: true,
       enableFilterSelectAll: false,
       enableCheckAll: false,
-      classes: 'participants-multiselect'
+      classes: 'angular2-multiselect'
     };
 
     if (this.editForm.get(['newStartTime']).value === undefined) {
