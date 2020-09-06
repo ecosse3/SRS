@@ -158,3 +158,4 @@ Desktop.ini
 pom.xml
 jhipster-jdl.jh
 jhipster-jdl.png
+/src/*/resources/config/*.yml
