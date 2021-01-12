@@ -154,8 +154,8 @@ Desktop.ini
 ######################
 # Own
 ######################
-/src/main/resources/application.properties
+src/main/resources/application.properties
 pom.xml
 jhipster-jdl.jh
 jhipster-jdl.png
-/src/*/resources/config/*.yml
+src/main/resources/config/application-dev.yml
